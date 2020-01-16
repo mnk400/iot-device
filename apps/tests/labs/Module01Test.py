@@ -13,6 +13,8 @@ Instructions:
 
 Please note: While some example test cases may be provided, you must write your own for the class.
 """
+import threading
+from labs.module01 import SystemCpuUtilTask, SystemMemUtilTask, SystemPerformanceAdapter
 class Module01Test(unittest.TestCase):
 
 	"""
@@ -21,6 +23,12 @@ class Module01Test(unittest.TestCase):
 	instances of complex objects, initialize any requisite connections, etc.
 	"""
 	def setUp(self):
+		self.cpu_test = SystemCpuUtilTask.Cpu()
+		self.mem_test = SystemMemUtilTask.Mem()
+		self.adaptor_test = SystemPerformanceAdapter.SystemPerformanceAdapter(2) 
+		self.adaptor_test.daemon = True
+		self.atest_thread = threading.Thread(target=self.adaptor_test.run(1))
+
 		pass
 
 	"""
@@ -33,8 +41,22 @@ class Module01Test(unittest.TestCase):
 	"""
 	Place your comments describing the test here.
 	"""
-	def testSomething(self):
-		pass
+	def testSystemCpuUtilTask(self):
+		cpuPer = self.cpu_test.getDataFromSensor()
+		
+		self.assertGreater(100,cpuPer,"CPU over 100")
+		self.assertLessEqual(0,cpuPer, "CPU less than or equal to 100")
+
+	def testSystemMemUtilTask(self):
+		memPer = self.mem_test.getDataFromSensor()
+		
+		self.assertGreater(100,memPer,"Memory over 100")
+		self.assertLessEqual(0,memPer, "Memory less than or equal to 100")
+		
+	def testSystemPerformanceAdapter(self):	
+		self.atest_thread.start()
+		pass	
+			
 
 if __name__ == "__main__":
 	#import sys;sys.argv = ['', 'Test.testName']

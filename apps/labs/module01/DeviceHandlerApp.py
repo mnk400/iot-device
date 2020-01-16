@@ -10,7 +10,7 @@ if __name__ == '__main__':
     '''
     Creating a thread for the SystemPerformanceAdapter
     '''
-    sysPerfAdaptor = SystemPerformanceAdapter.SystemPerformanceAdapter(3) 
+    sysPerfAdaptor = SystemPerformanceAdapter.SystemPerformanceAdapter(2) 
     sysPerfAdaptor.daemon = True
-    performance_thread = threading.Thread(target=sysPerfAdaptor.run())
+    performance_thread = threading.Thread(target=sysPerfAdaptor.run(12))
     performance_thread.start()

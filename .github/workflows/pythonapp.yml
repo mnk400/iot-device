@@ -26,6 +26,4 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: UnitTest
       run: |
-        cd apps 
-        pwd
-        python -m unittest tests/labs/Module01Test.py
+        python -m unittest discover -v -s ./apps -p "*Test.py"

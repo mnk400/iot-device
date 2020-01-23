@@ -25,9 +25,9 @@ class Module01Test(unittest.TestCase):
 	def setUp(self):
 		self.cpu_test = SystemCpuUtilTask.Cpu()
 		self.mem_test = SystemMemUtilTask.Mem()
-		self.adaptor_test = SystemPerformanceAdapter.SystemPerformanceAdapter(2) 
+		self.adaptor_test = SystemPerformanceAdapter.SystemPerformanceAdapter(2,5) 
 		self.adaptor_test.daemon = True
-		self.atest_thread = threading.Thread(target=self.adaptor_test.run(1))
+		self.atest_thread = threading.Thread(target=self.adaptor_test.run_adapter())
 
 		pass
 

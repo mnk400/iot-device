@@ -7,10 +7,6 @@ from datetime import datetime
 import string
 
 class SensorData(object):
-    '''
-    classdocs
-    '''
-
 
     def __init__(self):
         '''
@@ -26,17 +22,19 @@ class SensorData(object):
         self.timestamp      = None
         
     def addValue(self,var):
+        '''
+        Method to add new Sensor data
+        '''
         self.currentValue   = var
         self.totalCount     = self.totalCount + 1
         self.totalValue     = self.totalValue + var
-        self.timestamp      = datetime.now()
+        self.timestamp      = str(datetime.now())
         
         if  var > self.maxValue: self.maxValue = var
         if  var < self.minValue: self.minValue = var
         
     def getAverageValue(self)  -> float:
-        return self.totalValue/self.totalCount
-        
+        return self.totalValue/self.totalCount 
     
     def getCount(self)         -> int:
         return self.totalCount

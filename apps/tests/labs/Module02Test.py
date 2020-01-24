@@ -33,9 +33,14 @@ class Module02Test(unittest.TestCase):
 	"""
 	Place your comments describing the test here.
 	"""
-	def testSomething(self):
+	def testGetValue(self):
 		pass
 
+	def testHasConfigData(self):
+		pass
+	
+	def testLoadConfigData(self):
+		pass
 if __name__ == "__main__":
 	#import sys;sys.argv = ['', 'Test.testName']
 	unittest.main()

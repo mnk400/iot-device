@@ -5,24 +5,28 @@ Created on Jan 22, 2020
 '''
 import threading
 from labs.module02 import TempSensorEmulatorTask
+from time import sleep
 
 class TempEmulatorAdapter(object):
-    '''
-    classdocs
-    '''
 
-
-    def __init__(self):
+    enableTempEmulatorAdapter = False
+    
+    def __init__(self,sleepparam,looplimit):
         '''
         Constructor
         '''
+        self.sleeptime  = sleepparam
+        self.looplimit  = looplimit
+        self.temperatureTask = TempSensorEmulatorTask.TempSensorEmulator()
         
     def run_emulation(self):
-        emulator_obj = TempSensorEmulatorTask.TempSensorEmulator(3,10)
-        emulator_obj.enableDataGenerator = True
-        emulator_obj.daemon = True
-        generator_thread = threading.Thread(target=emulator_obj.generateData())
-
-
-
-        
+        '''
+        This method runs the emulation if enableTempEmulatorAdapter is set to True
+        '''
+        i = 0
+        if self.enableTempEmulatorAdapter == True:
+            while i < self.looplimit:
+                i = i + 1
+                self.temperatureTask.generateData()
+                sleep(self.sleeptime)
+            

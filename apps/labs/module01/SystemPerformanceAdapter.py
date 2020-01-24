@@ -13,7 +13,7 @@ logging.basicConfig(format='%(asctime)s:%(levelname)s:%(message)s', level=loggin
 logging.info("System Performance Thread initializing")
 
 
-class SystemPerformanceAdapter(object):
+class SystemPerformanceAdapter():
 
     enableSystemPerformanceAdapter = False
    
@@ -23,21 +23,22 @@ class SystemPerformanceAdapter(object):
         '''
         self.sleeptime = param
         self.loopcount = loop_param
+        self.cpu = SystemCpuUtilTask.Cpu()
+        self.mem = SystemMemUtilTask.Mem()
     
         
     def run_adapter(self):
         '''
         Method to log the current CPU and Memory usage
         '''
-        if self.enableSystemPerformanceAdapter:
-            cpu = SystemCpuUtilTask.Cpu()
-            mem = SystemMemUtilTask.Mem()
+        if self.enableSystemPerformanceAdapter == True:
             i = 0
             while i < self.loopcount:
-                cpuval = cpu.getDataFromSensor()
-                memval = mem.getDataFromSensor()
+                cpuval = self.cpu.getDataFromSensor()
+                memval = self.mem.getDataFromSensor()
                 logging.info('CPU Utilization=' + str(cpuval))
                 logging.info('Memory Utilization=' + str(memval))
                 sleep(self.sleeptime)
-                i = i + 1       
-     
+                i = i + 1   
+
+                

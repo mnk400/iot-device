@@ -25,7 +25,7 @@ class Module01Test(unittest.TestCase):
 		self.mem_test = SystemMemUtilTask.Mem()
 		self.adaptor_test = SystemPerformanceAdapter.SystemPerformanceAdapter(2,5) 
 		self.adaptor_test.daemon = True
-		self.atest_thread = threading.Thread(target=self.adaptor_test.run_adapter())
+		self.testThread = threading.Thread(target=self.adaptor_test.run_adapter())
 
 		pass
 
@@ -52,8 +52,7 @@ class Module01Test(unittest.TestCase):
 		self.assertLessEqual(0,memPer, "Memory less than or equal to 100")
 		
 	def testSystemPerformanceAdapter(self):	
-		self.atest_thread.start()
-		pass	
+		self.testThread.start()
 			
 
 if __name__ == "__main__":

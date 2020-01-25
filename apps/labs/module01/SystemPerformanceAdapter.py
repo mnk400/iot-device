@@ -36,7 +36,7 @@ class SystemPerformanceAdapter():
             while i < self.loopcount:
                 cpuval = self.cpu.getDataFromSensor()
                 memval = self.mem.getDataFromSensor()
-                logging.info('\nCPU Utilization=' + str(cpuval))
+                logging.info('CPU Utilization=' + str(cpuval))
                 logging.info('Memory Utilization=' + str(memval))
                 sleep(self.sleeptime)
                 i = i + 1

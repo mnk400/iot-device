@@ -13,6 +13,7 @@ Instructions:
 
 Please note: While some example test cases may be provided, you must write your own for the class.
 """
+from labs.module02 import ConfigUtil
 class ConfigUtilTest(unittest.TestCase):
 
 	"""
@@ -21,8 +22,8 @@ class ConfigUtilTest(unittest.TestCase):
 	instances of complex objects, initialize any requisite connections, etc.
 	"""
 	def setUp(self):
-		#self.configUtil = ConfigUtil()
-		#self.configUtil.loadConfig()
+		configUtilTests = ConfigUtil.ConfigUtil()
+		configUtilTests.loadConfigData
 		pass
 
 	"""

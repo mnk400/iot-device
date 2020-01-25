@@ -13,6 +13,7 @@ Instructions:
 
 Please note: While some example test cases may be provided, you must write your own for the class.
 """
+from labs.module02 import ConfigUtil, SensorData, SmtpClientConnector, TempEmulatorAdapter, TempSensorEmulatorTask
 class Module02Test(unittest.TestCase):
 
 	"""
@@ -21,6 +22,7 @@ class Module02Test(unittest.TestCase):
 	instances of complex objects, initialize any requisite connections, etc.
 	"""
 	def setUp(self):
+		self.configUtilTests = ConfigUtil.ConfigUtil()
 		pass
 
 	"""
@@ -37,10 +39,12 @@ class Module02Test(unittest.TestCase):
 		pass
 
 	def testHasConfigData(self):
-		pass
+		testBoolean = self.configUtilTests.hasConfigData()
+		self.assertTrue(type(testBoolean) == bool,"HasConfigData returned a non boolean value")
 	
 	def testLoadConfigData(self):
 		pass
+
 if __name__ == "__main__":
 	#import sys;sys.argv = ['', 'Test.testName']
 	unittest.main()

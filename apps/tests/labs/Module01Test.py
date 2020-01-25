@@ -37,21 +37,26 @@ class Module01Test(unittest.TestCase):
 	def tearDown(self):
 		pass
 	
-	"""
-	Place your comments describing the test here.
-	"""
+	'''
+	Testing the return method from SystemCpuUtilTask
+	'''
 	def testSystemCpuUtilTask(self):
 		cpuPer = self.cpu_test.getDataFromSensor()
 		
 		self.assertGreater(100,cpuPer,"CPU over 100")
 		self.assertLessEqual(0,cpuPer, "CPU less than or equal to 100")
 
+	'''
+	Testing the return method from SystemMemUtilTask
+	'''
 	def testSystemMemUtilTask(self):
 		memPer = self.mem_test.getDataFromSensor()
 		
 		self.assertGreater(100,memPer,"Memory over 100")
 		self.assertLessEqual(0,memPer, "Memory less than or equal to 100")
-		
+	'''
+	Testing the run_adapter from SystemPerformanceAdapter 
+	'''	
 	def testSystemPerformanceAdapter(self):
 		print("\n")
 		self.assertEqual(self.adaptor_test.run_adapter(), False, "True when expected False")

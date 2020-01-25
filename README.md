@@ -1,5 +1,5 @@
-# Iot Device
+# Device
 ![](https://github.com/mnk400/iot-device/workflows/Python-App/badge.svg)
 
 
-Python Repositroy for the device
+Device repository containing Modules and an auto build pipeline a semester course. Python. CSYE6530.

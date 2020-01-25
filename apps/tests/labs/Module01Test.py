@@ -23,8 +23,9 @@ class Module01Test(unittest.TestCase):
 	def setUp(self):
 		self.cpu_test = SystemCpuUtilTask.Cpu()
 		self.mem_test = SystemMemUtilTask.Mem()
-		self.adaptor_test = SystemPerformanceAdapter.SystemPerformanceAdapter(2,5) 
+		self.adaptor_test = SystemPerformanceAdapter.SystemPerformanceAdapter(1,1) 
 		self.adaptor_test.daemon = True
+		self.adaptor_test.enableSystemPerformanceAdapter = False
 		self.testThread = threading.Thread(target=self.adaptor_test.run_adapter())
 
 		pass
@@ -51,8 +52,11 @@ class Module01Test(unittest.TestCase):
 		self.assertGreater(100,memPer,"Memory over 100")
 		self.assertLessEqual(0,memPer, "Memory less than or equal to 100")
 		
-	def testSystemPerformanceAdapter(self):	
-		self.testThread.start()
+	def testSystemPerformanceAdapter(self):
+		print("\n")
+		self.assertEqual(self.adaptor_test.run_adapter(), False, "True when expected False")
+		self.adaptor_test.enableSystemPerformanceAdapter = True
+		self.assertEqual(self.adaptor_test.run_adapter(), True, "False when expected True")
 			
 
 if __name__ == "__main__":

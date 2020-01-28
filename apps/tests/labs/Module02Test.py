@@ -26,10 +26,16 @@ class Module02Test(unittest.TestCase):
 	def testGetValue(self):
 		pass
 
+	'''
+	Testing if the config file is loading data from the file properly
+	'''
 	def testHasConfigData(self):
 		testBoolean = self.configUtilTests.hasConfigData()
 		self.assertTrue(type(testBoolean) == bool,"HasConfigData returned a non boolean value")
-	
+	'''
+	Test for if the method that checks if config data has been
+	loaded works as it intended to
+	'''
 	def testLoadConfigData(self):
 		pass
 

@@ -16,25 +16,13 @@ Please note: While some example test cases may be provided, you must write your 
 from labs.module02 import ConfigUtil, SensorData, SmtpClientConnector, TempEmulatorAdapter, TempSensorEmulatorTask
 class Module02Test(unittest.TestCase):
 
-	"""
-	Use this to setup your tests. This is where you may want to load configuration
-	information (if needed), initialize class-scoped variables, create class-scoped
-	instances of complex objects, initialize any requisite connections, etc.
-	"""
 	def setUp(self):
 		self.configUtilTests = ConfigUtil.ConfigUtil()
 		pass
 
-	"""
-	Use this to tear down any allocated resources after your tests are complete. This
-	is where you may want to release connections, zero out any long-term data, etc.
-	"""
 	def tearDown(self):
 		pass
 	
-	"""
-	Place your comments describing the test here.
-	"""
 	def testGetValue(self):
 		pass
 

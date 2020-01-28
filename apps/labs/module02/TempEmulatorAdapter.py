@@ -11,17 +11,20 @@ class TempEmulatorAdapter(object):
 
     enableTempEmulatorAdapter = False
     
-    def __init__(self,sleepparam,looplimit):
+    def __init__(self,sleep_param,looplimit):
         '''
         Constructor
+        which sets the sleep timer for the thread, and a looplimit if needed.
         '''
-        self.sleeptime  = sleepparam
-        self.looplimit  = looplimit
+        self.sleeptime       = sleep_param
+        self.looplimit       = looplimit
         self.temperatureTask = TempSensorEmulatorTask.TempSensorEmulator()
         
     def run_emulation(self):
         '''
-        This method runs the emulation if enableTempEmulatorAdapter is set to True
+        This method runs the emulation if enableTempEmulatorAdapter is set to True.
+        Method calls the "generateData" method from the tempEmulatorAdapter which is
+        responsible for emulator a temperature Data generator.
         '''
         i = 0
         if self.enableTempEmulatorAdapter == True:
@@ -29,4 +32,3 @@ class TempEmulatorAdapter(object):
                 i = i + 1
                 self.temperatureTask.generateData()
                 sleep(self.sleeptime)
-            

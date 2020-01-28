@@ -13,7 +13,7 @@ logging.basicConfig(format='%(message)s', level=logging.DEBUG)
 logging.info("Temperature Emulator Thread initializing")
 
 class TempSensorEmulator():
-    
+
     def __init__(self):
         '''
         Constructor
@@ -60,11 +60,11 @@ class TempSensorEmulator():
         '''
         Generate the string to be logged and then passed in the SMTP message
         '''
-        msgString = "\nTemperature"
+        msgString  = "\nTemperature"
         msgString += "\n\tTime : " + self.sense_d.timestamp
         msgString += "\n\tCurrent : " + repr(self.sense_d.getCurrentValue())
         msgString += "\n\tAverage : " + repr(self.sense_d.getAverageValue())
         msgString += "\n\tSamples : " + repr(self.sense_d.getCount())
         msgString += "\n\tMin : " + repr(self.sense_d.getMinValue())
-        msgString += "\n\tMax : " + repr(self.sense_d.getMaxValue()) 
+        msgString += "\n\tMax : " + repr(self.sense_d.getMaxValue())
         return msgString

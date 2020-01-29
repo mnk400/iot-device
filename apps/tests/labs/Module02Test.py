@@ -22,7 +22,7 @@ class Module02Test(unittest.TestCase):
 			self.SmtpTest.config.loadConfigData()
 			self.assertEqual(False,self.SmtpTest.publishMessage("TestMail", "Test Message"),"Failed")
 		else:
-			self.SmtpTest.config("sample/ConnectedDevicesConfig_NO_EDIT_TEMPLATE_ONLY.props")	
+			self.SmtpTest.config.__init__("sample/ConnectedDevicesConfig_NO_EDIT_TEMPLATE_ONLY.props")	
 			self.SmtpTest.config.loadConfigData()
 			print("Case Pipeline : ", end = " ")
 			self.assertEqual.__init__(False,self.SmtpTest.publishMessage("TestMail", "Test Message"))

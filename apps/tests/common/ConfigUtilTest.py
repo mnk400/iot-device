@@ -6,8 +6,8 @@ class ConfigUtilTest(unittest.TestCase):
 	def setUp(self):
 		self.configUtilTests = ConfigUtil.ConfigUtil()
 		self.configUtilTests.loadConfigData()
-		if self.ConfigUtilTests.loadConfigData == False:
-			self.configUtilTests.filepath = "config/ConnectedDevicesConfig.props"
+		if self.ConfigUtilTests.config == False:
+			self.configUtilTests.__init__("config/ConnectedDevicesConfig.props")
 			self.configUtilTests.loadConfigData()
 		pass
 

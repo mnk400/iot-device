@@ -5,7 +5,8 @@ Created on Jan 22, 2020
 '''
 import random
 import logging
-from labs.module02 import SensorData, SmtpClientConnector
+from labs.module02 import  SmtpClientConnector
+from labs.common import SensorData
 from time import sleep
 
 logging.getLogger("emulatorlog")
@@ -14,13 +15,16 @@ logging.info("Temperature Emulator Thread initializing")
 
 class TempSensorEmulator():
 
+    minVal = 0
+    maxVal = 30
+    threshold = 5
+    topic = "IOT - Device"
+
     def __init__(self):
         '''
         Constructor
         '''
-        self.sense_d    = SensorData.SensorData()
-        self.minVal     = 0
-        self.maxVal     = 30
+        self.sensor    = SensorData.SensorData()
         self.SmtpClient = SmtpClientConnector.MyClass()
     
     def generateData(self):
@@ -30,41 +34,41 @@ class TempSensorEmulator():
         Method also checks if newly produced data values are in the differential range of 5 from the average value
         '''     
         rand_val = random.uniform(float(self.minVal),float(self.maxVal))
-        self.sense_d.addValue(rand_val)
+        self.sensor.addValue(rand_val)
                 
         msgString= self.generateString()
         logging.info(msgString)
             
-        if rand_val > self.sense_d.getAverageValue() + 5:
-            self.sendNotification("Excessive Temperature\n" + msgString)
-            logging.info("Excessive Temperature")
-        elif rand_val < self.sense_d.getAverageValue() - 5:
-            self.sendNotification("Temperature too low\n" + msgString)
-            logging.info("Temperature too low")
+        if rand_val > self.sensor.getAverageValue() + self.threshold or rand_val < self.sensor.getAverageValue() - self.threshold:
+            logging.info("Temperature out of bounds")
+            self.sendNotification("Temperature out of bounds\n" + msgString)
+        
+        return True   
                 
         
     def getSensorData(self) -> SensorData.SensorData:
         '''
         Returns an instance of the the class SensorData
         '''
-        return self.sense_d
+        return self.sensor
     
     def sendNotification(self,message_param):
         '''
         Simple method to call the SMTP connector to publish a message
         '''
-        self.SmtpClient.publishMessage("IOT-Deivce", message_param)
-        logging.info("Sending E-mail")
+        logging.info("Sending Notification")
+        self.SmtpClient.publishMessage(self.topic, message_param)
+        
         
     def generateString(self) -> str:
         '''
         Generate the string to be logged and then passed in the SMTP message
         '''
         msgString  = "\nTemperature"
-        msgString += "\n\tTime : " + self.sense_d.timestamp
-        msgString += "\n\tCurrent : " + repr(self.sense_d.getCurrentValue())
-        msgString += "\n\tAverage : " + repr(self.sense_d.getAverageValue())
-        msgString += "\n\tSamples : " + repr(self.sense_d.getCount())
-        msgString += "\n\tMin : " + repr(self.sense_d.getMinValue())
-        msgString += "\n\tMax : " + repr(self.sense_d.getMaxValue())
+        msgString += "\n\tTime : " + self.sensor.timestamp
+        msgString += "\n\tCurrent : " + repr(self.sensor.getCurrentValue())
+        msgString += "\n\tAverage : " + repr(self.sensor.getAverageValue())
+        msgString += "\n\tSamples : " + repr(self.sensor.getCount())
+        msgString += "\n\tMin : " + repr(self.sensor.getMinValue())
+        msgString += "\n\tMax : " + repr(self.sensor.getMaxValue())
         return msgString

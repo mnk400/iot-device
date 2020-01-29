@@ -5,7 +5,7 @@ Created on Jan 15, 2020
 '''
 import threading
 from labs.module01 import SystemPerformanceAdapter
-from labs.module02 import ConfigUtil, TempEmulatorAdapter
+from labs.module02 import TempEmulatorAdapter
 
 if __name__ == '__main__':
     

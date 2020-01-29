@@ -1,39 +1,84 @@
 import unittest
+from labs.common import SensorData
+from labs.module02 import TempSensorEmulatorTask
 
-
-"""
-Test class for all requisite SensorData functionality.
-
-Instructions:
-1) Rename 'testSomething()' method such that 'Something' is specific to your needs; add others as needed, beginning each method with 'test...()'.
-2) Add the '@Test' annotation to each new 'test...()' method you add.
-3) Import the relevant modules and classes to support your tests.
-4) Run this class as unit test app.
-5) Include a screen shot of the report when you submit your assignment.
-
-Please note: While some example test cases may be provided, you must write your own for the class.
-"""
 class SensorDataTest(unittest.TestCase):
 
-	"""
-	Use this to setup your tests. This is where you may want to load configuration
-	information (if needed), initialize class-scoped variables, create class-scoped
-	instances of complex objects, initialize any requisite connections, etc.
-	"""
 	def setUp(self):
+		self.SensorDataTests = SensorData.SensorData()
 		pass
 
-	"""
-	Use this to tear down any allocated resources after your tests are complete. This
-	is where you may want to release connections, zero out any long-term data, etc.
-	"""
 	def tearDown(self):
 		pass
 	
 	"""
 	Place your comments describing the test here.
 	"""
-	def testSomething(self):
+	def testAddValue(self):
+		print("\n")
+		self.assertEqual(True, self.SensorDataTests.addValue(6.0),"Float Value Added")
+		self.assertEqual(False, self.SensorDataTests.addValue("NOTAFLOAT"))
+		pass
+
+	def testGetAverageValue(self):
+		print("\n")
+		self.SensorDataTests.addValue(6.0)
+		self.SensorDataTests.addValue(10.3)
+		self.SensorDataTests.addValue(3.2)
+		self.assertEqual(6.5,self.SensorDataTests.getAverageValue())
+
+		self.SensorDataTests.addValue("NOTAFLOAT")
+		self.assertEqual(6.5,self.SensorDataTests.getAverageValue())
+
+		pass
+	
+	def testGetCount(self):
+		print("\n")
+		self.SensorDataTests.addValue(6.0)
+		self.SensorDataTests.addValue(10.3)
+		self.assertEqual(2,self.SensorDataTests.getCount())
+
+		self.SensorDataTests.addValue("NOTAFLOAT")
+		self.assertEqual(2,self.SensorDataTests.getCount())
+		pass
+	
+	def testGetCurrentValue(self):
+		self.SensorDataTests.addValue(6.0)
+		self.SensorDataTests.addValue(10.3)
+		self.assertEqual(10.3,self.SensorDataTests.getCurrentValue())
+
+		self.SensorDataTests.addValue("NOTAFLOAT")
+		self.assertEqual(10.3,self.SensorDataTests.getCurrentValue())
+		pass
+
+	def testGetMaxValue(self):
+		self.SensorDataTests.addValue(6.0)
+		self.SensorDataTests.addValue(10.3)
+		self.assertEqual(10.3,self.SensorDataTests.getMaxValue())
+
+		self.SensorDataTests.addValue("NOTAFLOAT")
+		self.assertEqual(10.3,self.SensorDataTests.getMaxValue())
+		pass
+
+	def testGetMinValue(self):
+		self.SensorDataTests.addValue(6.0)
+		self.SensorDataTests.addValue(10.3)
+		self.SensorDataTests.addValue(8.8)
+		self.assertEqual(6.0,self.SensorDataTests.getMinValue())
+
+		self.SensorDataTests.addValue("NOTAFLOAT")
+		self.assertEqual(6.0,self.SensorDataTests.getMinValue())
+		pass
+
+	def testGetName(self):
+		self.assertEqual("Not Set", self.SensorDataTests.getName())
+		self.SensorDataTests.setName("TESTNAME")
+		self.assertEqual("TESTNAME", self.SensorDataTests.getName())
+		pass
+
+	def testSetName(self):
+		self.SensorDataTests.setName("TESTNAME")
+		self.assertEqual("TESTNAME", self.SensorDataTests.getName())
 		pass
 
 if __name__ == "__main__":

@@ -1,36 +1,64 @@
 import unittest
 
-
-"""
-Test class for all requisite Module02 functionality.
-
-Instructions:
-1) Rename 'testSomething()' method such that 'Something' is specific to your needs; add others as needed, beginning each method with 'test...()'.
-2) Add the '@Test' annotation to each new 'test...()' method you add.
-3) Import the relevant modules and classes to support your tests.
-4) Run this class as unit test app.
-5) Include a screen shot of the report when you submit your assignment.
-
-Please note: While some example test cases may be provided, you must write your own for the class.
-"""
-from labs.module02 import ConfigUtil, SensorData, SmtpClientConnector, TempEmulatorAdapter, TempSensorEmulatorTask
+from labs.module02 import SmtpClientConnector, TempEmulatorAdapter, TempSensorEmulatorTask
+from labs.common import ConfigUtil, SensorData
 class Module02Test(unittest.TestCase):
 
 	def setUp(self):
-		self.configUtilTests = ConfigUtil.ConfigUtil()
+		self.SmtpTest = SmtpClientConnector.MyClass()
+		self.EmulatorTest = TempSensorEmulatorTask.TempSensorEmulator()
 		pass
 
 	def tearDown(self):
 		pass
-	
-	def testGetValue(self):
+
+	def testPublishMessage(self):
+		print("\n")
+		if self.SmtpTest.config.configFileLoaded == True:
+			print("Case 1 (Email should be sent): ", end = " ")
+			self.assertEqual(True,self.SmtpTest.publishMessage("TestMail","Test Message"),"Failed")	
+			print("Case 2 (SMTP should not connect): ", end = " ")
+			self.SmtpTest.config.__init__("sample/ConnectedDevicesConfig_NO_EDIT_TEMPLATE_ONLY.props")	
+			self.SmtpTest.config.loadConfigData()
+			self.assertEqual(False,self.SmtpTest.publishMessage("TestMail", "Test Message"),"Failed")
+		else:
+			self.SmtpTest.config.__init__("sample/ConnectedDevicesConfig_NO_EDIT_TEMPLATE_ONLY.props")	
+			self.SmtpTest.config.loadConfigData()
+			print("Case Pipeline : ", end = " ")
+			self.assertEqual.__init__(False,self.SmtpTest.publishMessage("TestMail", "Test Message"))
 		pass
 
-	def testHasConfigData(self):
-		testBoolean = self.configUtilTests.hasConfigData()
-		self.assertTrue(type(testBoolean) == bool,"HasConfigData returned a non boolean value")
-	
-	def testLoadConfigData(self):
+	def testGenerateData(self):
+		print("\n")
+		self.assertEqual(True,self.EmulatorTest.generateData())
+		pass
+
+	def testGetSensorData(self):
+		print("\n")
+		self.assertEqual(type(self.EmulatorTest.getSensorData()),SensorData.SensorData,)
+		pass
+
+	def testGenerateString(self):
+		self.EmulatorTest.generateData()
+		self.assertEqual(type(self.EmulatorTest.generateString()),str)
+		pass
+
+	def testRun_Emulation(self):
+		Emulation = TempEmulatorAdapter.TempEmulatorAdapter()
+		Emulation.enableTempEmulatorAdapter = True
+		self.assertEqual(True,Emulation.run_emulation())
+		Emulation.enableTempEmulatorAdapter = False
+		self.assertEqual(False,Emulation.run_emulation())
+
+		Emulation = TempEmulatorAdapter.TempEmulatorAdapter(1,0)
+		Emulation.enableTempEmulatorAdapter = True
+		self.assertEqual(True,Emulation.run_emulation())
+
+		Emulation = TempEmulatorAdapter.TempEmulatorAdapter(-1,0)
+		self.assertEqual(False,Emulation.run_emulation())
+
+		Emulation = TempEmulatorAdapter.TempEmulatorAdapter(2,-1)
+		self.assertEqual(False,Emulation.run_emulation())
 		pass
 
 if __name__ == "__main__":

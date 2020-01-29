@@ -11,7 +11,7 @@ class TempEmulatorAdapter(object):
 
     enableTempEmulatorAdapter = False
     sleepDefault = 1
-    loopDefault = 1
+    loopDefault = 0
     
     def __init__(self,sleep_param = sleepDefault,looplimit = loopDefault):
         '''

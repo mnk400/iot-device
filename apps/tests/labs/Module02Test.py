@@ -50,11 +50,11 @@ class Module02Test(unittest.TestCase):
 		Emulation.enableTempEmulatorAdapter = False
 		self.assertEqual(False,Emulation.run_emulation())
 
-		Emulation = TempEmulatorAdapter.TempEmulatorAdapter(1,2)
+		Emulation = TempEmulatorAdapter.TempEmulatorAdapter(1,0)
 		Emulation.enableTempEmulatorAdapter = True
 		self.assertEqual(True,Emulation.run_emulation())
 
-		Emulation = TempEmulatorAdapter.TempEmulatorAdapter(-1,2)
+		Emulation = TempEmulatorAdapter.TempEmulatorAdapter(-1,0)
 		self.assertEqual(False,Emulation.run_emulation())
 
 		Emulation = TempEmulatorAdapter.TempEmulatorAdapter(2,-1)

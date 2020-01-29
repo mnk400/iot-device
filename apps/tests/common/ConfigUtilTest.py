@@ -1,35 +1,13 @@
 import unittest
 
-
-"""
-Test class for the ConfigUtil module.
-
-Instructions:
-1) Rename 'testSomething()' method such that 'Something' is specific to your needs; add others as needed, beginning each method with 'test...()'.
-2) Add the '@Test' annotation to each new 'test...()' method you add.
-3) Import the relevant modules and classes to support your tests.
-4) Run this class as unit test app.
-5) Include a screen shot of the report when you submit your assignment.
-
-Please note: While some example test cases may be provided, you must write your own for the class.
-"""
-from labs.module02 import ConfigUtil
+from labs.common import ConfigUtil
 class ConfigUtilTest(unittest.TestCase):
 
-	"""
-	Use this to setup your tests. This is where you may want to load configuration
-	information (if needed), initialize class-scoped variables, create class-scoped
-	instances of complex objects, initialize any requisite connections, etc.
-	"""
 	def setUp(self):
-		configUtilTests = ConfigUtil.ConfigUtil()
-		configUtilTests.loadConfigData
+		self.configUtilTests = ConfigUtil.ConfigUtil()
+		self.configUtilTests.loadConfigData()
 		pass
 
-	"""
-	Use this to tear down any allocated resources after your tests are complete. This
-	is where you may want to release connections, zero out any long-term data, etc.
-	"""
 	def tearDown(self):
 		pass
 	
@@ -37,45 +15,68 @@ class ConfigUtilTest(unittest.TestCase):
 	Tests retrieval of a boolean property.
 	"""
 	def testGetBooleanProperty(self):
-		# TODO: implement this
+
+		self.assertEqual(True, self.configUtilTests.getBooleanValue("ubidots.cloud","useWebAccess"))
+		
+		self.assertEqual(None, self.configUtilTests.getBooleanValue("smtp.cloud","host"))
+
+		self.assertEqual(None, self.configUtilTests.getBooleanValue("randomVal","randomKey"))
 		pass
 	
 	"""
 	Tests retrieval of an integer property.
 	"""
 	def testGetIntegerProperty(self):
-		# TODO: implement this
+		print("\n")
+		self.assertEqual(465, self.configUtilTests.getIntegerValue("smtp.cloud","port"))
+		
+		self.assertEqual(False, self.configUtilTests.getIntegerValue("ubidots.cloud","host"))
+
+		self.assertEqual(False, self.configUtilTests.getIntegerValue("randomVal","randomKey"))
 		pass
 	
 	"""
 	Tests retrieval of a string property.
 	"""
 	def testGetProperty(self):
-		# TODO: implement this
+		print("\n")
+		self.assertEqual("test.mosquitto.org", self.configUtilTests.getValue("mqtt.cloud","host"))
+		
+		self.assertEqual("127.0.0.1", self.configUtilTests.getValue("coap.cloud","host"))
+
+		self.assertEqual(False, self.configUtilTests.getValue("randomVal","randomKey"))
 		pass
 	
 	"""
 	Tests if a property exists.
 	"""
 	def testHasProperty(self):
-		# TODO: implement this
+		print("\n")
+		self.assertEqual(False, self.configUtilTests.getValue("mqtt.cloud","WRONGKEY"))
+		self.assertEqual(False, self.configUtilTests.getIntegerValue("ubidot.cloud","WRONGKEY"))
+		self.assertEqual(None, self.configUtilTests.getBooleanValue("coap.cloud","WRONGKEY"))
 		pass
 
 	"""
 	Tests if a section exists.
 	"""
 	def testHasSection(self):
-		# TODO: implement this
+		print("\n")
+		self.assertEqual(False, self.configUtilTests.getValue("WRONGSECTION","hosts"))
+		self.assertEqual(False, self.configUtilTests.getIntegerValue("WRONGSECTION","hosts"))
+		self.assertEqual(None, self.configUtilTests.getBooleanValue("WRONGSECTION","WRONGKEY"))
 		pass
 	
 	"""
 	Tests if the configuration is loaded.
 	"""
 	def testIsConfigDataLoaded(self):
-		#if self.configUtil.isConfigDataLoaded():
-		#	pass
-		#else:
-		#	self.fail("Configuration data not loaded.")
+		self.assertEqual(True, self.configUtilTests.loadConfigData())
+		self.configUtilTests = ConfigUtil.ConfigUtil("/path/to/somewhere/else.props")
+		self.assertEqual(False, self.configUtilTests.loadConfigData())
+		pass
+	
+	def testHasConfigData(self):
 		pass
 	
 if __name__ == "__main__":

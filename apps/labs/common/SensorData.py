@@ -5,7 +5,8 @@ Created on Jan 22, 2020
 '''
 from datetime import datetime
 import string
-
+import logging
+logging.getLogger("SensorDataLogger")
 class SensorData(object):
 
     def __init__(self):
@@ -13,25 +14,29 @@ class SensorData(object):
         Constructor
         '''
         self.currentValue   = float(0.0)
-        self.averageValue   = float(0.0)
         self.totalCount     = float(0.0)
         self.totalValue     = float(0.0)
         self.maxValue       = float(-99.99)
         self.minValue       = float(99.99)
-        self.name           = ""
+        self.name           = "Not Set"
         self.timestamp      = None
         
     def addValue(self,var):
         '''
         Method to add new Sensor data to the class object
         '''
-        self.currentValue   = var
-        self.totalCount     = self.totalCount + 1
-        self.totalValue     = self.totalValue + var
-        self.timestamp      = str(datetime.now())
+        try:
+            self.currentValue   = float(var)
+            self.totalCount     = self.totalCount + 1
+            self.totalValue     = self.totalValue + var
+            self.timestamp      = str(datetime.now())
         
-        if  var > self.maxValue: self.maxValue = var
-        if  var < self.minValue: self.minValue = var
+            if  var > self.maxValue: self.maxValue = var
+            if  var < self.minValue: self.minValue = var
+        except Exception as e:
+            logging.error(e)
+            return False
+        return True
         
     def getAverageValue(self)  -> float:
         '''

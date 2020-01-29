@@ -4,11 +4,12 @@ Created on Jan 22, 2020
 @author: manik
 '''
 import smtplib
-
-from labs.module02          import ConfigUtil
+import logging
+from labs.common          import ConfigUtil
 from email.mime.multipart   import MIMEMultipart
 from email.mime.text        import MIMEText
 
+logging.getLogger("smtpLog")
 class MyClass(object):
 
     def __init__(self):
@@ -24,12 +25,13 @@ class MyClass(object):
         MIME stand for Multipurpose Internet Mail Extensions
         Email subject and data are method inputs
         '''
+        
         host = self.config.getValue("smtp.cloud", "host")
-        port = self.config.getValue("smtp.cloud", "port")
+        port = self.config.getIntegerValue("smtp.cloud", "port")
         fromAddr = self.config.getValue("smtp.cloud", "fromAddr")
         toAddr = self.config.getValue("smtp.cloud", "toAddr")
         authToken = self.config.getValue("smtp.cloud", "authToken")
-            
+
         msg = MIMEMultipart()
         msg['From'] = fromAddr
         msg['To'] = toAddr
@@ -42,8 +44,14 @@ class MyClass(object):
         #The piece of code below will connect to the SMTP server
         #and send out the email containing the message
         #does follow RFC 821 as of 27th Jan '20
-        smtpServer = smtplib.SMTP_SSL(host, port) 
-        smtpServer.ehlo()                                        
-        smtpServer.login(fromAddr, authToken)                   
-        smtpServer.sendmail(fromAddr, toAddr, msgText)         
-        smtpServer.close()
+        try:
+            smtpServer = smtplib.SMTP_SSL(host, port) 
+            smtpServer.ehlo()                                        
+            smtpServer.login(fromAddr, authToken)                   
+            smtpServer.sendmail(fromAddr, toAddr, msgText)         
+            smtpServer.close()
+        except:
+            logging.error("SMTP cannot connect")
+            return False
+        logging.info("Email sent")    
+        return True        

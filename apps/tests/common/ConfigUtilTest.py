@@ -5,7 +5,7 @@ class ConfigUtilTest(unittest.TestCase):
 
 	def setUp(self):
 		self.configUtilTests = ConfigUtil.ConfigUtil()
-		#self.configUtilTests.loadConfigData()
+		self.configUtilTests.loadConfigData()
 		if self.configUtilTests.configFileLoaded == False:
 			self.configUtilTests.__init__("sample/ConnectedDevicesConfig_NO_EDIT_TEMPLATE_ONLY.props")
 			self.configUtilTests.loadConfigData()

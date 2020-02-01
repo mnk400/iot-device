@@ -7,60 +7,86 @@ Created on Jan 22, 2020
 import configparser
 import os
 import logging
-logging.getLogger("ConfigLog")
+logging.getLogger("ConfigLog")                          #Calling and initializing a logger instance
+
 class ConfigUtil(object):
+    '''
+     his class is responsible for reading and parsing the configuration files.
+     Apache.commons.confiruration is used to parse the files.
+    '''
   
     defaultConfigPath = "config/ConnectedDevicesConfig.props"
     
     def __init__(self, path_param = defaultConfigPath):
         '''
-        Constructor
+         Constructor
+         Responsible for calling the load function to load configuration data from the file.
+         This constructor loads the default specified path as the config file if no other file path is input.
         '''
         self.parser = configparser.ConfigParser()
-        self.filepath = path_param        #Path to the configuration file from current Dir
+        self.filepath = path_param                      #Path to the configuration file from current Dir
         self.configFileLoaded = False                                                
-        
+
     def getValue(self, section_str, key_str):
         '''
-        This method returns a said key for the asked section
+         GetValue method
+         Responsible for returning String values from the configuration file
+         Returns the retrieved value if form of a String
         '''
         if self.configFileLoaded == True:
-            #if section_str in self.sections:
+            #parser helps us retrieve the key for the specified section
             try:
+                #return the retrieved key
                 return self.parser[section_str][key_str]
             except Exception as e:
+                #return false if no key could be retrieved and log the event
                 logging.error(e)
                 return False
         else:
+            #return false if the file has not been loaded
             logging.error("Config File not loaded")
             return False    
   
     def getIntegerValue(self, section_str, key_str):
         '''
-        This method returns a said key for the asked section
+         GetIntegerValue method
+         Responsible for returning Integer values from the configuration file
+         Returns the retrieved value if it is a Integer, otherwise returns a null
         '''
         if self.configFileLoaded == True:
+            #parser helps us retrieve the key for the specified section
+            #using int(x) to convert the retrieved value into an integer
             try:
+                #return the retrieved key
                 return int(self.parser[section_str][key_str])
             except Exception as e:
+                #if there is an exception, i.e. the value is not an integer, return false and log the event
                 logging.error(e)
                 return False   
         else:
-            logging.error("Config Filt not loaded")    
+            #return false if the file has not been loaded
+            logging.error("Config File not loaded")    
             return False     
 
 
     def getBooleanValue(self, section_str, key_str):
         '''
-        This method returns a said key for the asked section
+         GetBooleanValue method
+         Responsible for returning Boolean values from the configuration file
+         Returns the retrieved value if it is a Boolean, otherwise returns a null
         '''
         if self.configFileLoaded == True:
+            #parser helps us retrieve the key for the specified section
+            #using parser.getboolean we can retrieve a boolean object directly
             try:
+                #return the retrieved boolean object
                 return self.parser.getboolean(section_str,key_str)
             except Exception as e:
+                #return false and log the event if the key could not be retrieved
                 logging.error(e) 
                 return None
         else:
+            #return false if the file has not been loaded
             logging.error("Config File not loaded")
             return None                 
             
@@ -74,20 +100,27 @@ class ConfigUtil(object):
             for section in self.sections:                                   #converting the list of key values
                 key_set = set(self.parser[section].values())                #to a set so we can avoid a double
                 if len(key_set) > 1 or list(key_set)[0] != 'Not set':       #loop when checking if any key exists
+                    #return true if a unique value is found
                     return True
                 else:    
+                    #return a false if no unique keys are found and the file is empty
                     return False
         else:
+            #return false if the file has not been loaded
             return False   
              
     def loadConfigData(self):
         '''
-        Method to load config data from the config file
-        '''                                                   
-        if os.path.exists(self.filepath):                           
+         LoadConfigData
+         This method is responsible for loading the configuration file into the parser
+        '''          
+        #checking if the file exists                                         
+        if os.path.exists(self.filepath):      
+            #Loading the file into the parser if it exists then logging and then returning a true                     
             self.parser.read(self.filepath)                         
             self.configFileLoaded = True  
             return True
         else:    
+            #return false if the file has not been loaded
             logging.error("can not find file")
             return False  

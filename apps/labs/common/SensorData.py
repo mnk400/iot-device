@@ -6,12 +6,18 @@ Created on Jan 22, 2020
 from datetime import datetime
 import string
 import logging
-logging.getLogger("SensorDataLogger")
-class SensorData(object):
+logging.getLogger("SensorDataLogger")   #Get a logger instance
 
+class SensorData(object):
+    '''
+    Class to store the sensor data being recording from a sensor
+    contains certain variables such as average, minimum and maximum
+    '''
     def __init__(self):
         '''
         Constructor
+        Defines some class variables we'll be using to store our data in
+        and then initializing the variables
         '''
         self.currentValue   = float(0.0)
         self.totalCount     = float(0.0)
@@ -26,6 +32,9 @@ class SensorData(object):
         Method to add new Sensor data to the class object
         '''
         try:
+            #In a try block just in case a wrong datatype gets passed
+            #Logging the data in our class variables
+            #Calculating and updating values like averages/min/max as new data is input
             self.currentValue   = float(var)
             self.totalCount     = self.totalCount + 1
             self.totalValue     = self.totalValue + var
@@ -33,9 +42,12 @@ class SensorData(object):
         
             if  var > self.maxValue: self.maxValue = var
             if  var < self.minValue: self.minValue = var
+
         except Exception as e:
+            #returns a false if an exception occurs and logging event
             logging.error(e)
             return False
+        #returns true if method worked properly    
         return True
         
     def getAverageValue(self)  -> float:

@@ -14,15 +14,20 @@ logging.basicConfig(format='%(message)s', level=logging.DEBUG)
 logging.info("Temperature Emulator Thread initializing")
 
 class TempSensorEmulator():
-
-    minVal = 0
-    maxVal = 30
-    threshold = 5
-    topic = "IOT - Device"
+    '''
+    Class responsible for generating Random temperature data
+    Has a generateData function
+    and overall acts like an emulator that can generate random strings of data and store in SensorData objects
+    '''
+    minVal = 0              #Min random value
+    maxVal = 30             #Max random value
+    threshold = 5           #threshold after which notificaitons are sent 
+    topic = "IOT - Device"  #Email subject
 
     def __init__(self):
         '''
         Constructor
+        which initializes the sensor object and the SMTPCLient object
         '''
         self.sensor    = SensorData.SensorData()
         self.SmtpClient = SmtpClientConnector.MyClass()
@@ -35,10 +40,10 @@ class TempSensorEmulator():
         '''     
         rand_val = random.uniform(float(self.minVal),float(self.maxVal))
         self.sensor.addValue(rand_val)
-                
+        #Generating string containing all the data points for sending email and logging         
         msgString= self.generateString()
         logging.info(msgString)
-            
+        #checking if current value deviates from the average +- threshold, if yes then send an email   
         if rand_val > self.sensor.getAverageValue() + self.threshold or rand_val < self.sensor.getAverageValue() - self.threshold:
             logging.info("Temperature out of bounds")
             self.sendNotification("Temperature out of bounds\n" + msgString)

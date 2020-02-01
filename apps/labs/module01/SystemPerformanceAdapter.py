@@ -9,7 +9,7 @@ from labs.module01      import SystemCpuUtilTask, SystemMemUtilTask
 from time               import sleep
 
 logging.getLogger("adapterlog")
-logging.basicConfig(format='%(asctime)s:%(levelname)s:%(message)s', level=logging.DEBUG) 
+logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.DEBUG) 
 logging.info("System Performance Thread initializing")
 
 

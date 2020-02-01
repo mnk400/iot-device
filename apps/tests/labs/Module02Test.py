@@ -61,6 +61,11 @@ class Module02Test(unittest.TestCase):
 		self.assertEqual(True,self.EmulatorTest.generateData())
 		pass
 
+	
+	def testSendNotification(self):
+		if(self.EmulatorTest.SmtpClient.config.configFileLoaded == True):
+			self.assertEqual(True,self.EmulatorTest.sendNotification("send notif"))
+		pass
 	'''
 	Testing SensorData from SensorDataTest to check if sensorData object is being returned
 	'''	

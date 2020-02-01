@@ -21,7 +21,7 @@ class TempSensorEmulator():
     '''
     minVal = 0              #Min random value
     maxVal = 30             #Max random value
-    threshold = 5           #threshold after which notificaitons are sent 
+    threshold = 5           #threshold after which notifications are sent 
     topic = "IOT - Device"  #Email subject
 
     def __init__(self):
@@ -63,6 +63,7 @@ class TempSensorEmulator():
         '''
         logging.info("Sending Notification")
         self.SmtpClient.publishMessage(self.topic, message_param)
+        return True
         
         
     def generateString(self) -> str:

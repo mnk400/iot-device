@@ -19,6 +19,7 @@ class ConfigUtilTest(unittest.TestCase):
 		pass
 
 	def tearDown(self):
+		self.configUtilTests = None
 		pass
 	
 	"""

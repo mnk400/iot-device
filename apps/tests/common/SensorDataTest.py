@@ -12,6 +12,7 @@ class SensorDataTest(unittest.TestCase):
 		pass
 
 	def tearDown(self):
+		self.SensorDataTests = None
 		pass
 	
 	'''

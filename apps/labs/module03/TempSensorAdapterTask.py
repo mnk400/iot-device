@@ -12,6 +12,8 @@ class TempSensorAdapterTask(object):
     Classdocs
     '''
     def __init__(self):
+        self.sense = SenseHat()
+        self.sense.clear()
         pass
 
     def readTemperature(self):
@@ -20,9 +22,8 @@ class TempSensorAdapterTask(object):
         Random data is then pushed to the SensorData class
         Method also checks if newly produced data values are in the differential range of a set threshold from the set value, otherwise call a notification.
         '''     
-        rand_val = random.uniform(float(self.minVal),float(self.maxVal))
-        self.sensor.addValue(rand_val)
-        #Generating string containing all the data points for sending email and logging         
-        msgString= self.generateString()
-        logging.info(msgString)
+        #temp = self.sense.get_temperature()
+        #self.sensor.addValue(value)
+        #logging.info(temp)
+        self.sense.show_message("this message here")
         return True   

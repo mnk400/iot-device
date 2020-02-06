@@ -5,7 +5,7 @@ Created on Jan 22, 2020
 '''
 import random
 import logging
-from labs.module02 import  SmtpClientConnector
+from labs.module02 import SmtpClientConnector
 from labs.common import SensorData
 from time import sleep
 
@@ -19,10 +19,10 @@ class TempSensorEmulator():
     Has a generateData function
     and overall acts like an emulator that can generate random strings of data and store in SensorData objects
     '''
-    minVal = 0              #Min random value
-    maxVal = 30             #Max random value
-    threshold = 5           #threshold after which notifications are sent 
-    topic = "IOT - Device"  #Email subject
+    minVal = 0              # Min random value
+    maxVal = 30             # Max random value
+    threshold = 5           # threshold after which notifications are sent 
+    topic = "IOT - Device"  # Email subject
 
     def __init__(self):
         '''

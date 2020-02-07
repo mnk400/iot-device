@@ -122,5 +122,5 @@ class ConfigUtil(object):
             return True
         else:    
             #return false if the file has not been loaded
-            logging.error("can not find file")
+            logging.error("Can not find file")
             return False  

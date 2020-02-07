@@ -27,9 +27,4 @@ if __name__ == '__main__':
     temperatureAdapter.enableTempEmulatorAdapter = False
     temperatureAdapter.daemon = True
     module02_Thread = threading.Thread(target=temperatureAdapter.run_emulation())
-    '''
-    Creating and running a thread for Module03
-    Set 'enableTempEmulatorAdapter' to True to run
-    '''
-    senseHATRead = TempSensorAdapterTask.TempSensorAdapterTask()
-    senseHATRead.readTemperature()
+

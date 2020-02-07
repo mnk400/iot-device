@@ -13,19 +13,22 @@ class ActuatorData(object):
         '''
         Constructor
         '''
+        self.command = "Not Set"
+        self.name = "Not Set"
+        self.value = 0.0
         pass
     
     def getCommand(self):
-        pass
+        return self.command
 
     def getName(self):
-        pass
+        return self.name
 
     def getValue(self):
-        pass
+        return self.value
 
-    def setCommand(self):
-        pass
+    def setCommand(self, input_command):
+        self.command = input_command
 
-    def setName(self):
-        pass
+    def setName(self, name_param):
+        self.name = name_param

@@ -7,37 +7,52 @@ import logging
 from labs.common import SensorData
 from sense_hat import SenseHat
 from labs.module03 import SensorDataManager
+
 logging.getLogger("tempReaderLogger")
+logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.DEBUG)
 
 class TempSensorAdapterTask(object):
     '''
-    Classdocs
+    Class which reads the temperature data from the SenseHAT.
+    Stores the data in the SensorData class and then further
+    calls SensorDataManager to parse the stored data.
     '''
 
     def __init__(self):
+        '''
+        Constructor
+        '''
+        #Creating a SensorData instance and setting it's name
         self.sensor_data = SensorData.SensorData()
         self.sensor_data.setName("Temperature Sensor Data")
+        #SenseHat instance to interact with the senseHAT
         self.sense = SenseHat()
+        #clearing matrix
         self.sense.clear()
+        #SensorDataManager instance
         self.sensorDataManager = SensorDataManager.SensorDataManager()
         pass
 
-    def readTemperature(self):
+    def readTemperature(self) -> bool:
         '''
         Method to read new data from the senseHat.
-        Random data is then pushed to the SensorData class
-        Method also checks if newly produced data values are in the differential range of a set threshold from the set value, otherwise call a notification.
-        '''     
+        Data is then pushed to the SensorData instance,
+        then a sensorDataManager instance is called which overtakes execution.
+        '''
+        #Read from senseHAT     
         temp = self.sense.get_temperature()
+        #Add data to sensorData
         self.sensor_data.addValue(temp)
+        #Generate a will detailed string
         tempString = self.generateString()
+        #Log the data and send the sensorData instance in the SensorDataManager
         logging.info(tempString)
-        self.sensorDataManager.handleSensorData(self.sensor_data)
+        self.sensorDataManager.handleSensorData(self.sensor_data,tempString)
         return True   
 
     def generateString(self) -> str:
         '''
-        Generate the string to be logged and then passed in the SMTP message
+        Generate a detailed string from a sensorData instance and returns it.
         '''
         msgString  = "\nTemperature"
         msgString += "\n\tTime : " + self.sensor_data.timestamp

@@ -33,9 +33,20 @@ class ActuatorDataTest(unittest.TestCase):
 	"""
 	Place your comments describing the test here.
 	"""
-	def testSomething(self):
+	def testGetCommand(self):
 		pass
 
+	def testGetName(self):
+		pass
+
+	def testGetValue(self):
+		pass
+
+	def setCommand(self):
+		pass
+
+	def setName(self):
+		pass
 if __name__ == "__main__":
 	#import sys;sys.argv = ['', 'Test.testName']
 	unittest.main()

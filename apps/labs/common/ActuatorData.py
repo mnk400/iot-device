@@ -6,29 +6,48 @@ Created on Feb 6, 2020
 
 class ActuatorData(object):
     '''
-    Classdocs
+    ActuatorData class which stores the current state of the actuator
+    Has a certain functions to set and get data.
     '''
 
-    def __init__(self):
+    def __init__(self, value_param = 0.0):
         '''
         Constructor
+        Initialize the variables as 'Not Set' and 0.0.
         '''
         self.command = "Not Set"
         self.name = "Not Set"
-        self.value = 0.0
+        self.value = value_param
         pass
     
-    def getCommand(self):
+    def getCommand(self) -> str:
+        '''
+        Function to return the current set command for the actuator.
+        '''
         return self.command
 
-    def getName(self):
+    def getName(self) -> str:
+        '''
+        Function the name of current ActuatorData instance if set.
+        '''
         return self.name
 
-    def getValue(self):
+    def getValue(self) -> float:
+        '''
+        Function to return the current set value of the instance.
+        '''
         return self.value
 
-    def setCommand(self, input_command):
+    def setCommand(self, input_command) -> bool:
+        '''
+        Function to set or change the current set command for the actuator.
+        '''
         self.command = input_command
+        return True
 
-    def setName(self, name_param):
+    def setName(self, name_param) -> bool:
+        '''
+        Function to set the name of the instance.
+        '''
         self.name = name_param
+        return True

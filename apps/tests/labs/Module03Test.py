@@ -33,9 +33,27 @@ class Module03Test(unittest.TestCase):
 	"""
 	Place your comments describing the test here.
 	"""
-	def testSomething(self):
+	def testHandleSensorData(self):
 		pass
 
+	def testSendNotification(self):
+		pass
+
+	def testUpdateActuator(self):
+		pass
+
+	def testClear(self):
+		pass
+	
+	def testRunTempAdapter(self):
+		pass
+
+	def testReadTemperature(self):
+		pass
+
+	def testGenerateString(self):
+		pass
+	
 if __name__ == "__main__":
 	#import sys;sys.argv = ['', 'Test.testName']
 	unittest.main()

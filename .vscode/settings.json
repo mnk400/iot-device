@@ -11,5 +11,6 @@
     "python.testing.unittestEnabled": true,
     "cSpell.words": [
         "smtplib"
-    ]
+    ],
+    "python.pythonPath": "/usr/bin/python3"
 }

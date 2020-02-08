@@ -24,10 +24,11 @@ class Module03Test(unittest.TestCase):
 	- TempSensorAdapter
 	"""
 	def setUp(self):
-		self.sensorDataManagerTest          = SensorDataManager.SensorDataManager()
-		self.tempSensorAdapterTest   = TempSensorAdapter.TempSensorAdapter()
-		self.tempActuatorAdapterTest = TempActuatorAdapter.TempActuatorAdapter()
-		self.tempSensorAdapterTaskTest   = TempSensorAdapterTask.TempSensorAdapterTask()
+		self.sensorDataManagerTest     = SensorDataManager.SensorDataManager()
+		self.tempSensorAdapterTest     = TempSensorAdapter.TempSensorAdapter()
+		self.tempActuatorAdapterTest   = TempActuatorAdapter.TempActuatorAdapter()
+		self.tempSensorAdapterTaskTest = TempSensorAdapterTask.TempSensorAdapterTask()
+		
 		pass
 
 	"""
@@ -47,6 +48,7 @@ class Module03Test(unittest.TestCase):
 		#Creating a temporary sensorData instance
 		sensor = SensorData.SensorData()
 		sensor.addValue(20)
+		self.sensorDataManagerTest.SEND_EMAIL_NOTIFICATION = False
 		#Calling the test handleSensorData function, should return true if worked properly
 		self.assertEqual(True,self.sensorDataManagerTest.handleSensorData(sensor, "testMessage"))
 		#Passing any other generic object will render a False result

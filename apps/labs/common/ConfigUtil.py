@@ -122,5 +122,6 @@ class ConfigUtil(object):
             return True
         else:    
             #return false if the file has not been loaded
-            logging.error("can not find file")
+            self.parser.read("sample/ConnectedDevicesConfig_NO_EDIT_TEMPLATE_ONLY.props")
+            logging.error("Can not find file: Loading sample file")
             return False  

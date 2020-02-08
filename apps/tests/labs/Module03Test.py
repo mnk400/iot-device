@@ -2,40 +2,117 @@ import unittest
 
 
 """
-Test class for all requisite Module03 functionality.
-
-Instructions:
-1) Rename 'testSomething()' method such that 'Something' is specific to your needs; add others as needed, beginning each method with 'test...()'.
-2) Add the '@Test' annotation to each new 'test...()' method you add.
-3) Import the relevant modules and classes to support your tests.
-4) Run this class as unit test app.
-5) Include a screen shot of the report when you submit your assignment.
-
-Please note: While some example test cases may be provided, you must write your own for the class.
+TestCases for python files in Module03
 """
+from labs.module03 import SensorDataManager, TempActuatorAdapter, TempSensorAdapter, TempSensorAdapterTask
+from labs.common import SensorData, ActuatorData
+
 class Module03Test(unittest.TestCase):
 
 	"""
-	Use this to setup your tests. This is where you may want to load configuration
-	information (if needed), initialize class-scoped variables, create class-scoped
-	instances of complex objects, initialize any requisite connections, etc.
+	UnitTests for
+	- SensorDataManager
+	- TempActuatorAdapter
+	- TempSensorAdapter
 	"""
 	def setUp(self):
+		self.sensorDataManagerTest     = SensorDataManager.SensorDataManager()
+		self.tempSensorAdapterTest     = TempSensorAdapter.TempSensorAdapter()
+		self.tempActuatorAdapterTest   = TempActuatorAdapter.TempActuatorAdapter()
+		self.tempSensorAdapterTaskTest = TempSensorAdapterTask.TempSensorAdapterTask()
+		
 		pass
 
 	"""
-	Use this to tear down any allocated resources after your tests are complete. This
-	is where you may want to release connections, zero out any long-term data, etc.
+	Getting rid of resources
 	"""
 	def tearDown(self):
+		self.sensorDataTest = None
+		self.tempSensorAdapterTask = None
+		self.tempActuatorAdapterTest = None
+		self.tempSensorAdapterTaskTest = None
 		pass
 
-	"""
-	Place your comments describing the test here.
-	"""
-	def testSomething(self):
+	'''
+	Testing the handleSensorData function in SensorDataManager
+	'''
+	def testHandleSensorData(self):
+		#Creating a temporary sensorData instance
+		sensor = SensorData.SensorData()
+		sensor.addValue(20)
+		self.sensorDataManagerTest.SEND_EMAIL_NOTIFICATION = False
+		#Calling the test handleSensorData function, should return true if worked properly
+		self.assertEqual(True,self.sensorDataManagerTest.handleSensorData(sensor, "testMessage"))
+		#Passing any other generic object will render a False result
+		obj = object()
+		self.assertEqual(False,self.sensorDataManagerTest.handleSensorData(obj,"no"))
 		pass
 
+	'''
+	Testing the testSendNotification function in SensorDataManager
+	'''
+	def testSendNotification(self):
+		#Running the tests if configFile is loaded, so that we can avoid with a 
+		#failing build in cloud.
+		if self.sensorDataManagerTest.config.configFileLoaded == True:
+			self.assertEqual(True, self.sensorDataManagerTest.sendNotification("Test message sent from sendNotification.sensorDataManager"))
+		#Checking if the email notification switch works
+		#Should not sent Email in this case
+		self.sensorDataManagerTest.SEND_EMAIL_NOTIFICATION = False
+		self.assertEqual(True, self.sensorDataManagerTest.sendNotification("Should not send"))
+		pass
+
+	'''
+	Testing the testUpdateActuator function in TempActuatorAdapter
+	'''
+	def testUpdateActuator(self):
+		#Creating a temporary actuatorData instance
+		actuator = ActuatorData.ActuatorData()
+		actuator.setCommand("Increase")
+		actuator.setValue(self.sensorDataManagerTest.STABLE)
+		#Checking for a compatible command
+		self.assertEqual(True,self.tempActuatorAdapterTest.updateActuator(actuator))
+		#Checking for an incompatible command
+		actuator.setCommand("This shouldn't work")
+		self.assertEqual(False,self.tempActuatorAdapterTest.updateActuator(actuator))
+		pass
+
+	'''
+	Testing the testUpdateActuator function in TempActuatorAdapter
+	'''
+	def testClear(self):
+		#testing the clear function
+		self.assertEqual(True,self.tempActuatorAdapterTest.clear())
+		pass
+	
+	'''
+	Testing the testRunTempAdapter function in TempSensorAdapter
+	'''
+	def testRunTempAdapter(self):
+		#Function should return a True if ran properly
+		#Disabling the sendEmail setting just cause
+		self.tempSensorAdapterTest.sendEmail = False
+		self.assertEqual(True,self.tempSensorAdapterTest.run_temp_adapter())
+		pass
+	
+	'''
+	Testing the testReadTemperature function in TempSensorAdapterTask
+	'''
+	def testReadTemperature(self):
+		#Should return a True if ran properly
+		self.tempSensorAdapterTaskTest.sensorDataManager.SEND_EMAIL_NOTIFICATION = False
+		self.assertEqual(True,self.tempSensorAdapterTaskTest.readTemperature())
+		pass
+	
+	'''
+	Testing the testGenerateString function in TempSensorAdapterTask
+	'''
+	def testGenerateString(self):
+		#Should return an object of type string
+		self.tempSensorAdapterTaskTest.sensor_data.addValue(20)
+		self.assertEqual(str, type(self.tempSensorAdapterTaskTest.generateString()))
+		pass
+	
 if __name__ == "__main__":
 	#import sys;sys.argv = ['', 'Test.testName']
 	unittest.main()

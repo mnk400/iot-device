@@ -51,3 +51,6 @@ class SenseHat():
     
     def show_message(self, msg):
         print(msg)
+
+    def set_pixels(self, matrix):
+        print(matrix)    

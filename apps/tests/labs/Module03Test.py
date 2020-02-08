@@ -14,7 +14,7 @@ Instructions:
 Please note: While some example test cases may be provided, you must write your own for the class.
 """
 from labs.module03 import SensorDataManager, TempActuatorAdapter, TempSensorAdapter, TempSensorAdapterTask
-from labs.common import SensorData
+from labs.common import SensorData, ActuatorData
 class Module03Test(unittest.TestCase):
 
 	"""
@@ -25,9 +25,9 @@ class Module03Test(unittest.TestCase):
 	"""
 	def setUp(self):
 		self.sensorDataManagerTest          = SensorDataManager.SensorDataManager()
-		#self.tempSensorAdapterTest   = TempSensorAdapter.TempSensorAdapter()
-		#self.tempActuatorAdapterTest = TempActuatorAdapter.TempActuatorAdapter()
-		#self.tempSensorAdapterTaskTest   = TempSensorAdapterTask.TempSensorAdapterTask()
+		self.tempSensorAdapterTest   = TempSensorAdapter.TempSensorAdapter()
+		self.tempActuatorAdapterTest = TempActuatorAdapter.TempActuatorAdapter()
+		self.tempSensorAdapterTaskTest   = TempSensorAdapterTask.TempSensorAdapterTask()
 		pass
 
 	"""
@@ -72,9 +72,19 @@ class Module03Test(unittest.TestCase):
 	Testing the testUpdateActuator function in SensorDataManager
 	'''
 	def testUpdateActuator(self):
-		
+		#Creating a temporary actuatorData instance
+		actuator = ActuatorData.ActuatorData()
+		actuator.setCommand("Increase")
+		actuator.setValue(self.sensorDataManagerTest.STABLE)
+		#Checking for a compatible command
+		self.assertEqual(True,self.tempActuatorAdapterTest.updateActuator(actuator))
+		#Checking for an incompatible command
+		actuator.setCommand("This shouldn't work")
+		self.assertEqual(False,self.tempActuatorAdapterTest.updateActuator(actuator))
 		pass
-
+	'''
+	Testing the testUpdateActuator function in SensorDataManager
+	'''
 	def testClear(self):
 		pass
 	

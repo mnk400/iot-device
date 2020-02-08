@@ -2,19 +2,11 @@ import unittest
 
 
 """
-Test class for all requisite Module03 functionality.
-
-Instructions:
-1) Rename 'testSomething()' method such that 'Something' is specific to your needs; add others as needed, beginning each method with 'test...()'.
-2) Add the '@Test' annotation to each new 'test...()' method you add.
-3) Import the relevant modules and classes to support your tests.
-4) Run this class as unit test app.
-5) Include a screen shot of the report when you submit your assignment.
-
-Please note: While some example test cases may be provided, you must write your own for the class.
+TestCases for python files in Module03
 """
 from labs.module03 import SensorDataManager, TempActuatorAdapter, TempSensorAdapter, TempSensorAdapterTask
 from labs.common import SensorData, ActuatorData
+
 class Module03Test(unittest.TestCase):
 
 	"""
@@ -71,7 +63,7 @@ class Module03Test(unittest.TestCase):
 		pass
 
 	'''
-	Testing the testUpdateActuator function in SensorDataManager
+	Testing the testUpdateActuator function in TempActuatorAdapter
 	'''
 	def testUpdateActuator(self):
 		#Creating a temporary actuatorData instance
@@ -84,19 +76,41 @@ class Module03Test(unittest.TestCase):
 		actuator.setCommand("This shouldn't work")
 		self.assertEqual(False,self.tempActuatorAdapterTest.updateActuator(actuator))
 		pass
+
 	'''
-	Testing the testUpdateActuator function in SensorDataManager
+	Testing the testUpdateActuator function in TempActuatorAdapter
 	'''
 	def testClear(self):
+		#testing the clear function
+		self.assertEqual(True,self.tempActuatorAdapterTest.clear())
 		pass
 	
+	'''
+	Testing the testRunTempAdapter function in TempSensorAdapter
+	'''
 	def testRunTempAdapter(self):
+		#Function should return a True if ran properly
+		#Disabling the sendEmail setting just cause
+		self.tempSensorAdapterTest.sendEmail = False
+		self.assertEqual(True,self.tempSensorAdapterTest.run_temp_adapter())
 		pass
-
+	
+	'''
+	Testing the testReadTemperature function in TempSensorAdapterTask
+	'''
 	def testReadTemperature(self):
+		#Should return a True if ran properly
+		self.tempSensorAdapterTaskTest.sensorDataManager.SEND_EMAIL_NOTIFICATION = False
+		self.assertEqual(True,self.tempSensorAdapterTaskTest.readTemperature())
 		pass
-
+	
+	'''
+	Testing the testGenerateString function in TempSensorAdapterTask
+	'''
 	def testGenerateString(self):
+		#Should return an object of type string
+		self.tempSensorAdapterTaskTest.sensor_data.addValue(20)
+		self.assertEqual(str, type(self.tempSensorAdapterTaskTest.generateString()))
 		pass
 	
 if __name__ == "__main__":

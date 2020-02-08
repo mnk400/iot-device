@@ -5,6 +5,7 @@ Created on Feb 6, 2020
 '''
 import threading
 from labs.module03 import TempSensorAdapter
+
 if __name__ == '__main__':
     '''
     Creating and running a thread for Module03

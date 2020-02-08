@@ -1,52 +1,84 @@
 import unittest
 
+from labs.common import ActuatorData
 
-"""
-Test class for all requisite ActuatorData functionality.
-
-Instructions:
-1) Rename 'testSomething()' method such that 'Something' is specific to your needs; add others as needed, beginning each method with 'test...()'.
-2) Add the '@Test' annotation to each new 'test...()' method you add.
-3) Import the relevant modules and classes to support your tests.
-4) Run this class as unit test app.
-5) Include a screen shot of the report when you submit your assignment.
-
-Please note: While some example test cases may be provided, you must write your own for the class.
-"""
 class ActuatorDataTest(unittest.TestCase):
-
 	"""
-	Use this to setup your tests. This is where you may want to load configuration
-	information (if needed), initialize class-scoped variables, create class-scoped
-	instances of complex objects, initialize any requisite connections, etc.
+	Unittests for actuatorDataTest
 	"""
 	def setUp(self):
+		'''
+		Setting up resources
+		'''
+		self.actuatorTest = ActuatorData.ActuatorData()
+		self.actuatorTest.command = "TestCommand"
+		self.actuatorTest.value = 56251
+		self.actuatorTest.name = "TestName"
 		pass
 
 	"""
-	Use this to tear down any allocated resources after your tests are complete. This
-	is where you may want to release connections, zero out any long-term data, etc.
+	Tearing the resources down.
 	"""
 	def tearDown(self):
+		self.actuatorTest = None
 		pass
 	
 	"""
-	Place your comments describing the test here.
+	Testing Retrieval of the actuator command from the actuatorData
 	"""
 	def testGetCommand(self):
+		#Should return the command set in setUp
+		self.assertEqual("TestCommand",self.actuatorTest.getCommand())
 		pass
 
+	
+	"""
+	Testing Retrieval of the actuator's name from the actuatorData
+	"""
 	def testGetName(self):
+		#Should return the name set in setUp
+		self.assertEqual("TestName",self.actuatorTest.getName())
 		pass
 
+	"""
+	Testing Retrieval of the actuator's name from the actuatorData
+	"""
 	def testGetValue(self):
+		#Should return the value set in setUp
+		self.assertEqual(56251,self.actuatorTest.getValue())
+		pass
+	
+	"""
+	Testing if the setCommand method works as intended 
+	"""
+	def testSetCommand(self):
+		#Testing if setCommand returns true for setting the data
+		self.assertEqual(True,self.actuatorTest.setCommand("test"))
+		#Testing if command was set properly
+		self.assertEqual("test",self.actuatorTest.getCommand())
+		pass
+	
+	"""
+	Testing if the setName method works as intended 
+	"""
+	def testSetName(self):
+		#Testing if setName returns true for setting the name
+		self.assertEqual(True,self.actuatorTest.setName("test"))
+		#Testing if name was set properly
+		self.assertEqual("test",self.actuatorTest.getName())
 		pass
 
-	def setCommand(self):
+	"""
+	Testing if the setValue method works as intended 
+	"""
+	def testSetValue(self):
+		#Testing if setName returns true for setting the name
+		self.assertEqual(True,self.actuatorTest.setValue(7070))
+		#Testing if name was set properly
+		self.assertEqual(7070,self.actuatorTest.getValue())
 		pass
 
-	def setName(self):
-		pass
+	
 if __name__ == "__main__":
 	#import sys;sys.argv = ['', 'Test.testName']
 	unittest.main()

@@ -10,14 +10,14 @@ class ActuatorData(object):
     Has a certain functions to set and get data.
     '''
 
-    def __init__(self, value_param = 0.0):
+    def __init__(self):
         '''
         Constructor
         Initialize the variables as 'Not Set' and 0.0.
         '''
         self.command = "Not Set"
         self.name = "Not Set"
-        self.value = value_param
+        self.value = None
         pass
     
     def getCommand(self) -> str:
@@ -50,4 +50,11 @@ class ActuatorData(object):
         Function to set the name of the instance.
         '''
         self.name = name_param
+        return True
+    
+    def setValue(self, value_param):
+        '''
+        Function to set the value of the actuator.
+        '''
+        self.value = value_param
         return True

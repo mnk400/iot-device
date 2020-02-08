@@ -26,6 +26,47 @@ class SensorDataManager(object):
     # e.g. for a read nominal temperature of 20 degrees, actuator will be enabled if it gets out of the range [17,23]
     TOLERANCE = 3
 
+    #Setting values for the actuatorData
+    #These values will be set on the actuator by the actuatorAdapter
+    #Setting colours for the senseHAT LED matrix
+    w = (90, 90, 210)
+    b = (210, 90, 90)
+    g = (90, 210, 90)
+    e = (0, 0, 0)
+    #Matrix to draw a down arrow 
+    DOWN = [
+                e,e,e,w,w,e,e,e,
+                e,e,e,w,w,e,e,e,
+                e,e,e,w,w,e,e,e,
+                e,e,e,w,w,e,e,e,
+                e,e,e,w,w,e,e,e,
+                w,w,w,w,w,w,w,w,
+                e,w,w,w,w,w,w,e,
+                e,e,e,w,w,e,e,e
+            ]
+    #Matrix to draw an up arrow
+    UP = [
+                e,e,e,b,b,e,e,e,
+                e,b,b,b,b,b,b,e,
+                b,b,b,b,b,b,b,b,
+                e,e,e,b,b,e,e,e,
+                e,e,e,b,b,e,e,e,
+                e,e,e,b,b,e,e,e,
+                e,e,e,b,b,e,e,e,
+                e,e,e,b,b,e,e,e
+            ]    
+    #Matrix to draw a tick mark
+    STABLE = [
+                e,e,e,e,e,e,e,e,
+                e,e,e,e,e,e,e,g,
+                e,e,e,e,e,e,g,g,
+                e,e,e,e,e,g,g,e,
+                g,e,e,e,g,g,e,e,
+                g,g,e,g,g,e,e,e,
+                e,g,g,g,e,e,e,e,
+                e,e,g,e,e,e,e,e
+            ] 
+            
     def __init__(self):
         '''
         Constructor
@@ -51,17 +92,28 @@ class SensorDataManager(object):
         '''
         #Reading current sensor value
         sensorValue = sensor_data.getCurrentValue()
-        #Checking if the temperature is greater than expected, setting actuator command to increase and sending notification.
+        #Checking if the temperature is greater than expected, 
+        #setting actuator command to increase and sending notification,
+        #also setting the actuator Value.
         if sensorValue < self.nominal - self.TOLERANCE:
             self.actuator.setCommand("Increase")
+            self.actuator.setValue(self.UP)
             self.sendNotification("Temperature lower than nominal, increasing. \n" + mailMessage)  
-        #Checking if the temperature is greater than expected, setting actuator command to decrease and sending notification.
+        #Checking if the temperature is greater than expected, 
+        #setting actuator command to decrease and sending notification,
+        #also setting the actuator Value.
         elif sensorValue > self.nominal + self.TOLERANCE: 
             self.actuator.setCommand("Decrease")
+            self.actuator.setValue(self.DOWN)
             self.sendNotification("Temperature higher than nominal, decreasing. \n" +mailMessage)  
-        #Else setting the actuator to stable, if the temperature is in the same we expected to. 
-        else:
+        #Else setting the actuator to stable, if the temperature is in the same we expected to,
+        #also setting the actuator Value. 
+        elif sensorValue > self.nominal - self.TOLERANCE and sensorValue < self.nominal + self.TOLERANCE:
+            self.actuator.setValue(self.STABLE)
             self.actuator.setCommand("Stable")
+        #If any other case
+        else:
+            return False
         #Calling actuatorAdapter to update the actuator state.
         self.actuatorAdapter.updateActuator(self.actuator)     
         return True

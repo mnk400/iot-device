@@ -28,3 +28,6 @@ if __name__ == '__main__':
     temperatureAdapter.daemon = True
     module02_Thread = threading.Thread(target=temperatureAdapter.run_emulation())
 
+    '''
+    Main method for the module03 is in SensorHandlerApp in labs.module03
+    '''

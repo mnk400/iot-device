@@ -90,6 +90,8 @@ class SensorDataManager(object):
         Function to handle and parse the data stored in an SensorData instance
         Takes a sensorData instance and the mail body string as input 
         '''
+        if type(sensor_data) != SensorData.SensorData:
+            return False
         #Reading current sensor value
         sensorValue = sensor_data.getCurrentValue()
         #Checking if the temperature is greater than expected, 
@@ -113,6 +115,7 @@ class SensorDataManager(object):
             self.actuator.setCommand("Stable")
         #If any other case
         else:
+            logging.error("handleSensorData: Unknown Data encountered")
             return False
         #Calling actuatorAdapter to update the actuator state.
         self.actuatorAdapter.updateActuator(self.actuator)     

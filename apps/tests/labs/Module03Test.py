@@ -13,33 +13,66 @@ Instructions:
 
 Please note: While some example test cases may be provided, you must write your own for the class.
 """
+from labs.module03 import SensorDataManager, TempActuatorAdapter, TempSensorAdapter, TempSensorAdapterTask
+from labs.common import SensorData
 class Module03Test(unittest.TestCase):
 
 	"""
-	Use this to setup your tests. This is where you may want to load configuration
-	information (if needed), initialize class-scoped variables, create class-scoped
-	instances of complex objects, initialize any requisite connections, etc.
+	UnitTests for
+	- SensorDataManager
+	- TempActuatorAdapter
+	- TempSensorAdapter
 	"""
 	def setUp(self):
+		self.sensorDataManagerTest          = SensorDataManager.SensorDataManager()
+		#self.tempSensorAdapterTest   = TempSensorAdapter.TempSensorAdapter()
+		#self.tempActuatorAdapterTest = TempActuatorAdapter.TempActuatorAdapter()
+		#self.tempSensorAdapterTaskTest   = TempSensorAdapterTask.TempSensorAdapterTask()
 		pass
 
 	"""
-	Use this to tear down any allocated resources after your tests are complete. This
-	is where you may want to release connections, zero out any long-term data, etc.
+	Getting rid of resources
 	"""
 	def tearDown(self):
+		self.sensorDataTest = None
+		self.tempSensorAdapterTask = None
+		self.tempActuatorAdapterTest = None
+		self.tempSensorAdapterTaskTest = None
 		pass
 
-	"""
-	Place your comments describing the test here.
-	"""
+	'''
+	Testing the handleSensorData function in SensorDataManager
+	'''
 	def testHandleSensorData(self):
+		#Creating a temporary sensorData instance
+		sensor = SensorData.SensorData()
+		sensor.addValue(20)
+		#Calling the test handleSensorData function, should return true if worked properly
+		self.assertEqual(True,self.sensorDataManagerTest.handleSensorData(sensor, "testMessage"))
+		#Passing any other generic object will render a False result
+		obj = object()
+		self.assertEqual(False,self.sensorDataManagerTest.handleSensorData(obj,"no"))
 		pass
 
+	'''
+	Testing the testSendNotification function in SensorDataManager
+	'''
 	def testSendNotification(self):
+		#Running the tests if configFile is loaded, so that we can avoid with a 
+		#failing build in cloud.
+		if self.sensorDataManagerTest.config.configFileLoaded == True:
+			self.assertEqual(True, self.sensorDataManagerTest.sendNotification("Test message sent from sendNotification.sensorDataManager"))
+		#Checking if the email notification switch works
+		#Should not sent Email in this case
+		self.sensorDataManagerTest.SEND_EMAIL_NOTIFICATION = False
+		self.assertEqual(True, self.sensorDataManagerTest.sendNotification("Should not send"))
 		pass
 
+	'''
+	Testing the testUpdateActuator function in SensorDataManager
+	'''
 	def testUpdateActuator(self):
+		
 		pass
 
 	def testClear(self):

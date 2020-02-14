@@ -14,6 +14,7 @@ class Module03Test(unittest.TestCase):
 	- SensorDataManager
 	- TempActuatorAdapter
 	- TempSensorAdapter
+	- TempSensorAdapterTask
 	"""
 	def setUp(self):
 		self.sensorDataManagerTest     = SensorDataManager.SensorDataManager()
@@ -75,6 +76,7 @@ class Module03Test(unittest.TestCase):
 		#Checking for an incompatible command
 		actuator.setCommand("This shouldn't work")
 		self.assertEqual(False,self.tempActuatorAdapterTest.updateActuator(actuator))
+		self.tempActuatorAdapterTest.clear()
 		pass
 
 	'''

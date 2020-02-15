@@ -66,7 +66,7 @@ class SensorDataManager(object):
                 e,g,g,g,e,e,e,e,
                 e,e,g,e,e,e,e,e
             ] 
-            
+
     def __init__(self):
         '''
         Constructor
@@ -89,7 +89,7 @@ class SensorDataManager(object):
         #SMTP-connector to send Emails
         self.smtpConnector = SmtpClientConnector.MyClass()
 
-    def handleSensorData(self, sensor_data: SensorData.SensorData, mailMessage: str) -> bool:
+    def handleSensorData(self, sensor_data: SensorData.SensorData, mailMessage: str, classType: str) -> bool:
         '''
         Function to handle and parse the data stored in an SensorData instance
         Takes a sensorData instance and the mail body string as input 

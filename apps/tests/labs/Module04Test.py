@@ -2,35 +2,46 @@ import unittest
 import numpy
 from labs.module04 import SensorDataManager, MultiActuatorAdapter, MultiSensorAdapter, HI2CSensorAdapterTask, HumiditySensorAdapterTask
 from labs.common import SensorData, ActuatorData
-
+from time import sleep
 """
 TestCases for python files in Module04
 """
 class Module04Test(unittest.TestCase):
 
 	"""
-	UnitTests for
-	- SensorDataManager
-	- TempActuatorAdapter
-	- TempSensorAdapter
-	- TempSensorAdapterTask
+	UnitTests
 	"""
 	def setUp(self):
 		self.SensorDataManagerTest         = SensorDataManager.SensorDataManager()
-		self.HI2CSensorAdapterTaskTest     = HI2CSensorAdapterTask.HI2CSensorAdapterTask(1,1)
-		self.HumiditySensorAdapterTaskTest = HumiditySensorAdapterTask.HumiditySensorAdapterTask(1,1)
+		self.HI2CSensorAdapterTaskTest     = HI2CSensorAdapterTask.HI2CSensorAdapterTask()
+		self.HumiditySensorAdapterTaskTest = HumiditySensorAdapterTask.HumiditySensorAdapterTask()
 		self.MultiActuatorAdapterTest      = MultiActuatorAdapter.MultiActuatorAdapter()
-		self.MultiSensorAdapterTest		   = MultiSensorAdapter.MultiSensorAdapter(1, 1, 1, 1)
+		self.MultiSensorAdapterTest		   = MultiSensorAdapter.MultiSensorAdapter(1, 1)
 		pass
 
 	"""
 	Getting rid of resources
 	"""
 	def tearDown(self):
-		#self.SensorDataTest = None
-		#self.tempSensorAdapterTask = None
-		#self.tempActuatorAdapterTest = None
-		#self.tempSensorAdapterTaskTest = None
+		self.SensorDataManagerTest         = None
+		self.HI2CSensorAdapterTaskTest     = None
+		self.HumiditySensorAdapterTaskTest = None
+		self.MultiActuatorAdapterTest      = None
+		self.MultiSensorAdapterTest		   = None
+		pass
+
+	'''
+	Testing if the read values from I2C and senseHat APU are close enough with a small enough error
+	'''
+	def testValueError(self):
+		i2cValue      = self.HI2CSensorAdapterTaskTest.parseI2CData()
+		sleep(0.1)
+		senseHatValue = self.HumiditySensorAdapterTaskTest.sense.get_humidity()
+		
+		print(i2cValue)
+		print(senseHatValue)
+		diff = abs(i2cValue - senseHatValue)
+		self.assertTrue(diff<1)
 		pass
 
 	'''
@@ -49,7 +60,7 @@ class Module04Test(unittest.TestCase):
 		pass
 
 	'''
-	Testing the testSendNotification function in SensorDataManager
+	Testing the SendNotification function in SensorDataManager
 	'''
 	def testSendNotification(self):
 		#Running the tests if configFile is loaded, so that we can avoid with a 

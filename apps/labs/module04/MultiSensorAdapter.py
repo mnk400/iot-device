@@ -3,7 +3,7 @@ Created on Feb 14, 2020
 
 @author: manik
 '''
-from labs.module04 import HumiditySensorAdapterTask, HI2CSensorAdapterTask
+from labs.module04 import HumiditySensorAdapterTask, HI2CSensorAdapterTask, SensorDataManager
 from time import sleep
 import logging
 import threading
@@ -28,35 +28,47 @@ class MultiSensorAdapter(object):
     enableHumidityTask = True
     enableHI2CTask = True
     
-    def __init__(self, loop_param_hum = 10, sleep_param_hum = 3, loop_param_i2c = 10, sleep_param_i2c = 3):
+    
+    def __init__(self, loop_param = 10, sleep_param = 1):
         '''
         Constructor
         '''
         print(self.LOOP_FOREVER)
-        self.HumiditySensor = HumiditySensorAdapterTask.HumiditySensorAdapterTask(loop_param_hum, sleep_param_hum)
-        self.HI2CSensor  = HI2CSensorAdapterTask.HI2CSensorAdapterTask(loop_param_i2c, sleep_param_i2c)
+        self.HumiditySensor = HumiditySensorAdapterTask.HumiditySensorAdapterTask()
+        self.HI2CSensor     = HI2CSensorAdapterTask.HI2CSensorAdapterTask()
+        self.dataManager    = SensorDataManager.SensorDataManager()
+        self.loop_limit     = loop_param
+        self.sleep_time     = sleep_param
 
     def __init_threads__(self):
         '''
         Initialize threads
         ''' 
-        
+        i = 0
         try:
-            #Running humidity from senseHAT API Thread if enabled
-            if self.enableHumidityTask == True:
-                logging.info("HumiditySensorAdapterTask initialized")
-                self.HumiditySensor.daemon = True
-                self.HumiditySensor.start()
+            while i < self.loop_limit or self.LOOP_FOREVER == True:
+                i = i + 1
+                #Checking if HI2C Task is enabled
+                if self.enableHI2CTask == True:
+                    self.HI2CSensor.run()
+                    i2cStr = self.HI2CSensor.generateString()
                 
-            #Running I2C thread if enabled
-            if self.enableHI2CTask == True:  
-                logging.info("HI2CSensorAdapterTask initialized")
-                self.HI2CSensor.daemon = True  
-                self.HI2CSensor.start()
+                #Sleeping for a small amount else we get a zero
+                sleep(0.1)
 
-            #Polling if threads are alive so we can shut the actuator down after they die.
-            while self.HumiditySensor.isAlive() or self.HI2CSensor.isAlive(): 
-                time.sleep(1)
+                #Checking if Humidity Task is enabled
+                if self.enableHumidityTask == True:
+                    self.HumiditySensor.run()
+                    humStr = self.HumiditySensor.generateString()
+
+                
+                
+                if self.enableHI2CTask == True:
+                    self.dataManager.handleSensorData(self.HI2CSensor.sensor_data,i2cStr,"HI2C")
+                    sleep(self.sleep_time / 2)
+                elif self.enableHumidityTask == True:
+                    self.dataManager.handleSensorData(self.HumiditySensor.sensor_data,humStr,"HUM")    
+                    sleep(self.sleep_time / 2)
         #Running an event handler which checks for keyboard interrupts
         #In case of an keyboard Interrupt, this will shut down actuator and clear it
         except (KeyboardInterrupt):
@@ -77,12 +89,7 @@ class MultiSensorAdapter(object):
         i = 0
 
         #Setting the sendEmail variable in SensorDataManagers
-        self.HI2CSensor.sensorDataManager.SEND_EMAIL_NOTIFICATION     = self.sendEmail
-        self.HumiditySensor.sensorDataManager.SEND_EMAIL_NOTIFICATION = self.sendEmail
-
-        #Setting loopforever variables 
-        self.HI2CSensor.loopforever     = self.LOOP_FOREVER
-        self.HumiditySensor.loopforever = self.LOOP_FOREVER
+        self.dataManager.SEND_EMAIL_NOTIFICATION     = self.sendEmail
 
         #Init and run threads
         self.__init_threads__()

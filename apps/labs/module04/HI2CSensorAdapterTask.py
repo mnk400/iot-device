@@ -15,7 +15,7 @@ from time import sleep
 logging.getLogger("tempReaderLogger")
 logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.DEBUG)
 
-class HI2CSensorAdapterTask(threading.Thread):
+class HI2CSensorAdapterTask(object):
     '''
     Class which reads the temperature data from the SenseHAT.
     Stores the data in the SensorData class and then further
@@ -25,9 +25,8 @@ class HI2CSensorAdapterTask(threading.Thread):
     HUMID_ADDR = 0x5F
     CTRL_REG1  = 0x20
     CTRL_REG2  = 0x21
-
-    loopforever = False
-    def __init__(self, loop_param, sleep_param):
+    
+    def __init__(self):
         '''
         Constructor
         '''
@@ -36,21 +35,10 @@ class HI2CSensorAdapterTask(threading.Thread):
 
         #Creating a SensorData instance and setting it's name
         self.sensor_data = SensorData.SensorData()
-        self.sensor_data.setName("Temperature Sensor Data")
-
-        #SenseHat instance to interact with the senseHAT
-        self.sense = SenseHat()
-
-        #clearing matrix
-        self.sense.clear()
-
-        #SensorDataManager instance
-        self.sensorDataManager = SensorDataManager.SensorDataManager()
+        self.sensor_data.setName("I2CBus Sensor Data")
 
         #SMBus instance
         self.i2cReader = smbus.SMBus(1)
-        self.looptime = loop_param
-        self.sleeptime = sleep_param
         pass
 
     def run(self):
@@ -59,30 +47,23 @@ class HI2CSensorAdapterTask(threading.Thread):
         Data is then pushed to the SensorData instance,
         then a sensorDataManager instance is called which overtakes execution.
         '''
-        i = 0
-        while i < self.looptime or self.loopforever == True:
-            i = i + 1
-            data = self.parseI2CData()
+        data = self.parseI2CData()
 
-            #Add data to sensorData
-            self.sensor_data.addValue(data)
+        #Add data to sensorData
+        self.sensor_data.addValue(data)
 
-            #Generate a detailed string
-            tempString = self.generateString()
+        #Generate a detailed string
+        tempString = self.generateString()
 
-            #Log the data and send the sensorData instance in the SensorDataManager
-            logging.info(tempString)
-            self.sensorDataManager.handleSensorData(self.sensor_data,tempString)
-            sleep(self.sleeptime)
-
-        self.sensorDataManager.actuatorAdapter.clear() 
+        #Log the data and send the sensorData instance in the SensorDataManager
+        logging.info(tempString)
         return True   
 
     def parseI2CData(self) -> float:
         #Defining number of bits
         bits = 8
 
-        self.initI2CBus()
+        #self.initI2CBus()
         #Read calibration relative humidity LSB (ADC) data
         h0_out_l = np.uint8(self.i2cReader.read_byte_data(self.HUMID_ADDR, 0x36))
         h0_out_h = np.uint8(self.i2cReader.read_byte_data(self.HUMID_ADDR, 0x37))

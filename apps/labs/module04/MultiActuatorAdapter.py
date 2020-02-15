@@ -17,6 +17,7 @@ class MultiActuatorAdapter(object):
     based on the information in the instance of actuatorData passed in the class.
     '''
     
+    
 
     def __init__(self):
         '''

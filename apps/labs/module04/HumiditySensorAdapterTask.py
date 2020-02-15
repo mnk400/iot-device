@@ -13,15 +13,14 @@ from time import sleep
 logging.getLogger("tempReaderLogger")
 logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.DEBUG)
 
-class HumiditySensorAdapterTask(threading.Thread):
+class HumiditySensorAdapterTask(object):
     '''
     Class which reads the temperature data from the SenseHAT.
     Stores the data in the SensorData class and then further
     calls SensorDataManager to parse the stored data.
     '''
 
-    loopforever = False
-    def __init__(self, loop_param, sleep_param):
+    def __init__(self):
         '''
         Constructor
         '''
@@ -39,10 +38,6 @@ class HumiditySensorAdapterTask(threading.Thread):
 
         #SensorDataManager instance
         self.sensorDataManager = SensorDataManager.SensorDataManager()
-
-        #Setting looplimit and sleeptime 
-        self.looplimit = loop_param
-        self.sleeptime = sleep_param
         pass
 
     def run(self):
@@ -51,25 +46,18 @@ class HumiditySensorAdapterTask(threading.Thread):
         Data is then pushed to the SensorData instance,
         then a sensorDataManager instance is called which overtakes execution.
         '''
-        i=0
-        while i < self.looplimit or self.loopforever == True:
-            i = i + 1
 
-            #Read from senseHAT     
-            humData = self.sense.get_humidity()
+        #Read from senseHAT     
+        humData = self.sense.get_humidity()
 
-            #Add data to sensorData
-            self.sensor_data.addValue(humData)
+        #Add data to sensorData
+        self.sensor_data.addValue(humData)
 
-            #Generate a will detailed string
-            humString = self.generateString()
+        #Generate a will detailed string
+        humString = self.generateString()
 
-            #Log the data and send the sensorData instance in the SensorDataManager
-            logging.info(humString)
-            self.sensorDataManager.handleSensorData(self.sensor_data,humString)
-            sleep(self.sleeptime)
-
-        self.sensorDataManager.actuatorAdapter.clear()    
+        #Log the data and send the sensorData instance in the SensorDataManager
+        logging.info(humString) 
         return True 
 
     def generateString(self) -> str:

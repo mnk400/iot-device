@@ -11,7 +11,7 @@ from time import sleep
 
 logging.getLogger("ActuatorAdapterLogger")
 
-class TempActuatorAdapter(object):
+class MultiActuatorAdapter(object):
     '''
     This class is responsible for changing the state of the actuator, 
     based on the information in the instance of actuatorData passed in the class.
@@ -30,27 +30,33 @@ class TempActuatorAdapter(object):
         '''
         self.actuator = actuator_param
         #Reading the command from the actuatorData instance
+        
         strCheck = str(self.actuator.getCommand())
         #Reading actuator value from actuatorData instance
+        
         acValue = self.actuator.getValue()
         #If increase, logging and setting the LED to display a up and return true.
+        
         if strCheck == "Increase":
-            logging.info("Actuator: Increasing Temp")
+            #logging.info("Actuator: Increasing Temp")
             self.clear()
             self.sense.set_pixels(acValue)
             return True
+        
         #If decrease, logging and setting the LED to display a down and return true.  
         elif strCheck == "Decrease":
-            logging.info("Actuator: Decreasing Temp")  
+            #logging.info("Actuator: Decreasing Temp")  
             self.clear()
             self.sense.set_pixels(acValue)
             return True
+        
         #If stable then setting a tick mark on the matrix and returning true.    
         elif strCheck == "Stable":
-            logging.info("Temperature Stable")
+            #logging.info("Temperature Stable")
             self.clear()
             self.sense.set_pixels(acValue)
             return True    
+        
         #If none of those, then returning a false and logging error    
         else:
             logging.error("Unknown Actuator Command")
@@ -62,5 +68,7 @@ class TempActuatorAdapter(object):
         '''
         Simple method to clear the LED matrix
         '''
+        #print("clear")
+        #logging.info("Clearing Acuator")
         self.sense.clear()
         return True

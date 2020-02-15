@@ -1,5 +1,5 @@
 '''
-Created on Feb 6, 2020
+Created on Feb 14, 2020
 
 @author: manik
 '''
@@ -11,8 +11,9 @@ if __name__ == '__main__':
     Creating and running a thread for Module03
     Set 'enableAdapter' to True to run
     '''
-    senseHATRead               = MultiSensorAdapter.MultiSensorAdapter(10,3)                      #10,3 refers to 10 loops with a sleep of 3 seconds
-    senseHATRead.enableAdapter = True                                                           #Enable Adapter
-    senseHATRead.sendEmail     = False                                                          #Setting to enable email notifications
-    senseHATRead.LOOP_FOREVER  = False                                                          #Loop forever setting, if yes, program ignores the loopvalue set in the constructor
-    
+    senseHATRead                    = MultiSensorAdapter.MultiSensorAdapter(1,3,1,3)            #Looptime and sleeptime of humidityTask and HI2CTask respectivley
+    senseHATRead.enableHumidityTask = True                                                           #Enable HumidityTask
+    senseHATRead.enableHI2CTask     = True                                                           #Enable HI2CTask
+    senseHATRead.sendEmail          = False                                                          #Setting to enable email notifications
+    senseHATRead.LOOP_FOREVER       = False                                                          #Loop forever setting, if yes, program ignores the loopvalue set in the constructor
+    senseHATRead.runAdapter()

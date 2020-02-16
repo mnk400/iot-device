@@ -44,7 +44,7 @@ class MultiActuatorAdapter(object):
                 return True
             elif len(acValue[0]) >=2:
                 #If more than one, printing a rolling message
-                self.sense.show_message(acValue[0], text_colour=acValue[1], scroll_speed=0.1)
+                self.sense.show_message(acValue[0], text_colour=acValue[1], scroll_speed=0.07)
                 return True   
             else:
                 logging.info("Actuator Value can not be empty when trying to print")
@@ -81,7 +81,5 @@ class MultiActuatorAdapter(object):
         '''
         Simple method to clear the LED matrix
         '''
-        #print("clear")
-        #logging.info("Clearing Acuator")
         self.sense.clear()
         return True

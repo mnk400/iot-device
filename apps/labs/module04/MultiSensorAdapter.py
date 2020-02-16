@@ -32,8 +32,8 @@ class MultiSensorAdapter(object):
     def __init__(self, loop_param = 10, sleep_param = 1):
         '''
         Constructor
+        Initializing both the sensor tasks and a data manager.
         '''
-        print(self.LOOP_FOREVER)
         self.HumiditySensor = HumiditySensorAdapterTask.HumiditySensorAdapterTask()
         self.HI2CSensor     = HI2CSensorAdapterTask.HI2CSensorAdapterTask()
         self.dataManager    = SensorDataManager.SensorDataManager()

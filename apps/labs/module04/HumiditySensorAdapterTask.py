@@ -16,8 +16,7 @@ logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.DEBUG)
 class HumiditySensorAdapterTask(object):
     '''
     Class which reads the temperature data from the SenseHAT.
-    Stores the data in the SensorData class and then further
-    calls SensorDataManager to parse the stored data.
+    Stores the data in the SensorData class.
     '''
 
     def __init__(self):
@@ -43,8 +42,7 @@ class HumiditySensorAdapterTask(object):
     def run(self):
         '''
         Method to read new data from the senseHat.
-        Data is then pushed to the SensorData instance,
-        then a sensorDataManager instance is called which overtakes execution.
+        Data is then pushed to the SensorData instance
         '''
 
         #Read from senseHAT     

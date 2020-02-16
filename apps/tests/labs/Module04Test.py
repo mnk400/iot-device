@@ -40,11 +40,11 @@ class Module04Test(unittest.TestCase):
 			#Reading from I2Cbus first 
 			i2cValue      = self.HI2CSensorAdapterTaskTest.parseI2CData()
 			sleep(0.1)
+			#Reading from the SenseHatAPI
 			senseHatValue = self.HumiditySensorAdapterTaskTest.sense.get_humidity()
-			
-			print(i2cValue)
-			print(senseHatValue)
+			#Finding difference between the two values
 			diff = abs(i2cValue - senseHatValue)
+			#Checking if the difference is small enough
 			self.assertTrue(diff<1)
 		pass
 
@@ -132,6 +132,7 @@ class Module04Test(unittest.TestCase):
 	Testing the ParseI2CData function in HI2CSensorAdapterTask
 	'''
 	def testParseI2CData(self):
+		#Checking if the parse I2C data is working as intended
 		self.assertEqual(numpy.float64,type(self.HI2CSensorAdapterTaskTest.parseI2CData()))
 		pass
 	

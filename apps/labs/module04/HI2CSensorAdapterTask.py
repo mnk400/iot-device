@@ -17,9 +17,8 @@ logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.DEBUG)
 
 class HI2CSensorAdapterTask(object):
     '''
-    Class which reads the temperature data from the SenseHAT.
-    Stores the data in the SensorData class and then further
-    calls SensorDataManager to parse the stored data.
+    Class which reads the Humidity data using the I2CBus
+    Stores the data in the SensorData class
     '''
 
     HUMID_ADDR = 0x5F
@@ -44,8 +43,7 @@ class HI2CSensorAdapterTask(object):
     def run(self):
         '''
         Method to read new data from the senseHat.
-        Data is then pushed to the SensorData instance,
-        then a sensorDataManager instance is called which overtakes execution.
+        Data is then pushed to the SensorData instance
         '''
         data = self.parseI2CData()
 

@@ -36,10 +36,6 @@ class SensorDataManager(object):
         self.config = ConfigUtil.ConfigUtil()
         self.config.loadConfigData()
 
-        #Reading the required nominal temperature from the config file and logging it
-        self.nominal = self.config.getIntegerValue("device","nominalTemp")
-        logging.info(str("Read nominal temperature from config " + str(self.nominal)))
-
         #Creating an actuatorData instance to store Actuator state in, and setting it's name.
         self.actuator = ActuatorData.ActuatorData()
         self.actuator.setName("Temperature Actuator Data")

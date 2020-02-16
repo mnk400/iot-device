@@ -61,6 +61,8 @@ class MultiSensorAdapter(object):
                     self.HumiditySensor.run()
                     humStr = self.HumiditySensor.generateString()
 
+                diff = abs(self.HI2CSensor.sensor_data.getCurrentValue() - self.HumiditySensor.sensor_data.getCurrentValue())
+                logging.info("Difference between the two values is: " + str(diff))
                 #Checking again what tasks were enabled so we can call HandleSensorData
                 #and hence perform some actuation
                 #

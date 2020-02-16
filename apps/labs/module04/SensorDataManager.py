@@ -22,7 +22,7 @@ class SensorDataManager(object):
     # Setting to enable or disable Email notifications, this can be changed from TempSensorAdapter too
     SEND_EMAIL_NOTIFICATION = True
     # The default subject for the Emails
-    MAILTOPIC = "Notification from Temperature Adapter"
+    MAILTOPIC = "Notification from Multi Sensor Adapter"
 
     #Setting colors to be sent 
     RED = (210,70,70)

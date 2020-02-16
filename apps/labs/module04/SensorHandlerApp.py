@@ -13,7 +13,7 @@ if __name__ == '__main__':
     Set 'enableHI2CTask' to True to read from I2C
     Set both to run them both simultaneously
     '''
-    i2cRead                    = MultiSensorAdapter.MultiSensorAdapter(10,8)                 #Looptime and sleeptime of humidityTask and HI2CTask respectivley
+    i2cRead                    = MultiSensorAdapter.MultiSensorAdapter(5,8)                 #Looptime and sleeptime of humidityTask and HI2CTask respectivley
     i2cRead.daemon             = True
     i2cRead.enableHumidityTask = True                                                           #Enable HumidityTask
     i2cRead.enableHI2CTask     = True                                                           #Enable HI2CTask

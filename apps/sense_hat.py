@@ -46,10 +46,10 @@ class SenseHat():
     def set_rotation(self, rotateDeg):
         self.rotateDeg = rotateDeg
     
-    def show_letter(self, val):
+    def show_letter(self, val, color):
         print(val)
     
-    def show_message(self, msg):
+    def show_message(self, msg, text_colour, scroll_speed):
         print(msg)
 
     def set_pixels(self, matrix):

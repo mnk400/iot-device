@@ -1,5 +1,5 @@
 '''
-Created on Feb 6, 2020
+Created on Feb 14, 2020
 
 @author: manik
 '''
@@ -16,8 +16,6 @@ class MultiActuatorAdapter(object):
     This class is responsible for changing the state of the actuator, 
     based on the information in the instance of actuatorData passed in the class.
     '''
-    
-    
 
     def __init__(self):
         '''
@@ -30,15 +28,29 @@ class MultiActuatorAdapter(object):
         Function which updates the state of the actuator based on the input param.
         '''
         self.actuator = actuator_param
+        
         #Reading the command from the actuatorData instance
-        
         strCheck = str(self.actuator.getCommand())
+        
         #Reading actuator value from actuatorData instance
-        
         acValue = self.actuator.getValue()
-        #If increase, logging and setting the LED to display a up and return true.
         
-        if strCheck == "Increase":
+        if strCheck == "Print":
+            self.clear()
+            #Checking the length of the input to determine the best display method to use
+            if len(acValue[0]) <2:
+                #If one, simply printing the letter
+                self.sense.show_letter(acValue[0],acValue[1])
+                return True
+            elif len(acValue[0]) >=2:
+                #If more than one, printing a rolling message
+                self.sense.show_message(acValue[0], text_colour=acValue[1], scroll_speed=0.1)
+                return True   
+            else:
+                logging.info("Actuator Value can not be empty when trying to print")
+                return False    
+        #If increase, logging and setting the LED to display a up and return true.
+        elif strCheck == "Increase":
             #logging.info("Actuator: Increasing Temp")
             self.clear()
             self.sense.set_pixels(acValue)

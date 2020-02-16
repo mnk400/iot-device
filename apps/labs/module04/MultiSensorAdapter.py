@@ -61,12 +61,20 @@ class MultiSensorAdapter(object):
                     self.HumiditySensor.run()
                     humStr = self.HumiditySensor.generateString()
 
-                
-                
+                #Checking again what tasks were enabled so we can call HandleSensorData
+                #and hence perform some actuation
+                #
+                #HandleSensorData wasn't called previously because we wanted to capture the data 
+                #from both the ways as close to each other in time as possible so we could get 
+                #really small differences
+                #
+                #Now, in the sleep timing between two reads, actuator time is divided equally among 
+                #the both readings, HI2C displays the floor of it's value in red for sleeptime/2 seconds 
+                #and HUM displays the floor of it's value in red for sleeptime/2 seconds
                 if self.enableHI2CTask == True:
                     self.dataManager.handleSensorData(self.HI2CSensor.sensor_data,i2cStr,"HI2C")
                     sleep(self.sleep_time / 2)
-                elif self.enableHumidityTask == True:
+                if self.enableHumidityTask == True:
                     self.dataManager.handleSensorData(self.HumiditySensor.sensor_data,humStr,"HUM")    
                     sleep(self.sleep_time / 2)
         #Running an event handler which checks for keyboard interrupts

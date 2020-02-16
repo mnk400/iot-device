@@ -1,5 +1,5 @@
 '''
-Created on Feb 6, 2020
+Created on Feb 14, 2020
 
 @author: manik
 '''
@@ -8,6 +8,7 @@ import logging
 from labs.common import ConfigUtil, SensorData, ActuatorData
 from labs.module04 import MultiActuatorAdapter
 from labs.module02 import SmtpClientConnector
+from math import floor
 
 logging.getLogger("SensorDataManagerLogger")
 
@@ -22,51 +23,11 @@ class SensorDataManager(object):
     SEND_EMAIL_NOTIFICATION = True
     # The default subject for the Emails
     MAILTOPIC = "Notification from Temperature Adapter"
-    # Tolerance of temperature, after which the actuator will be actuated. 
-    # e.g. for a read nominal temperature of 20 degrees, actuator will be enabled if it gets out of the range [17,23]
-    TOLERANCE = 3
 
-    #Setting values for the actuatorData
-    #These values will be set on the actuator by the actuatorAdapter
-    #Setting colours for the senseHAT LED matrix
-    w = (90, 90, 210)
-    b = (210, 90, 90)
-    g = (90, 210, 90)
-    e = (0, 0, 0)
-    #Matrix to draw a down arrow 
-    DOWN = [
-                e,e,e,w,w,e,e,e,
-                e,e,e,w,w,e,e,e,
-                e,e,e,w,w,e,e,e,
-                e,e,e,w,w,e,e,e,
-                e,e,e,w,w,e,e,e,
-                w,w,w,w,w,w,w,w,
-                e,w,w,w,w,w,w,e,
-                e,e,e,w,w,e,e,e
-            ]
-    #Matrix to draw an up arrow
-    UP = [
-                e,e,e,b,b,e,e,e,
-                e,b,b,b,b,b,b,e,
-                b,b,b,b,b,b,b,b,
-                e,e,e,b,b,e,e,e,
-                e,e,e,b,b,e,e,e,
-                e,e,e,b,b,e,e,e,
-                e,e,e,b,b,e,e,e,
-                e,e,e,b,b,e,e,e
-            ]    
-    #Matrix to draw a tick mark
-    STABLE = [
-                e,e,e,e,e,e,e,e,
-                e,e,e,e,e,e,e,g,
-                e,e,e,e,e,e,g,g,
-                e,e,e,e,e,g,g,e,
-                g,e,e,e,g,g,e,e,
-                g,g,e,g,g,e,e,e,
-                e,g,g,g,e,e,e,e,
-                e,e,g,e,e,e,e,e
-            ] 
-
+    #Setting colors to be sent 
+    RED = (210,70,70)
+    BLUE = (70,90,200)
+    
     def __init__(self):
         '''
         Constructor
@@ -89,7 +50,7 @@ class SensorDataManager(object):
         #SMTP-connector to send Emails
         self.smtpConnector = SmtpClientConnector.MyClass()
 
-    def handleSensorData(self, sensor_data: SensorData.SensorData, mailMessage: str, classType: str) -> bool:
+    def handleSensorData(self, sensor_data: SensorData.SensorData, mailMessage: str, classType = None) -> bool:
         '''
         Function to handle and parse the data stored in an SensorData instance
         Takes a sensorData instance and the mail body string as input 
@@ -98,28 +59,24 @@ class SensorDataManager(object):
             return False
         #Reading current sensor value
         sensorValue = sensor_data.getCurrentValue()
-        
-        #Checking if the temperature is greater than expected, 
+
+        #Checking if the input value is of type HI2C, 
         #setting actuator command to increase and sending notification,
         #also setting the actuator Value.
-        if sensorValue < self.nominal - self.TOLERANCE:
-            self.actuator.setCommand("Increase")
-            self.actuator.setValue(self.UP)
-            self.sendNotification("Temperature lower than nominal, increasing. \n" + mailMessage)  
+        if classType == "HI2C":
+            self.actuator.setCommand("Print")
+            temp = [str(int(floor(sensorValue))), self.RED]
+            self.actuator.setValue(temp)
+            self.sendNotification("Current humidity details are: \n" +mailMessage) 
 
-        #Checking if the temperature is greater than expected, 
+        #Checking if the input value is of type HUM,  
         #setting actuator command to decrease and sending notification,
         #also setting the actuator Value.
-        elif sensorValue > self.nominal + self.TOLERANCE: 
-            self.actuator.setCommand("Decrease")
-            self.actuator.setValue(self.DOWN)
-            self.sendNotification("Temperature higher than nominal, decreasing. \n" +mailMessage)  
-
-        #Else setting the actuator to stable, if the temperature is in the same we expected to,
-        #also setting the actuator Value. 
-        elif sensorValue > self.nominal - self.TOLERANCE and sensorValue < self.nominal + self.TOLERANCE:
-            self.actuator.setValue(self.STABLE)
-            self.actuator.setCommand("Stable")
+        elif classType == "HUM": 
+            self.actuator.setCommand("Print")
+            temp = [str(int(floor(sensorValue))), self.BLUE]
+            self.actuator.setValue(temp)
+            self.sendNotification("Current humidity details are: \n" +mailMessage) 
 
         #If any other case
         else:

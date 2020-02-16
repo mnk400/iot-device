@@ -34,14 +34,18 @@ class Module04Test(unittest.TestCase):
 	Testing if the read values from I2C and senseHat APU are close enough with a small enough error
 	'''
 	def testValueError(self):
-		i2cValue      = self.HI2CSensorAdapterTaskTest.parseI2CData()
-		sleep(0.1)
-		senseHatValue = self.HumiditySensorAdapterTaskTest.sense.get_humidity()
-		
-		print(i2cValue)
-		print(senseHatValue)
-		diff = abs(i2cValue - senseHatValue)
-		self.assertTrue(diff<1)
+		#Checking if config file has been loaded so the following piece of code doesn't run in the pipeline
+		#As it will break in the pipeline because there is no I2C bus or any config file
+		if self.SensorDataManagerTest.smtpConnector.config.hasConfigData == True:
+			#Reading from I2Cbus first 
+			i2cValue      = self.HI2CSensorAdapterTaskTest.parseI2CData()
+			sleep(0.1)
+			senseHatValue = self.HumiditySensorAdapterTaskTest.sense.get_humidity()
+			
+			print(i2cValue)
+			print(senseHatValue)
+			diff = abs(i2cValue - senseHatValue)
+			self.assertTrue(diff<1)
 		pass
 
 	'''
@@ -53,7 +57,7 @@ class Module04Test(unittest.TestCase):
 		sensor.addValue(20)
 		self.SensorDataManagerTest.SEND_EMAIL_NOTIFICATION = False
 		#Calling the test handleSensorData function, should return true if worked properly
-		self.assertEqual(True,self.SensorDataManagerTest.handleSensorData(sensor, "testMessage"))
+		self.assertEqual(True,self.SensorDataManagerTest.handleSensorData(sensor, "testMessage","HUM"))
 		#Passing any other generic object will render a False result
 		obj = object()
 		self.assertEqual(False,self.SensorDataManagerTest.handleSensorData(obj,"no"))
@@ -79,8 +83,8 @@ class Module04Test(unittest.TestCase):
 	def testUpdateActuator(self):
 		#Creating a temporary actuatorData instance
 		actuator = ActuatorData.ActuatorData()
-		actuator.setCommand("Increase")
-		actuator.setValue(self.SensorDataManagerTest.STABLE)
+		actuator.setCommand("Print")
+		actuator.setValue(["TEST",(90,200,90)])
 		#Checking for a compatible command
 		self.assertEqual(True,self.MultiActuatorAdapterTest.updateActuator(actuator))
 		#Checking for an incompatible command
@@ -112,7 +116,6 @@ class Module04Test(unittest.TestCase):
 	'''
 	def testRunHI2C(self):
 		#Should return a True if ran properly
-		self.HI2CSensorAdapterTaskTest.sensorDataManager.SEND_EMAIL_NOTIFICATION = False
 		self.assertEqual(True,self.HI2CSensorAdapterTaskTest.run())
 		pass
 
@@ -136,7 +139,9 @@ class Module04Test(unittest.TestCase):
 	Testing the InitI2CBus function in HI2CSensorAdapterTask
 	'''
 	def testInitI2CBus(self):
+		#Checking if testInitI2CBus works properly
 		self.assertEqual(True, self.HI2CSensorAdapterTaskTest.initI2CBus())
+		pass
 	'''
 	Testing the Run function in HumiditySensorAdapterTask
 	'''

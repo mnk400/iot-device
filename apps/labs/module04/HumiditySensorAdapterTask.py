@@ -69,8 +69,6 @@ class HumiditySensorAdapterTask(object):
         msgString += "\n\tCurrent : " + repr(self.sensor_data.getCurrentValue())
         msgString += "\n\tAverage : " + repr(self.sensor_data.getAverageValue())
         msgString += "\n\tSamples : " + repr(self.sensor_data.getCount())
-        msgString += "\n\tMin : " + repr(self.sensor_data.getMinValue())
-        msgString += "\n\tMax : " + repr(self.sensor_data.getMaxValue())
         return msgString
 
         

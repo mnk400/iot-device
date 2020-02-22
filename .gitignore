@@ -3,4 +3,4 @@
 apps/sense_hat.py
 __pycache__/
 *.pyc
-.mypy_cache
+.mypy_cache/

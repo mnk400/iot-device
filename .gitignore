@@ -1,5 +1,6 @@
 /config/
 .DS_store
 apps/sense_hat.py
-*/__pycache__
+__pycache__/
+*.pyc
 .mypy_cache

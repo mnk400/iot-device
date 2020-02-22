@@ -6,7 +6,7 @@ Created on Feb 14, 2020
 
 import logging
 from labs.common import ConfigUtil, SensorData, ActuatorData
-from labs.module04 import MultiActuatorAdapter
+from labs.module05 import MultiActuatorAdapter
 from labs.module02 import SmtpClientConnector
 from math import floor
 

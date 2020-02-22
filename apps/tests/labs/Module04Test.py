@@ -57,9 +57,7 @@ class Module04Test(unittest.TestCase):
 		sensor.addValue(20)
 		self.SensorDataManagerTest.SEND_EMAIL_NOTIFICATION = False
 		#Calling the test handleSensorData function, should return true if worked properly
-		obj = object()
-		self.assertEqual(True,self.SensorDataManagerTest.handleSensorData(obj, "testMessage","HUM"))
-		#self.assertEqual(True,self.SensorDataManagerTest.handleSensorData(sensor, "testMessage","HUM"))
+		self.assertEqual(True,self.SensorDataManagerTest.handleSensorData(sensor, "testMessage","HUM"))
 		#Passing any other generic object will render a False result
 		obj = object()
 		self.assertEqual(False,self.SensorDataManagerTest.handleSensorData(obj,"no"))

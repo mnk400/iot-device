@@ -3,7 +3,7 @@ Created on Feb 14, 2020
 
 @author: manik
 '''
-from labs.module04 import HumiditySensorAdapterTask, HI2CSensorAdapterTask, SensorDataManager
+from labs.module05 import HumiditySensorAdapterTask, HI2CSensorAdapterTask, SensorDataManager
 from time import sleep
 import logging
 import threading

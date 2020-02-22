@@ -2,3 +2,4 @@
 .DS_store
 apps/sense_hat.py
 */__pycache__
+.mypy_cache

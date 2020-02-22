@@ -9,7 +9,7 @@ import smbus
 import numpy as np
 from labs.common import SensorData
 from sense_hat import SenseHat
-from labs.module04 import SensorDataManager
+from labs.module05 import SensorDataManager
 from time import sleep
 
 logging.getLogger("tempReaderLogger")

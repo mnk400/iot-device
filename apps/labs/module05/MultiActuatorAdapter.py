@@ -16,7 +16,46 @@ class MultiActuatorAdapter(object):
     This class is responsible for changing the state of the actuator, 
     based on the information in the instance of actuatorData passed in the class.
     '''
-
+    #Setting values for the actuatorData
+    #These values will be set on the actuator by the actuatorAdapter
+    #Setting colours for the senseHAT LED matrix
+    w = (90, 90, 210)
+    b = (210, 90, 90)
+    g = (90, 210, 90)
+    e = (0, 0, 0)
+    #Matrix to draw a down arrow 
+    DOWNARROW = [
+                e,e,e,w,w,e,e,e,
+                e,e,e,w,w,e,e,e,
+                e,e,e,w,w,e,e,e,
+                e,e,e,w,w,e,e,e,
+                e,e,e,w,w,e,e,e,
+                w,w,w,w,w,w,w,w,
+                e,w,w,w,w,w,w,e,
+                e,e,e,w,w,e,e,e
+            ]
+    #Matrix to draw an up arrow
+    UPARROW = [
+                e,e,e,b,b,e,e,e,
+                e,b,b,b,b,b,b,e,
+                b,b,b,b,b,b,b,b,
+                e,e,e,b,b,e,e,e,
+                e,e,e,b,b,e,e,e,
+                e,e,e,b,b,e,e,e,
+                e,e,e,b,b,e,e,e,
+                e,e,e,b,b,e,e,e
+            ]    
+    #Matrix to draw a tick mark
+    TICK = [
+                e,e,e,e,e,e,e,e,
+                e,e,e,e,e,e,e,g,
+                e,e,e,e,e,e,g,g,
+                e,e,e,e,e,g,g,e,
+                g,e,e,e,g,g,e,e,
+                g,g,e,g,g,e,e,e,
+                e,g,g,g,e,e,e,e,
+                e,e,g,e,e,e,e,e
+            ] 
     def __init__(self):
         '''
         Constructor
@@ -34,6 +73,9 @@ class MultiActuatorAdapter(object):
         
         #Reading actuator value from actuatorData instance
         acValue = self.actuator.getValue()
+        if acValue == "UPARROW": acValue = self.UPARROW 
+        elif acValue == "DOWNARROW": acValue = self.DOWNARROW
+        elif acValue == "TICK": acValue = self.TICK
         
         if strCheck == "Print":
             self.clear()
@@ -48,7 +90,8 @@ class MultiActuatorAdapter(object):
                 return True   
             else:
                 logging.info("Actuator Value can not be empty when trying to print")
-                return False    
+                return False  
+
         #If increase, logging and setting the LED to display a up and return true.
         elif strCheck == "Increase":
             #logging.info("Actuator: Increasing Temp")
@@ -76,10 +119,11 @@ class MultiActuatorAdapter(object):
             return False
             
         return False
-
+        
     def clear(self) -> bool:
         '''
         Simple method to clear the LED matrix
         '''
         self.sense.clear()
         return True
+  

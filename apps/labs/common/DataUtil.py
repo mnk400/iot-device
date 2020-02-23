@@ -3,8 +3,12 @@ Created on Feb 21, 2020
 
 @author: manik
 '''
-import SensorData, ActuatorData
+from labs.common import SensorData, ActuatorData
 import json
+import logging
+
+logging.getLogger("DataUtilLogger")
+
 class DataUtil(object):
     '''
     Class to handle JSON data,
@@ -95,6 +99,7 @@ class DataUtil(object):
         '''
         Converts ActuatorData to JSON and writes to the filesystem
         '''
+        
         pass
 
 if __name__ == "__main__":

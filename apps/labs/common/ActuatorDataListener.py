@@ -53,7 +53,7 @@ class ActuatorDataListener(threading.Thread):
         Subscribes to redis channel and listens for new messages
         '''
         self.actuatorSub.get_message()
-        if self.connected = True:
+        if self.connected == True:
             for m in self.actuatorSub.listen():
                 key = m['channel'].decode()
                 key = key.split(':')

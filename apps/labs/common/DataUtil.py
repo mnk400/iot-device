@@ -7,7 +7,7 @@ from labs.common import SensorData, ActuatorData
 import json
 import logging
 
-logging.getLogger("DataUtilLogger")
+
 
 class DataUtil(object):
     '''
@@ -15,6 +15,18 @@ class DataUtil(object):
     convert from JSON to sensorData or actuatorData instance
     or convert sensorData or actuatorDat instance to JSON.
     '''
+    #Creating sensorLogger
+    sensorLog = logging.getLogger("sensorDataLogger")
+    # create file handler which logs even debug messages
+    sfh = logging.FileHandler('logs/sensorData.log')
+    sfh.setLevel(logging.DEBUG)
+    sensorLog.addHandler(sfh)
+    #Creating actuatorLogger
+    actuatorLog = logging.getLogger("actuatorDataLogger")
+    # create file handler which logs even debug messages
+    afh = logging.FileHandler('logs/actuatorData.log')
+    afh.setLevel(logging.DEBUG)
+    sensorLog.addHandler(afh)
 
     def __init__(self):
         '''
@@ -26,6 +38,8 @@ class DataUtil(object):
         '''
         Convert from JSON to SensorData instance
         '''
+        #Logging and writing to file
+        self.writeSensorDataToFile("Recieved sensorData JSON" + str(jsonStr))
         #Loading the jsonString
         jsonData                = json.loads(jsonStr)
         #Creating a sensorData instance
@@ -38,7 +52,6 @@ class DataUtil(object):
         sensorData.minValue     = jsonData['minValue']
         sensorData.timestamp    = jsonData['timestamp']
         sensorData.name         = jsonData['name']
-        
         return sensorData
 
     def toJsonFromSensorData(self, sensorData: SensorData.SensorData) -> str:
@@ -47,28 +60,34 @@ class DataUtil(object):
         '''
         #Converting the sensorData to a dictionary
         jsonData = { 
-                        "currentValue"  : sensorData.getCurrentValue(),
-                        "totalCount"    : sensorData.getCount(),
-                        "totalValue"    : sensorData.totalValue,
-                        "maxValue"      : sensorData.getMinValue(),
-                        "minValue"      : sensorData.getMaxValue(),
-                        "timestamp"     : sensorData.timestamp,
-                        "name"          : sensorData.getName()
+                        "currentValue"  :sensorData.getCurrentValue(),
+                        "totalCount"    :sensorData.getCount(),
+                        "totalValue"    :sensorData.totalValue,
+                        "maxValue"      :sensorData.getMinValue(),
+                        "minValue"      :sensorData.getMaxValue(),
+                        "timestamp"     :sensorData.timestamp,
+                        "name"          :sensorData.getName()
         }
         #dumping the json data and returning it
+        
         jsonStr = json.dumps(jsonData)
+        #Logging and writing to file
+        self.writeSensorDataToFile("Creating JSON for sensorData" + jsonStr)
         return jsonStr
     
-    def writeSensorDataToFile(self):
+    def writeSensorDataToFile(self, logStr) -> bool:
         '''
         Converts SensorData to JSON and writes to the filesystem
         '''
-        pass
+        self.sensorLog.info(logStr)
+        return True
 
     def toActuatorDataFromJson(self, jsonStr) -> ActuatorData.ActuatorData:
         '''
         Convert from JSON to ActuatorData instance
         '''
+        #Logging and writing to file
+        self.writeActuatorDataToFile("Received ActuatorData JSON" + str(jsonStr))
         #Loading the jsonString
         jsonData                = json.loads(jsonStr)
         #Creating a sensorData instance
@@ -85,22 +104,24 @@ class DataUtil(object):
         '''
         #Converting the actuatorData to a dictionary
         jsonData = { 
-                        "command"   : actuatorData.getCommand(),
-                        "name"      : actuatorData.getName(),
-                        "value"     : actuatorData.getValue()
+                        "command"   :actuatorData.getCommand(),
+                        "name"      :actuatorData.getName(),
+                        "value"     :actuatorData.getValue()
                         
 
         }
         #dumping the json data and returning it
         jsonStr = json.dumps(jsonData)
+        #Logging and writing to file
+        self.writeActuatorDataToFile("Created actuatorData JSON" + jsonStr)
         return jsonStr  
     
-    def writeActuatorDataToFile(self):
+    def writeActuatorDataToFile(self, logStr) -> bool:
         '''
         Converts ActuatorData to JSON and writes to the filesystem
         '''
-        
-        pass
+        self.actuatorLog.info(logStr)
+        return True
 
 if __name__ == "__main__":
     

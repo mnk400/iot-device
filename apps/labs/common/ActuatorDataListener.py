@@ -34,13 +34,13 @@ class ActuatorDataListener(threading.Thread):
         self.dataUtil = DataUtil.DataUtil()
         pass 
 
-    def onMessage(self, key: str):
+    def onMessage(self, tempActuator) -> bool:
         '''
         Callback function which works when Data received
         '''
         logging.info("Received new ActuatorData JSON, Actuating")
-        tempActuator = self.dataUtil.toActuatorDataFromJson(self.rUtil.get(key))
         self.actuatorAdapter.updateActuator(tempActuator)
+        return True
 
  
     def listen(self):
@@ -51,8 +51,12 @@ class ActuatorDataListener(threading.Thread):
         for m in self.actuatorSub.listen():
             key = m['channel'].decode()
             key = key.split(':')
-            self.onMessage(key[1])
+            tempActuator = self.dataUtil.toActuatorDataFromJson(self.rUtil.get(key[1]))
+            self.onMessage(tempActuator)
                   
 
     def run(self):
+        '''
+        Thread run, call listen()
+        '''
         self.listen()        

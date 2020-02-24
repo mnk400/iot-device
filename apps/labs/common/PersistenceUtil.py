@@ -14,7 +14,8 @@ class PersistenceUtil(object):
     '''
     Classdocs
     '''
-    
+    #Setting to manually disable running threads
+    enableThreads = True
     def __init__(self):
         '''
         Constructor
@@ -42,8 +43,9 @@ class PersistenceUtil(object):
         if self.connected == True:
             #Creating a thread instance of the actuatorDataListener
             actuatorDataListThread = ActuatorDataListener.ActuatorDataListener(self.redisActuator)
-            #Running the thread
-            actuatorDataListThread.start()
+            if self.enableThreads == True:
+                #Running the thread
+                actuatorDataListThread.start()
             return True
         else:
             return False    
@@ -56,7 +58,10 @@ class PersistenceUtil(object):
             #Creating a thread instance of the sensorDataListener
             sensorDataListenerThread = SensorDataListener.SensorDataListener(self.redisSensor)
             #Running the thread
-            sensorDataListenerThread.start()
+            if self.enableThreads == True:
+                #Running the thread
+                sensorDataListenerThread.start()
+            return True
             return True
         else:
             return False      

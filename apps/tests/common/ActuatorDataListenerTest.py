@@ -6,6 +6,10 @@ from time import sleep
 
 class ActuatorUtilTest(unittest.TestCase):
     """
+    Testing methods from ActuatorUtilTest Class
+    """
+
+    """
     Setting up resources
     """
     def setUp(self):
@@ -17,11 +21,6 @@ class ActuatorUtilTest(unittest.TestCase):
         self.actuatorData.setName("TestActuator")
         self.actuatorData.setCommand("Stable")
         self.actuatorData.setValue("TICK")
-        #Creating a variable to avoid running this pipeline in cloud
-        if path.exists("config/ConnectedDevicesConfig.props"):
-            self.pipelineAvoid = True
-        else:
-            self.pipelineAvoid = False    
 		
 
         
@@ -42,12 +41,6 @@ class ActuatorUtilTest(unittest.TestCase):
         sleep(0.5)
         #Clearing actuator
         self.listener.actuatorAdapter.clear()
-
-        
-        
-        
-	
-
 	
 if __name__ == "__main__":
 	#import syssys.argv = ['', 'Test.testName']

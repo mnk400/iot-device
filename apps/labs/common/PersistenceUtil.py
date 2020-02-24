@@ -12,7 +12,8 @@ logging.getLogger("persistenceLogger")
 
 class PersistenceUtil(object):
     '''
-    Classdocs
+    Class to read write data to redis
+    and to register threads which listen on redis
     '''
     #Setting to manually disable running threads
     enableThreads = True
@@ -61,7 +62,6 @@ class PersistenceUtil(object):
             if self.enableThreads == True:
                 #Running the thread
                 sensorDataListenerThread.start()
-            return True
             return True
         else:
             return False      

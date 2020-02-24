@@ -25,6 +25,7 @@ class MultiSensorAdapter(object):
     LOOP_FOREVER = False
     #Enable settings
     enableTempTask = True
+    enableListener = False
     
     
     def __init__(self, loop_param = 10, sleep_param = 1):
@@ -45,10 +46,15 @@ class MultiSensorAdapter(object):
         ''' 
         i = 0
         try:
-            #Starting TempSensorAdapters thread
-            self.TempSensor.start()
-            #Starting a listener thread
-            self.pUtil.registerActuatorDataDbmsListener()
+            if self.enableTempTask == True:
+                #Starting TempSensorAdapters thread
+                self.TempSensor.start()
+                #Starting a listener thread
+                if self.enableListener == True:
+                    self.pUtil.registerActuatorDataDbmsListener()
+            else:
+                logging.info("No thread initialized")
+                return False
             while self.TempSensor.isAlive():
                 sleep(0.1)
             return True
@@ -58,10 +64,6 @@ class MultiSensorAdapter(object):
         except (KeyboardInterrupt):
             logging.info("Received keyboard interrupt, quitting threads.\n")
             return True
-
-        #Logging if none of them initialized
-        if self.enableTempTask == False:
-            logging.info("No thread initialized")  
 
         return True               
         

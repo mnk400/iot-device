@@ -32,11 +32,10 @@ class DataUtilTest(unittest.TestCase):
 		self.sensorData = None
 		pass
 	
-	
+	'''
+	Testing if ActuatorData instance is converted to JSON properly.
+	'''
 	def testToJsonFromActuatorData(self):
-		'''
-		Testing if ActuatorData instance is converted to JSON properly.
-		'''
 		#Reading the json from the method
 		jsonStr = self.dataUtil.toJsonFromActuatorData(self.actuatorData)
 		#Converting the json to actuatorData instace to check if both the instances are the same
@@ -46,22 +45,20 @@ class DataUtilTest(unittest.TestCase):
 		self.assertEqual(self.actuatorData.getName(), tempActuatorData.getName())
 		self.assertEqual(self.actuatorData.getCommand(), tempActuatorData.getCommand())
 	
-	
+	'''
+	Testing if JSON strings are created properly from ActuatorData
+	'''
 	def testToActuatorDataFromJson(self):	
-		'''
-		Testing if JSON strings are created properly from ActuatorData
-		'''
 		#Creating an actuatroData instance
 		tempActuatorData = self.dataUtil.toActuatorDataFromJson(self.actuatorJSON)
 		#Creaing a json string usinf the above instance
 		jsonStr = self.dataUtil.toJsonFromActuatorData(tempActuatorData)
 		self.assertEqual(self.actuatorJSON, jsonStr)
 	
-	
+	'''
+	Testing if SensorData instance is converted to JSON properly
+	'''
 	def testToJsonFromSensorData(self):
-		'''
-		Testing if SensorData instance is converted to JSON properly
-		'''
 		#Reading the json from the method
 		jsonStr = self.dataUtil.toJsonFromSensorData(self.sensorData)
 		#Converting the json to actuatorData instace to check if both the instances are the same
@@ -74,11 +71,10 @@ class DataUtilTest(unittest.TestCase):
 		self.assertEqual(self.sensorData.getMinValue(), tempSensorData.getMinValue())
 		self.assertEqual(self.sensorData.totalCount, tempSensorData.totalCount)	
 	
-	
-	def testToSensorDataFromJson(self):
-		'''
-		Testing if JSON strings are created properly from sensorData
-		'''
+	'''
+	Testing if JSON strings are created properly from sensorData
+	'''
+	def testToSensorDataFromJson(self):	
 		#Creating an actuatroData instance
 		tempSensorData = self.dataUtil.toSensorDataFromJson(self.sensorJSON)
 		#Creaing a json string usinf the above instance
@@ -86,19 +82,17 @@ class DataUtilTest(unittest.TestCase):
 		self.assertEqual(self.sensorJSON, jsonStr)
 	
 	
-	
-	def testWriteActuatorDataToFile(self):
-		'''
-		Testing if data is being written to log file
-		'''	
+	'''
+	Testing if data is being written to log file
+	'''
+	def testWriteActuatorDataToFile(self):	
 		#Checking if we can write an object of actuatorData to the lof file.
 		self.assertEqual(True, self.dataUtil.writeActuatorDataToFile(self.dataUtil.toJsonFromActuatorData(self.actuatorData)))
 	
-	
+	'''
+	Testing if data is being written to log file
+	'''
 	def testWriteSensorDataToFile(self):
-		'''
-		Testing if data is being written to log file
-		'''
 		#Checking if we can write an object of sensorData to the lof file.
 		self.assertEqual(True, self.dataUtil.writeSensorDataToFile(self.dataUtil.toJsonFromSensorData(self.sensorData)))
 	

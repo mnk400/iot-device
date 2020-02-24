@@ -35,10 +35,10 @@ class PersistenceUtilTest(unittest.TestCase):
         self.actuatorData = None
         self.sensorData = None   
 
+    '''
+    Testing method which registers the listener thread for actuatorData
+    '''
     def testRegisterActuatorDataDbmsListener(self):
-        '''
-        Testing method which registers the listener thread for actuatorData
-        '''
         #Running only certain tests in pipeline
         #but all the tests when locally 
         if self.pipelineAvoid == False:
@@ -51,11 +51,11 @@ class PersistenceUtilTest(unittest.TestCase):
         else:
             self.assertEqual(False,self.pUtil.registerActuatorDataDbmsListener())
 
-
+    '''
+    Testing method which registers the listener thread for sensorData
+    '''
     def testRegisterSensorDataDbmsListene(self):
-        '''
-        Testing method which registers the listener thread for sensorData
-        '''
+        
         #Running only certain tests in pipeline
         #but all the tests when locally 
         if self.pipelineAvoid == False:
@@ -69,11 +69,10 @@ class PersistenceUtilTest(unittest.TestCase):
             self.assertEqual(False,self.pUtil.registerSensorDataDbmsListener())
   
 
-
-    def testWriteSensorDataDbmsListener(self):
-        '''
-        Testing method which writes sensorData to redis 
-        '''
+    '''
+    Testing method which writes sensorData to redis 
+    '''
+    def testWriteSensorDataDbmsListener(self):     
         #Running only certain tests in pipeline
         #but all the tests when locally 
         if self.pipelineAvoid == False:
@@ -86,12 +85,10 @@ class PersistenceUtilTest(unittest.TestCase):
         else:
             self.assertEqual(False,self.pUtil.writeSensorDataDbmsListener(self.sensorData))
 
-
-
-    def testWriteActuatorDataDbmsListener(self):
-        '''
-        Testing method which writes actuatorData to redis 
-        '''
+    '''
+    Testing method which writes actuatorData to redis 
+    '''
+    def testWriteActuatorDataDbmsListener(self):  
         #Running only certain tests in pipeline
         #but all the tests when locally 
         if self.pipelineAvoid == False:

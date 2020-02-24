@@ -32,10 +32,11 @@ class ActuatorUtilTest(unittest.TestCase):
         self.listener = None
         pass
 
+    '''
+    Testing if onMessage actuates the actuator as it should
+    '''
     def testOnMessage(self):
-        '''
-        Testing if onMessage actuates the actuator as it should
-        '''
+
         #Passing the actuatorData we defined instance in the method
         self.listener.onMessage(self.actuatorData)
         sleep(0.5)

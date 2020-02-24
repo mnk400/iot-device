@@ -32,7 +32,7 @@ class PersistenceUtil(object):
             self.connected = True
         except:
             self.connected = False
-            logging.error("Could not connect to redis")
+            logging.error("Could not connect to redis:PersistenceUtil")
 
 
     def registerActuatorDataDbmsListener(self) -> bool:

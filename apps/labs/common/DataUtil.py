@@ -26,7 +26,7 @@ class DataUtil(object):
     # create file handler which logs even debug messages
     afh = logging.FileHandler('logs/actuatorData.log')
     afh.setLevel(logging.DEBUG)
-    sensorLog.addHandler(afh)
+    actuatorLog.addHandler(afh)
 
     def __init__(self):
         '''

@@ -1,41 +1,145 @@
 import unittest
+from os import path
+from labs.module06 import MultiActuatorAdapter, MultiSensorAdapter, TempSensorAdapterTask, MqttClientConnector
+from labs.common import SensorData, ActuatorData
 
-
-"""
-Test class for all requisite Module06 functionality.
-
-Instructions:
-1) Rename 'testSomething()' method such that 'Something' is specific to your needs; add others as needed, beginning each method with 'test...()'.
-2) Add the '@Test' annotation to each new 'test...()' method you add.
-3) Import the relevant modules and classes to support your tests.
-4) Run this class as unit test app.
-5) Include a screen shot of the report when you submit your assignment.
-
-Please note: While some example test cases may be provided, you must write your own for the class.
-"""
 class Module06Test(unittest.TestCase):
 
 	"""
-	Use this to setup your tests. This is where you may want to load configuration
-	information (if needed), initialize class-scoped variables, create class-scoped
-	instances of complex objects, initialize any requisite connections, etc.
+	Setting up resources 
 	"""
 	def setUp(self):
-		pass
+		#Setting up resources from common
+		self.mqttTest = MqttClientConnector.MqttClientConnector()
+		self.multiActuatorAdapterTest = MultiActuatorAdapter.MultiActuatorAdapter()
+		self.tempSensorAdapterTaskTest = TempSensorAdapterTask.TempSensorAdapterTask(1,1,self.mqttTest)
+		self.multiSensorAdapterTest = MultiSensorAdapter.MultiSensorAdapter(1,1)
+		#SensorData object
+		self.sensorData = SensorData.SensorData()
+		self.sensorData.addValue(10)
+		self.sensorData.setName("TESTNAME")
+		#ActuatorData object
+		self.actuatorData = ActuatorData.ActuatorData()
+		self.actuatorData.setCommand("TESTCOMMAND")
+		self.actuatorData.setValue("TESTVALUE")
+		self.actuatorData.setName("TESTNAME")
+		#Variable to avoid in pipeline
+		if path.exists("config/ConnectedDevicesConfig.props"):
+			self.run = False
+		else:
+			self.run = True
+		
 
 	"""
-	Use this to tear down any allocated resources after your tests are complete. This
-	is where you may want to release connections, zero out any long-term data, etc.
+	Getting rid of resources
 	"""
 	def tearDown(self):
+		self.MultiActuatorAdapterTest = None
+		self.tempSensorAdapterTaskTest = None
+		self.multiSensorAdapterTest = None
+	'''
+	Testing the testUpdateActuator function in MultiActuatorAdapter
+	'''
+	def testUpdateActuator(self):
+		#Creating a temporary actuatorData instance
+		actuator = ActuatorData.ActuatorData()
+		actuator.setCommand("Print")
+		actuator.setValue(["TEST",(90,200,90)])
+		#Checking for a compatible command
+		self.assertEqual(True,self.multiActuatorAdapterTest.updateActuator(actuator))
+		#Checking for an incompatible command
+		actuator.setCommand("This shouldn't work")
+		self.assertEqual(False,self.multiActuatorAdapterTest.updateActuator(actuator))
+		self.multiActuatorAdapterTest.clear()
+
+	'''
+	Testing the testUpdateActuator function in MultiActuatorAdapter
+	'''
+	def testClear(self):
+		#Testing the clear function
+		self.assertEqual(True,self.multiActuatorAdapterTest.clear())
+
+	'''
+	Testing the run function in TempSensorAdapterTask
+	'''
+	def testRun(self):
+		#Should always return a True, no matter what the parameters
+		self.assertEqual(True, self.tempSensorAdapterTaskTest.run())
+
+
+	'''
+	Testing the run function in TempSensorAdapterTask
+	'''
+	def test__init__threads__(self):
+		#Testing the function which runs threads
+		#Should not run when setting disabled and return False
+		self.multiSensorAdapterTest.enableTempTask = False
+		self.assertEqual(False,self.multiSensorAdapterTest.__init_threads__())
+		self.multiSensorAdapterTest.enableTempTask = True
+		#Should run when setting is enabled
+		self.assertEqual(True,self.multiSensorAdapterTest.__init_threads__())
+
+	'''
+	Testing the testGenerateString function in TempSensorAdapterTask
+	'''
+	def testGenerateString(self):
+		#Should return an object of type string
+		self.tempSensorAdapterTaskTest.sensorData.addValue(20)
+		self.assertEqual(str, type(self.tempSensorAdapterTaskTest.generateString()))
+
+	'''
+	Testing PublishActuatorData in MqttClientConnector
+	'''	
+	def testPublishActuatorData(self):
+		#Testing case when wrong input
+		tempObj = object()
+		self.assertEqual(False,self.mqttTest.publishActuatorData(tempObj))
+		#Testing when the connected is False
+		self.assertEqual(False,self.mqttTest.publishActuatorData(self.actuatorData))
+		#Testing when connected, not running this in the pipeline, should return true
+		self.mqttTest.connectActuatorData()
+		self.assertEqual(False,self.mqttTest.publishActuatorData(self.actuatorData))
+		
+
+	'''
+	Testing PublishSensorData in MqttClientConnector
+	'''	
+	def testPublishSensorData(self):
+		#Testing case when wrong input
+		tempObj = object()
+		self.assertEqual(False,self.mqttTest.publishSensorData(tempObj))
+		#Testing when the connected is False
+		self.assertEqual(False,self.mqttTest.publishSensorData(self.sensorData))
+		#Testing when connected, not running this in the pipeline, should return a True
+		self.mqttTest.connectSensorData()
+		self.assertEqual(False,self.mqttTest.publishSensorData(self.sensorData))
+
+	'''
+	Testing ConnectActuatorData in MqttClientConnector
+	'''	
+	def testConnectActuatorData(self):
 		pass
 
-	"""
-	Place your comments describing the test here.
-	"""
-	def testSomething(self):
+	'''
+	Testing ConnectSensorData in MqttClientConnector
+	'''	
+	def testConnectSensorData(self):
 		pass
 
+	'''
+	Testing ListenActuatorData in MqttClientConnector
+	'''	
+	def testListenActuatorData(self):
+		pass
+
+	'''
+	Testing ListenSensorData in MqttClientConnector
+	'''	
+	def testListenSensorData(self):
+		pass
+
+
+		
 if __name__ == "__main__":
 	#import sys;sys.argv = ['', 'Test.testName']
 	unittest.main()

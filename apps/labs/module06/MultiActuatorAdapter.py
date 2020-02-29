@@ -3,7 +3,6 @@ Created on Feb 26, 2020
 
 @author: manik
 '''
-
 import logging
 from sense_hat import SenseHat
 from labs.common import ActuatorData 

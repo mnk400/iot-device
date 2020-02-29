@@ -5,7 +5,8 @@ Created on Feb 26, 2020
 '''
 import logging
 import threading
-from labs.common import SensorData, PersistenceUtil
+from labs.module06 import MqttClientConnector
+from labs.common import SensorData
 from sense_hat import SenseHat
 from time import sleep
 
@@ -18,7 +19,10 @@ class TempSensorAdapterTask(threading.Thread):
     Stores the data in the SensorData class.
     '''
     LOOP_FOREVER = False
-    def __init__(self, loop_param, sleep_param, pUtil: PersistenceUtil.PersistenceUtil):
+    enableMQTT   = False
+    threadStop   = False
+
+    def __init__(self, loop_param, sleep_param, mqttClient: MqttClientConnector.MqttClientConnector):
         '''
         Constructor
         '''
@@ -37,9 +41,8 @@ class TempSensorAdapterTask(threading.Thread):
         #clearing matrix
         self.sense.clear()
 
-        #PersistenceUtil reference
-        self.pUtil = pUtil
-        pass
+        #MQTT client
+        self.mqtt = mqttClient
 
     def run(self):
         '''
@@ -47,31 +50,36 @@ class TempSensorAdapterTask(threading.Thread):
         Data is then pushed to the SensorData instance
         '''
         i = 0
-        try:
-            while i < self.loop_limit or self.LOOP_FOREVER == True:
-                i = i+1
-                #Read from senseHAT     
-                humData = self.sense.get_temperature()
+        
+        while i < self.loop_limit or self.LOOP_FOREVER == True:
+            i = i+1
+            
+            #break and kill thread if activated
+            if self.threadStop:
+                break
 
-                #Add data to sensorData
-                self.sensorData.addValue(humData)
+            #Read from senseHAT     
+            humData = self.sense.get_temperature()
 
-                # ~~ Replace with MQTT code
+            #Add data to sensorData
+            self.sensorData.addValue(humData)
+            humString = self.generateString()
 
-                # #Passing the Json on redis
-                # self.pUtil.writeSensorDataDbmsListener(self.sensorData)
-                # #Generate a will detailed string
-                humString = self.generateString()
+            if self.enableMQTT:
+                #publish data to the MQTT topic
+                self.mqtt.publishSensorData(self.sensorData)
 
-                #Log the data and send the sensorData instance in the SensorDataManager
-                logging.info(humString) 
-                sleep(self.sleep_time)
-        except (KeyboardInterrupt):
-            logging.info("Received keyboard interrupt, quitting threads.\n")
-            self.sense.clear()
-            return True        
+            #Log the data and send the sensorData instance in the SensorDataManager
+            logging.info(humString) 
+            sleep(self.sleep_time)      
+
         return True 
 
+    def stop(self) -> bool:
+        logging.info("Quitting Thread")
+        self.threadStop = True
+        return True
+        
     def generateString(self) -> str:
         '''
         Generate a detailed string from a sensorData instance and returns it.

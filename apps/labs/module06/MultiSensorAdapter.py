@@ -3,8 +3,7 @@ Created on Feb 26, 2020
 
 @author: manik
 '''
-from labs.module05 import TempSensorAdapterTask
-from labs.common import PersistenceUtil
+from labs.module06 import TempSensorAdapterTask, MqttClientConnector
 from time import sleep
 import logging
 import threading
@@ -25,8 +24,7 @@ class MultiSensorAdapter(object):
     LOOP_FOREVER = False
     #Enable settings
     enableTempTask = True
-    enableListener = False
-    
+    enableMQTT = False
     
     def __init__(self, loop_param = 10, sleep_param = 1):
         '''
@@ -34,10 +32,11 @@ class MultiSensorAdapter(object):
         Initializing both the sensor tasks and a data manager.
         '''
 
-        self.loop = loop_param
-        self.sleep = sleep_param
-        self.pUtil          = PersistenceUtil.PersistenceUtil()
-        self.TempSensor     = TempSensorAdapterTask.TempSensorAdapterTask(loop_param, sleep_param, self.pUtil)
+        self.loop       = loop_param
+        self.sleep      = sleep_param
+        self.mqttClient = MqttClientConnector.MqttClientConnector()
+        self.mqttClient.connectSensorData()
+        self.TempSensor = TempSensorAdapterTask.TempSensorAdapterTask(loop_param, sleep_param, self.mqttClient)
 
 
     def __init_threads__(self):
@@ -49,9 +48,7 @@ class MultiSensorAdapter(object):
             if self.enableTempTask == True:
                 #Starting TempSensorAdapters thread
                 self.TempSensor.start()
-                #Starting a listener thread
-                if self.enableListener == True:
-                    self.pUtil.registerActuatorDataDbmsListener()
+                
             else:
                 logging.info("No thread initialized")
                 return False
@@ -62,8 +59,10 @@ class MultiSensorAdapter(object):
         #Running an event handler which checks for keyboard interrupts
         #In case of an keyboard Interrupt, this will shut down actuator and clear it
         except (KeyboardInterrupt):
-            logging.info("Received keyboard interrupt, quitting threads.\n")
-            return True
+            logging.info("Received keyboard interrupt.")
+            self.TempSensor.stop()
+            self.TempSensor.join()
+            self.mqttClient.disconnect()
 
         return True               
         
@@ -73,9 +72,10 @@ class MultiSensorAdapter(object):
         '''
         i = 0
         self.TempSensor.LOOP_FOREVER = self.LOOP_FOREVER
+        self.TempSensor.enableMQTT = self.enableMQTT
         #Init and run threads
         self.__init_threads__()  
         #Clearing the actuator when Task Thread stops running
         self.TempSensor.sense.clear()
         #Exiting the program
-        os._exit(1) 
+        return True

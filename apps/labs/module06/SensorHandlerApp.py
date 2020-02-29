@@ -3,8 +3,9 @@ Created on Feb 26, 2020
 
 @author: manik
 '''
+
 import threading
-from labs.module05 import MultiSensorAdapter
+from labs.module06 import MultiSensorAdapter
 
 if __name__ == '__main__':
     '''

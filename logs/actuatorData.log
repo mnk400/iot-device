@@ -65,3 +65,17 @@ Received ActuatorData JSONb'{"command":"Decrease","name":"Temperature Sensor Dat
 Received ActuatorData JSONb'{"command":"Decrease","name":"Temperature Sensor Data","value":"DOWNARROW"}'
 Received ActuatorData JSONb'{"command":"Decrease","name":"Temperature Sensor Data","value":"DOWNARROW"}'
 Received ActuatorData JSONb'{"command":"Decrease","name":"Temperature Sensor Data","value":"DOWNARROW"}'
+Created actuatorData JSON{"command": "LOLOL", "name": "Not Set", "value": null}
+Created actuatorData JSON{"command": "LOLOL", "name": "Not Set", "value": null}
+Created actuatorData JSON{"command": "LOLOL", "name": "Not Set", "value": null}
+Created actuatorData JSON{"command": "LOLOL", "name": "Not Set", "value": null}
+Created actuatorData JSON{"command": "LOLOL", "name": "Not Set", "value": null}
+Created actuatorData JSON{"command": "LOLOL", "name": "Not Set", "value": null}
+Received ActuatorData JSONb'{"command":"Decrease","name":"Temperature Sensor Data","value":"DOWNARROW"}'
+Received ActuatorData JSONb'{"command":"Decrease","name":"Temperature Sensor Data","value":"DOWNARROW"}'
+Received ActuatorData JSONb'{"command":"Decrease","name":"Temperature Sensor Data","value":"DOWNARROW"}'
+Received ActuatorData JSONb'{"command":"Decrease","name":"Temperature Sensor Data","value":"DOWNARROW"}'
+Received ActuatorData JSONb'{"command":"Decrease","name":"Temperature Sensor Data","value":"DOWNARROW"}'
+Received ActuatorData JSONb'{"command":"Decrease","name":"Temperature Sensor Data","value":"DOWNARROW"}'
+Received ActuatorData JSONb'{"command":"Decrease","name":"Temperature Sensor Data","value":"DOWNARROW"}'
+Received ActuatorData JSONb'{"command":"Decrease","name":"Temperature Sensor Data","value":"DOWNARROW"}'

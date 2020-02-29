@@ -2,7 +2,7 @@ import unittest
 from os import path
 from labs.module06 import MultiActuatorAdapter, MultiSensorAdapter, TempSensorAdapterTask, MqttClientConnector
 from labs.common import SensorData, ActuatorData
-
+from time import sleep
 class Module06Test(unittest.TestCase):
 
 	"""
@@ -118,25 +118,43 @@ class Module06Test(unittest.TestCase):
 	Testing ConnectActuatorData in MqttClientConnector
 	'''	
 	def testConnectActuatorData(self):
-		pass
+		#Should always return true
+		self.assertEqual(True,self.mqttTest.connectActuatorData())
+
 
 	'''
 	Testing ConnectSensorData in MqttClientConnector
 	'''	
 	def testConnectSensorData(self):
-		pass
+		#Should always return true
+		self.assertEqual(True,self.mqttTest.connectSensorData())
+
 
 	'''
 	Testing ListenActuatorData in MqttClientConnector
 	'''	
 	def testListenActuatorData(self):
-		pass
+		#Should return a false when not connected
+		self.assertEqual(False,self.mqttTest.listenActuatorData())
+		#Should return a true when connected
+		self.mqttTest.connectActuatorData()
+		sleep(1)
+		self.assertEqual(True,self.mqttTest.listenActuatorData())
+		self.mqttTest.disconnect()
+		
 
 	'''
 	Testing ListenSensorData in MqttClientConnector
 	'''	
 	def testListenSensorData(self):
-		pass
+		#Should return a false when not connected
+		self.assertEqual(False,self.mqttTest.listenSensorData())
+		#Should return a true when connected
+		self.mqttTest.connectSensorData()
+		sleep(1)
+		self.assertEqual(True,self.mqttTest.listenSensorData())
+		self.mqttTest.disconnect()
+		
 
 
 		

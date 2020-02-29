@@ -2,3 +2,4 @@ psutil
 configparser
 numpy
 redis
+paho-mqtt

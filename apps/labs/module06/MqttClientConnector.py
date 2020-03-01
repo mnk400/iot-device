@@ -96,7 +96,6 @@ class MqttClientConnector(object):
         On Connect @callback function for actuatorData
         '''
         logging.info("MQTT:Connected to actuatorData topic")
-        print("BITCH I AM HERE")
         #Setting the actuatorConnected Value to True
         self.actuatorConnected = True
 

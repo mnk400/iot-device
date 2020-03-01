@@ -6,7 +6,7 @@ Created on Feb 26, 2020
 import logging
 import threading
 from labs.module06 import MqttClientConnector
-from labs.common import SensorData
+from labs.common import SensorData, PersistenceUtil
 from sense_hat import SenseHat
 from time import sleep
 
@@ -22,7 +22,7 @@ class TempSensorAdapterTask(threading.Thread):
     enableMQTT   = False
     threadStop   = False
 
-    def __init__(self, loop_param, sleep_param, mqttClient: MqttClientConnector.MqttClientConnector):
+    def __init__(self, loop_param, sleep_param, pUtil: PersistenceUtil.PersistenceUtil,mqttClient: MqttClientConnector.MqttClientConnector):
         '''
         Constructor
         '''
@@ -43,6 +43,9 @@ class TempSensorAdapterTask(threading.Thread):
 
         #MQTT client
         self.mqtt = mqttClient
+
+        #PersistenceUtil
+        self.pUtil = pUtil
 
     def run(self):
         '''
@@ -68,6 +71,9 @@ class TempSensorAdapterTask(threading.Thread):
             if self.enableMQTT:
                 #publish data to the MQTT topic
                 self.mqtt.publishSensorData(self.sensorData)
+
+            #Passing the Json on redis
+            self.pUtil.writeSensorDataDbmsListener(self.sensorData)
 
             #Log the data and send the sensorData instance in the SensorDataManager
             logging.info(humString) 

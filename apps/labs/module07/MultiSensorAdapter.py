@@ -3,7 +3,7 @@ Created on Mar 12, 2020
 
 @author: manik
 '''
-from labs.module07 import TempSensorAdapterTask, MqttClientConnector
+from labs.module07 import TempSensorAdapterTask, CoAPClientConnector
 from labs.common import PersistenceUtil
 from time import sleep
 import logging
@@ -36,13 +36,12 @@ class MultiSensorAdapter(object):
         #Defining loop and sleep time
         self.loop       = loop_param
         self.sleep      = sleep_param
-        #Defining MQTT Clients
-        self.mqttClient = MqttClientConnector.MqttClientConnector()
-        self.mqttClient.connectSensorData()
+        #Defining CoAP Clients
+        self.coAPClient = CoAPClientConnector.CoAPClientConnector()
         #Defining PersistenceUtil
         self.pUtil      = PersistenceUtil.PersistenceUtil()
         #Creating Task
-        self.TempSensor = TempSensorAdapterTask.TempSensorAdapterTask(loop_param, sleep_param, self.pUtil, self.mqttClient)
+        self.TempSensor = TempSensorAdapterTask.TempSensorAdapterTask(loop_param, sleep_param, self.pUtil, self.coAPClient)
 
 
     def __init_threads__(self):
@@ -54,7 +53,7 @@ class MultiSensorAdapter(object):
             if self.enableTempTask == True:
                 #Starting TempSensorAdapters thread
                 self.TempSensor.start()
-
+            #self.coAPClient.sendSensorData(self.TempSensor.sensorData)
             if self.enableRedis == True:
                 self.pUtil.registerSensorDataDbmsListener()  
             else:

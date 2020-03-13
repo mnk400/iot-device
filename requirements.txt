@@ -3,4 +3,4 @@ configparser
 numpy
 redis
 paho-mqtt
-CoAPthon
+aiocoap

@@ -5,7 +5,8 @@ Created on Mar 12, 2020
 '''
 import logging
 import threading
-from labs.module07 import MqttClientConnector
+import asyncio
+from labs.module07 import CoAPClientConnector
 from labs.common import SensorData, PersistenceUtil
 from sense_hat import SenseHat
 from time import sleep
@@ -22,11 +23,13 @@ class TempSensorAdapterTask(threading.Thread):
     enableMQTT   = False
     threadStop   = False
 
-    def __init__(self, loop_param, sleep_param, pUtil: PersistenceUtil.PersistenceUtil,mqttClient: MqttClientConnector.MqttClientConnector):
+    def __init__(self, loop_param, sleep_param, pUtil: PersistenceUtil.PersistenceUtil,coAPClient: CoAPClientConnector.CoAPClientConnector):
         '''
         Constructor
         '''
-        threading.Thread.__init__(self)
+        #Init asyncio event loop
+        self.loop = asyncio.new_event_loop()
+        threading.Thread.__init__(self, args=(self.loop,))
 
         self.loop_limit     = loop_param
         self.sleep_time     = sleep_param
@@ -42,7 +45,7 @@ class TempSensorAdapterTask(threading.Thread):
         self.sense.clear()
 
         #MQTT client
-        self.mqtt = mqttClient
+        self.coAP = coAPClient
 
         #PersistenceUtil
         self.pUtil = pUtil
@@ -70,7 +73,7 @@ class TempSensorAdapterTask(threading.Thread):
 
             if self.enableMQTT:
                 #publish data to the MQTT topic
-                self.mqtt.publishSensorData(self.sensorData)
+                self.coAP.sendSensorData(self.loop, self.sensorData)
 
             #Passing the Json on redis
             self.pUtil.writeSensorDataDbmsListener(self.sensorData)

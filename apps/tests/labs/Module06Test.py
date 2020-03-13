@@ -1,8 +1,9 @@
 import unittest
-from os import path
+
 from labs.module06 import MultiActuatorAdapter, MultiSensorAdapter, TempSensorAdapterTask, MqttClientConnector
-from labs.common import SensorData, ActuatorData
+from labs.common import SensorData, ActuatorData, PersistenceUtil
 from time import sleep
+
 class Module06Test(unittest.TestCase):
 
 	"""
@@ -10,9 +11,12 @@ class Module06Test(unittest.TestCase):
 	"""
 	def setUp(self):
 		#Setting up resources from common
+		#Creating PersistenceUtil object
+		self.pUtil = PersistenceUtil.PersistenceUtil()
+		#Instances from Module06
 		self.mqttTest = MqttClientConnector.MqttClientConnector()
 		self.multiActuatorAdapterTest = MultiActuatorAdapter.MultiActuatorAdapter()
-		self.tempSensorAdapterTaskTest = TempSensorAdapterTask.TempSensorAdapterTask(1,1,self.mqttTest)
+		self.tempSensorAdapterTaskTest = TempSensorAdapterTask.TempSensorAdapterTask(1,1,self.pUtil,self.mqttTest)
 		self.multiSensorAdapterTest = MultiSensorAdapter.MultiSensorAdapter(1,1)
 		#SensorData object
 		self.sensorData = SensorData.SensorData()
@@ -23,11 +27,6 @@ class Module06Test(unittest.TestCase):
 		self.actuatorData.setCommand("TESTCOMMAND")
 		self.actuatorData.setValue("TESTVALUE")
 		self.actuatorData.setName("TESTNAME")
-		#Variable to avoid in pipeline
-		if path.exists("config/ConnectedDevicesConfig.props"):
-			self.run = False
-		else:
-			self.run = True
 		
 
 	"""
@@ -65,7 +64,6 @@ class Module06Test(unittest.TestCase):
 	def testRun(self):
 		#Should always return a True, no matter what the parameters
 		self.assertEqual(True, self.tempSensorAdapterTaskTest.run())
-
 
 	'''
 	Testing the run function in TempSensorAdapterTask
@@ -121,14 +119,12 @@ class Module06Test(unittest.TestCase):
 		#Should always return true
 		self.assertEqual(True,self.mqttTest.connectActuatorData())
 
-
 	'''
 	Testing ConnectSensorData in MqttClientConnector
 	'''	
 	def testConnectSensorData(self):
 		#Should always return true
 		self.assertEqual(True,self.mqttTest.connectSensorData())
-
 
 	'''
 	Testing ListenActuatorData in MqttClientConnector
@@ -140,8 +136,7 @@ class Module06Test(unittest.TestCase):
 		self.mqttTest.connectActuatorData()
 		sleep(1)
 		self.assertEqual(True,self.mqttTest.listenActuatorData())
-		self.mqttTest.disconnect()
-		
+		self.mqttTest.disconnect()		
 
 	'''
 	Testing ListenSensorData in MqttClientConnector
@@ -154,8 +149,6 @@ class Module06Test(unittest.TestCase):
 		sleep(1)
 		self.assertEqual(True,self.mqttTest.listenSensorData())
 		self.mqttTest.disconnect()
-		
-
 
 		
 if __name__ == "__main__":

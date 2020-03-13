@@ -4,7 +4,6 @@ Created on Mar 12, 2020
 @author: manik
 '''
 
-import paho.mqtt.client as mqtt
 from labs.common import DataUtil, SensorData, ActuatorData
 import logging
 from time import sleep
@@ -13,14 +12,13 @@ from time import sleep
 logging.getLogger("mqttLogger")
 logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.DEBUG)
 
-class MqttClientConnector(object):
+class CoAPClientConnector(object):
     '''
-    Class that connects to the MQTT channel and registers a
+    Class that connects to CoAP and registers a
     listener which executes something when a message is received.
     '''
 
     #Get a logger
-
 
     #Specifying the MQTT details
     brokerAddress = "broker.hivemq.com"

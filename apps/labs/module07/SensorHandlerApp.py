@@ -16,7 +16,7 @@ if __name__ == '__main__':
     '''
     module07                    = MultiSensorAdapter.MultiSensorAdapter(1,6)                     #Looptime and sleeptime of humidityTask and HI2CTask respectivley
     module07.enableTempTask     = True                                                           #Enable HumidityTask
-    module07.enableMQTT         = True                                                           #Enable MQTT sender
+    module07.enableCoAP         = True                                                           #Enable MQTT sender
     module07.enableRedis        = False                                                          #Enable Redis Database
     module07.LOOP_FOREVER       = True                                                           #Loop forever setting, if yes, program ignores the loopvalue set in the constructor
     module07.runAdapter()

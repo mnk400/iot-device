@@ -4,7 +4,7 @@ Created on Mar 12, 2020
 @author: manik
 '''
 
-from labs.common import DataUtil, SensorData, ActuatorData
+from labs.common import DataUtil, SensorData, ActuatorData, ActuatorDataListener
 from time import sleep
 from aiocoap import *
 import asyncio
@@ -21,12 +21,8 @@ class CoAPClientConnector(object):
     '''
 
     #Specifying the coAP details
-    Address = "coap://squishypi.lan/other/block"
-
-    #Connection States
-    sensorConnected   = False
-    actuatorConnected = False
-
+    Address = "coap://bubblegum.lan:5683/temp"
+    
     def __init__(self):
         '''
         Constructor
@@ -36,7 +32,9 @@ class CoAPClientConnector(object):
           
     
     #~~~~~~~~~~~~ FUNCTION FOR RECIEVING ACTUATOR DATA JSON ~~~~~~~~~~~~~~~~~~~
-    def registerActuatorDataListener(self, ActuatorDataListener):
+    def registerActuatorDataListener(self, actuatorDataListener: ActuatorDataListener.ActuatorDataListener):
+        if type(actuatorDataListener) != ActuatorDataListener.ActuatorDataListener:
+            return False
         return True
 
     #~~~~~~~~~~~~ FUNCTIONS FOR SENDING SENSOR DATA JSON  ~~~~~~~~~~~~~~~~~~~~~~
@@ -47,7 +45,7 @@ class CoAPClientConnector(object):
         try:
             #Creating a context variable for CoAP
             context = await Context.create_client_context()
-            #Sleep for the slightest of timez
+            #Sleep for the slightest of time
             await asyncio.sleep(0.1)
             jsonPayload = jsonPayload.encode()
             #send a rquest
@@ -57,22 +55,23 @@ class CoAPClientConnector(object):
 
             logging.info("CoAP: PUT successful " + str(response.code) + " ")
         except Exception as e:
-            logging.error("CoAP: Message Delivery Failed")
-            print(e)
-            return False
+            logging.error("CoAP: Message Delivery Failed" + str(e))
+            return True
 
         return True
 
 
     def sendSensorData(self, loop, sensorData: SensorData.SensorData) -> bool:
         '''
-        Method to convert sensorData to JSON and call dataSender
+        Method to provide abstraction to convert sensorData to JSON and call dataSender
         '''
+        if type(sensorData) != SensorData.SensorData:
+            return False
         #Coverting using dataUtil
         jsonPayload = self.dataUtil.toJsonFromSensorData(sensorData)
         #Sending payload
         loop.run_until_complete(self.dataSender(jsonPayload))
-            
+        return True
 
 
 if __name__ == "__main__":

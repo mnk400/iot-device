@@ -1,41 +1,124 @@
 import unittest
 
+from labs.module07 import MultiActuatorAdapter, MultiSensorAdapter, TempSensorAdapterTask, CoAPClientConnector
+from labs.common import SensorData, ActuatorData, PersistenceUtil, ActuatorDataListener
+import redis
+import asyncio
+from time import sleep
 
-"""
-Test class for all requisite Module07 functionality.
-
-Instructions:
-1) Rename 'testSomething()' method such that 'Something' is specific to your needs; add others as needed, beginning each method with 'test...()'.
-2) Add the '@Test' annotation to each new 'test...()' method you add.
-3) Import the relevant modules and classes to support your tests.
-4) Run this class as unit test app.
-5) Include a screen shot of the report when you submit your assignment.
-
-Please note: While some example test cases may be provided, you must write your own for the class.
-"""
 class Module07Test(unittest.TestCase):
 
 	"""
-	Use this to setup your tests. This is where you may want to load configuration
-	information (if needed), initialize class-scoped variables, create class-scoped
-	instances of complex objects, initialize any requisite connections, etc.
+	Setting up resources 
 	"""
 	def setUp(self):
-		pass
+		#Setting up resources from common
+		#Creating PersistenceUtil object
+		self.pUtil = PersistenceUtil.PersistenceUtil()
+		#Instances from Module06
+		self.coAPTest = CoAPClientConnector.CoAPClientConnector()
+		self.multiActuatorAdapterTest = MultiActuatorAdapter.MultiActuatorAdapter()
+		self.tempSensorAdapterTaskTest = TempSensorAdapterTask.TempSensorAdapterTask(1,1,self.pUtil,self.coAPTest)
+		self.multiSensorAdapterTest = MultiSensorAdapter.MultiSensorAdapter(1,1)
+		#Getting an asyncio event loop
+		self.loop = asyncio.get_event_loop()
+		#SensorData object
+		self.sensorData = SensorData.SensorData()
+		self.sensorData.addValue(10)
+		self.sensorData.setName("TESTNAME")
+		#ActuatorData object
+		self.actuatorData = ActuatorData.ActuatorData()
+		self.actuatorData.setCommand("TESTCOMMAND")
+		self.actuatorData.setValue("TESTVALUE")
+		self.actuatorData.setName("TESTNAME")
+		
 
 	"""
-	Use this to tear down any allocated resources after your tests are complete. This
-	is where you may want to release connections, zero out any long-term data, etc.
+	Getting rid of resources
 	"""
 	def tearDown(self):
-		pass
+		self.MultiActuatorAdapterTest = None
+		self.tempSensorAdapterTaskTest = None
+		self.multiSensorAdapterTest = None
 
-	"""
-	Place your comments describing the test here.
-	"""
-	def testSomething(self):
-		pass
+	'''
+	Testing the testUpdateActuator function in MultiActuatorAdapter
+	'''
+	def testUpdateActuator(self):
+		#Creating a temporary actuatorData instance
+		actuator = ActuatorData.ActuatorData()
+		actuator.setCommand("Print")
+		actuator.setValue(["TEST",(90,200,90)])
+		#Checking for a compatible command
+		self.assertEqual(True,self.multiActuatorAdapterTest.updateActuator(actuator))
+		#Checking for an incompatible command
+		actuator.setCommand("This shouldn't work")
+		self.assertEqual(False,self.multiActuatorAdapterTest.updateActuator(actuator))
+		self.multiActuatorAdapterTest.clear()
 
+	'''
+	Testing the testUpdateActuator function in MultiActuatorAdapter
+	'''
+	def testClear(self):
+		#Testing the clear function
+		self.assertEqual(True,self.multiActuatorAdapterTest.clear())
+
+	'''
+	Testing the run function in TempSensorAdapterTask
+	'''
+	def testRun(self):
+		#Should always return a True, no matter what the parameters
+		self.assertEqual(True, self.tempSensorAdapterTaskTest.run())
+
+	'''
+	Testing the run function in TempSensorAdapterTask
+	'''
+	def test__init__threads__(self):
+		#Testing the function which runs threads
+		#Should not run when setting disabled and return False
+		self.multiSensorAdapterTest.enableTempTask = False
+		self.assertEqual(False,self.multiSensorAdapterTest.__init_threads__())
+		self.multiSensorAdapterTest.enableTempTask = True
+		#Should run when setting is enabled
+		self.assertEqual(True,self.multiSensorAdapterTest.__init_threads__())
+
+	'''
+	Testing the testGenerateString function in TempSensorAdapterTask
+	'''
+	def testGenerateString(self):
+		#Should return an object of type string
+		self.tempSensorAdapterTaskTest.sensorData.addValue(20)
+		self.assertEqual(str, type(self.tempSensorAdapterTaskTest.generateString()))
+
+
+	'''
+	Testing registerActuatorDataListener in CoAPClientConnector
+	'''	
+	def testregisterActuatorDataListener(self):
+		#Should return True when right input
+		self.assertEqual(True,self.coAPTest.registerActuatorDataListener(ActuatorDataListener.ActuatorDataListener(redis.Redis)))
+		#Should return False when wrong input
+		self.assertEqual(False,self.coAPTest.registerActuatorDataListener(object))
+	
+	'''
+	Testing dataSender in CoAPClientConnector
+	'''	
+	def testDataSender(self):
+		#Should always return true no matter if the message could be
+		#sent or not, errors are in the logs
+		self.assertEqual(True,self.loop.run_until_complete(self.coAPTest.dataSender("TEST STRING")))
+
+	'''
+	Testing sendSensorData in CoAPClientConnector
+	'''
+	def testSendSensorData(self):
+		#Should return false when input not SensorData
+		self.assertEqual(False,self.coAPTest.sendSensorData(self.loop,object))
+		#Should return true when input is SensorData
+		self.assertEqual(True,self.coAPTest.sendSensorData(self.loop,self.sensorData))
+
+
+		
 if __name__ == "__main__":
 	#import sys;sys.argv = ['', 'Test.testName']
 	unittest.main()

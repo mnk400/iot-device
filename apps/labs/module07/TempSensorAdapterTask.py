@@ -20,7 +20,7 @@ class TempSensorAdapterTask(threading.Thread):
     Stores the data in the SensorData class.
     '''
     LOOP_FOREVER = False
-    enableMQTT   = False
+    enableCoAP   = False
     threadStop   = False
 
     def __init__(self, loop_param, sleep_param, pUtil: PersistenceUtil.PersistenceUtil,coAPClient: CoAPClientConnector.CoAPClientConnector):
@@ -29,6 +29,8 @@ class TempSensorAdapterTask(threading.Thread):
         '''
         #Init asyncio event loop
         self.loop = asyncio.new_event_loop()
+
+        #Init the threadx
         threading.Thread.__init__(self, args=(self.loop,))
 
         self.loop_limit     = loop_param
@@ -71,7 +73,7 @@ class TempSensorAdapterTask(threading.Thread):
             self.sensorData.addValue(humData)
             humString = self.generateString()
 
-            if self.enableMQTT:
+            if self.enableCoAP:
                 #publish data to the MQTT topic
                 self.coAP.sendSensorData(self.loop, self.sensorData)
 

@@ -25,7 +25,7 @@ class MultiSensorAdapter(object):
     LOOP_FOREVER = False
     #Enable settings
     enableTempTask = True
-    enableMQTT = False
+    enableCoAP = False
     enableRedis = False
     
     def __init__(self, loop_param = 10, sleep_param = 1):
@@ -82,7 +82,7 @@ class MultiSensorAdapter(object):
         '''
         i = 0
         self.TempSensor.LOOP_FOREVER = self.LOOP_FOREVER
-        self.TempSensor.enableMQTT = self.enableMQTT
+        self.TempSensor.enableCoAP = self.enableCoAP
         #Init and run threads
         self.__init_threads__()  
         #Clearing the actuator when Task Thread stops running

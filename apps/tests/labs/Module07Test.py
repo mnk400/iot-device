@@ -41,7 +41,7 @@ class Module07Test(unittest.TestCase):
 		self.tempSensorAdapterTaskTest = None
 		self.multiSensorAdapterTest = None
 		self.actuatorData = None
-		self.sensorData =
+		self.sensorData = None
 
 	'''
 	Testing the testUpdateActuator function in MultiActuatorAdapter

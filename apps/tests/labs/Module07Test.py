@@ -101,22 +101,69 @@ class Module07Test(unittest.TestCase):
 		self.assertEqual(False,self.coAPTest.registerActuatorDataListener(object))
 	
 	'''
-	Testing dataSender in CoAPClientConnector
+	Testing dataPUT in CoAPClientConnector
 	'''	
-	def testDataSender(self):
+	def testDataPUT(self):
 		#Should always return true no matter if the message could be
 		#sent or not, errors are in the logs
-		self.assertEqual(True,self.loop.run_until_complete(self.coAPTest.dataSender("TEST STRING")))
+		self.assertEqual(True,self.loop.run_until_complete(self.coAPTest.dataPUT("TEST STRING")))
 
 	'''
-	Testing sendSensorData in CoAPClientConnector
+	Testing dataPOST in CoAPClientConnector
+	'''	
+	def testDataPOST(self):
+		#Should always return true no matter if the message could be
+		#sent or not, errors are in the logs
+		self.assertEqual(True,self.loop.run_until_complete(self.coAPTest.dataPOST("TEST STRING")))
+	
 	'''
-	def testSendSensorData(self):
+	Testing dataGET in CoAPClientConnector
+	'''	
+	def testDataGET(self):
+		#Should always return true no matter if the message could be
+		#sent or not, errors are in the logs
+		self.assertEqual(True,self.loop.run_until_complete(self.coAPTest.dataGET()))
+
+	'''
+	Testing dataDelete in CoAPClientConnector
+	'''	
+	def testDataDelete(self):
+		#Should always return true no matter if the message could be
+		#sent or not, errors are in the logs
+		self.assertEqual(True,self.loop.run_until_complete(self.coAPTest.dataDelete()))
+
+	'''
+	Testing getData in CoAPClientConnector
+	'''
+	def testGetData(self):
+		#Should always return a True
+		self.assertEqual(True,self.coAPTest.getData(self.loop))
+	
+	'''
+	Testing deleteData in CoAPClientConnector
+	'''
+	def testDeleteData(self):
+		#Should always return a True
+		self.assertEqual(True,self.coAPTest.deleteData(self.loop))
+
+	'''
+	Testing sendSensorDataPUT in CoAPClientConnector
+	'''
+	def testSendSensorDataPUT(self):
 		#Should return false when input not SensorData
-		self.assertEqual(False,self.coAPTest.sendSensorData(self.loop,object))
+		self.assertEqual(False,self.coAPTest.sendSensorDataPUT(self.loop,object))
 		#Should return true when input is SensorData
-		self.assertEqual(True,self.coAPTest.sendSensorData(self.loop,self.sensorData))
-
+		self.assertEqual(True,self.coAPTest.sendSensorDataPUT(self.loop,self.sensorData))
+	
+	'''
+	Testing sendSensorDataPOST in CoAPClientConnector
+	'''
+	def testSendSensorDataPOST(self):
+		#Should return false when input not SensorData
+		self.assertEqual(False,self.coAPTest.sendSensorDataPOST(self.loop,object))
+		#Should return true when input is SensorData
+		self.assertEqual(True,self.coAPTest.sendSensorDataPOST(self.loop,self.sensorData))
+	
 
 		
 if __name__ == "__main__":

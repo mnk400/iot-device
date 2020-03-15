@@ -75,7 +75,7 @@ class TempSensorAdapterTask(threading.Thread):
 
             if self.enableCoAP:
                 #publish data to the MQTT topic
-                self.coAP.sendSensorData(self.loop, self.sensorData)
+                self.coAP.sendSensorDataPUT(self.loop, self.sensorData)
 
             #Passing the Json on redis
             self.pUtil.writeSensorDataDbmsListener(self.sensorData)

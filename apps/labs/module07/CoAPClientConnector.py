@@ -159,9 +159,9 @@ class CoAPClientConnector(object):
         loop.run_until_complete(self.dataDelete())
         return True
         
-if __name__ == "__main__":
-    coap = CoAPClientConnector()
-    s = SensorData.SensorData()
-    s.addValue(10)
-    coap.getData(asyncio.get_event_loop())
+# if __name__ == "__main__":
+#     coap = CoAPClientConnector()
+#     s = SensorData.SensorData()
+#     s.addValue(10)
+#     coap.getData(asyncio.get_event_loop())
     

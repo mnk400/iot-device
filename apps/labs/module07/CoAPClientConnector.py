@@ -163,5 +163,5 @@ if __name__ == "__main__":
     coap = CoAPClientConnector()
     s = SensorData.SensorData()
     s.addValue(10)
-    coap.deleteData(asyncio.get_event_loop())
+    coap.getData(asyncio.get_event_loop())
     

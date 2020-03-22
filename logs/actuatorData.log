@@ -71,3 +71,22 @@ Created actuatorData JSON{"command": "LOLOL", "name": "Not Set", "value": null}
 Created actuatorData JSON{"command": "LOLOL", "name": "Not Set", "value": null}
 Created actuatorData JSON{"command": "LOLOL", "name": "Not Set", "value": null}
 Created actuatorData JSON{"command": "LOLOL", "name": "Not Set", "value": null}
+Received ActuatorData JSON{"command":"print","name":"Ubidots Recv Data","value":" 35"}
+Received ActuatorData JSON{"command":"print","name":"Ubidots Recv Data","value":" 44"}
+Received ActuatorData JSON{"command":"Print","name":"Ubidots Recv Data","value":" 44"}
+Received ActuatorData JSON{"command":"Print","name":"Ubidots Recv Data","value":" 35"}
+Received ActuatorData JSON{"command":"Print","name":"Ubidots Recv Data","value":" 46"}
+Received ActuatorData JSON{"command":"Print","name":"Ubidots Recv Data","value":" 38"}
+Received ActuatorData JSON{"command":"Print","name":"Ubidots Recv Data","value":" 34"}
+Received ActuatorData JSON{"command":"Print","name":"Ubidots Recv Data","value":" 44"}
+Received ActuatorData JSON{"command":"Print","name":"Ubidots Recv Data","value":" 42"}
+Received ActuatorData JSON{"command":"Print","name":"Ubidots Recv Data","value":" 37"}
+Received ActuatorData JSON{"command":"Print","name":"Ubidots Recv Data","value":" 32"}
+Received ActuatorData JSON{"command":"Print","name":"Ubidots Recv Data","value":" 37"}
+Received ActuatorData JSON{"command":"Print","name":"Ubidots Recv Data","value":" 33"}
+Received ActuatorData JSON{"command":"Print","name":"Ubidots Recv Data","value":" 43"}
+Received ActuatorData JSON{"command":"Print","name":"Ubidots Recv Data","value":" 38"}
+Received ActuatorData JSON{"command":"Print","name":"Ubidots Recv Data","value":" 32"}
+Received ActuatorData JSON{"command":"Print","name":"Ubidots Recv Data","value":" 45"}
+Received ActuatorData JSON{"command":"Print","name":"Ubidots Recv Data","value":" 36"}
+Received ActuatorData JSON{"command":"rint","name":"Ubidots Recv Data","value":" 36"}

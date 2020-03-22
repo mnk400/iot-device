@@ -5,7 +5,7 @@ Created on Mar 21, 2020
 '''
 import logging
 import threading
-from labs.module08 import MqttClientConnector
+from labs.module06 import MqttClientConnector
 from labs.common import SensorData, PersistenceUtil
 from sense_hat import SenseHat
 from time import sleep

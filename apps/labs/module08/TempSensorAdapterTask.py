@@ -90,7 +90,7 @@ class TempSensorAdapterTask(threading.Thread):
         '''
         Generate a detailed string from a sensorData instance and returns it.
         '''
-        msgString  = "\nHumidity from the sense_HAT API:"
+        msgString  = "\nTemperature from the sense_HAT API:"
         msgString += "\n\tTime : " + self.sensorData.timestamp
         msgString += "\n\tCurrent : " + repr(self.sensorData.getCurrentValue())
         msgString += "\n\tAverage : " + repr(self.sensorData.getAverageValue())

@@ -90,3 +90,16 @@ Received ActuatorData JSON{"command":"Print","name":"Ubidots Recv Data","value":
 Received ActuatorData JSON{"command":"Print","name":"Ubidots Recv Data","value":" 45"}
 Received ActuatorData JSON{"command":"Print","name":"Ubidots Recv Data","value":" 36"}
 Received ActuatorData JSON{"command":"rint","name":"Ubidots Recv Data","value":" 36"}
+Received ActuatorData JSON{"command":"rint","name":"Ubidots Recv Data","value":" 36"}
+Received ActuatorData JSON{"command":"rint","name":"Ubidots Recv Data","value":" 32"}
+Received ActuatorData JSON{"command":"rint","name":"Ubidots Recv Data","value":" 43"}
+Received ActuatorData JSON{"command":"TestCommand","name":"TestActuator","value":0.0}
+Received ActuatorData JSON{"command":"TestCommand","name":"TestActuator","value":0.0}
+Received ActuatorData JSON{"command":"Print","name":"Ubidots Recv Data","value":" 31"}
+Received ActuatorData JSON{"command":"Print","name":"Ubidots Recv Data","value":" 45"}
+Received ActuatorData JSON{"command":"Print","name":"Ubidots Recv Data","value":" 37"}
+Received ActuatorData JSON{"command":"Print","name":"Ubidots Recv Data","value":" 32"}
+Received ActuatorData JSON{"command":"Print","name":"Ubidots Recv Data","value":" 44"}
+Received ActuatorData JSON{"command":"Print","name":"Ubidots Recv Data","value":" 25"}
+Received ActuatorData JSON{"command":"Print","name":"Ubidots Recv Data","value":" 30"}
+Received ActuatorData JSON{"command":"Print","name":"Ubidots Recv Data","value":" 40"}

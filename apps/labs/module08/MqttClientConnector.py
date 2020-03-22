@@ -92,6 +92,7 @@ class MqttClientConnector():
         msg = message.payload.decode()
         logging.info("MQTT:Recieved a new actuatorData MQTT message:" + str(msg))
 
+
         #Converting into an ActuatorData Instance
         tempActuator = self.dataUtil.toActuatorDataFromJson(msg)
 
@@ -187,8 +188,13 @@ class MqttClientConnector():
             logging.error("MQTT:Not connected")
             return False
         #Subscribing to the actuatorClient's topic
-        self.actuatorClient.subscribe(self.actuatorTopic)
-        self.sensorClient.loop_forever()
+        try:
+            self.actuatorClient.subscribe(self.actuatorTopic)
+            self.sensorClient.loop_forever()
+        except Exception as e:
+            logging.info("ERROR: Could not subsribe")
+            
+        
         return True
 
     def listenSensorData(self) -> bool:

@@ -14,7 +14,7 @@ if __name__ == '__main__':
     Set 'enableListener to run ActuatorData Listener thread
     Set both to run them both simultaneously
     '''
-    module08                        = MultiSensorAdapter.MultiSensorAdapter(1,6)                     #Looptime and sleeptime of humidityTask and HI2CTask respectivley
+    module08                        = MultiSensorAdapter.MultiSensorAdapter(1,10)                     #Looptime and sleeptime of humidityTask and HI2CTask respectivley
     module08.enableTempTask         = True                                                           #Enable HumidityTask
     module08.enableMQTT             = True                                                           #Enable MQTT sender
     module08.enableActuatorListener = True

@@ -86,7 +86,7 @@ class MultiActuatorAdapter(object):
                 return True
             elif len(acValue) >=2:
                 #If more than one, printing a rolling message
-                self.sense.show_message(acValue, text_colour=self.w, scroll_speed=0.07)
+                self.sense.show_message(acValue, text_colour=self.g, scroll_speed=0.07)
                 return True   
             else:
                 logging.info("Actuator Value can not be empty when trying to print")

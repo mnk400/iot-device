@@ -4,7 +4,7 @@ from labs.module08 import MultiActuatorAdapter, MultiSensorAdapter, TempSensorAd
 from labs.common import SensorData, ActuatorData, PersistenceUtil
 from time import sleep
 
-class Module06Test(unittest.TestCase):
+class Module08Test(unittest.TestCase):
 
 	"""
 	Setting up resources 

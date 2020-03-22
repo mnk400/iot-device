@@ -20,9 +20,6 @@ class MqttClientConnector():
     listener which executes something when a message is received.
     '''
 
-    #Get a logger
-
-
     #Specifying the MQTT details
     brokerAddress = "broker.hivemq.com"
     brokerPort    = 1883
@@ -42,19 +39,24 @@ class MqttClientConnector():
         #DataUtil for JSON conversions
         self.dataUtil = DataUtil.DataUtil()
         self.actuatorAdapter = actuatorAdapter
+        
         try:
             #A client for the sensorData
             self.sensorClient = mqtt.Client()
+
             #Assigning the Callback functions
             self.sensorClient.on_connect    = self.on_sensor_connect
             self.sensorClient.on_message    = self.on_sensor_message
             self.sensorClient.on_disconnect = self.on_sensor_disconnect
+
             #A client for the actuatorData
             self.actuatorClient = mqtt.Client()
+
             #Assigning the Callback functions
             self.actuatorClient.on_connect = self.on_actuator_connect
             self.actuatorClient.on_message = self.on_actuator_message
             self.actuatorClient.on_disconnect = self.on_actuator_disconnect
+
         except:
             logging.error("MQTT:Exception:Connection Issue")    
     
@@ -63,6 +65,7 @@ class MqttClientConnector():
         '''
         On Message @callback function for sensorData
         '''
+
         #Decoding the received payload and logging
         msg = message.payload.decode()
         logging.info("MQTT:Recieved a new sensorData MQTT message:" + str(msg))
@@ -71,7 +74,9 @@ class MqttClientConnector():
         '''
         On Connect @callback function for sensorData
         '''
+
         logging.info("MQTT:Connected to sensorData topic")
+
         #Setting the sensorConnected Value to True
         self.sensorConnected = True
 
@@ -79,6 +84,7 @@ class MqttClientConnector():
         '''
         On Disconnect @callback function for sensorData
         '''
+
         logging.info("MQTT:Disconnected from sensorData topic")
         #Setting the sensorConnected Value to False
         self.sensorConnected = False
@@ -92,7 +98,6 @@ class MqttClientConnector():
         msg = message.payload.decode()
         logging.info("MQTT:Recieved a new actuatorData MQTT message:" + str(msg))
 
-
         #Converting into an ActuatorData Instance
         tempActuator = self.dataUtil.toActuatorDataFromJson(msg)
 
@@ -102,6 +107,7 @@ class MqttClientConnector():
         '''
         On Connect @callback function for actuatorData
         '''
+
         logging.info("MQTT:Connected to actuatorData topic")
         #Setting the actuatorConnected Value to True
         self.actuatorConnected = True
@@ -110,6 +116,7 @@ class MqttClientConnector():
         '''
         On Disconnect @callback function for actuatorData
         '''
+        
         logging.info("MQTT:Disconnected from actuatorData topic")
         #Setting the actuatorConnected Value to False
         self.actuatorConnected = False
@@ -163,6 +170,7 @@ class MqttClientConnector():
         '''
         Connects to the ActuatorData MQTT topic 
         '''
+
         #Connecting to the actuatorClient 
         self.actuatorClient.connect(self.brokerAddress,self.brokerPort)
         self.actuatorClient.loop_start()
@@ -173,9 +181,11 @@ class MqttClientConnector():
         '''
         Connects the SensorData MQTT topic
         '''
+
         #Connecting to the sensorClient
         self.sensorClient.connect(self.brokerAddress,self.brokerPort)
         self.sensorClient.loop_start()
+       
         return True
   
 
@@ -183,17 +193,18 @@ class MqttClientConnector():
         '''
         Subscribes and Listens to the ActuatorData MQTT topic 
         '''
+
         #Return false if not connected
         if self.actuatorConnected == False:
             logging.error("MQTT:Not connected")
             return False
+        
         #Subscribing to the actuatorClient's topic
         try:
             self.actuatorClient.subscribe(self.actuatorTopic)
             self.sensorClient.loop_forever()
         except Exception as e:
-            logging.info("ERROR: Could not subsribe")
-            
+            logging.info("ERROR: Could not subsribe")        
         
         return True
 
@@ -201,12 +212,15 @@ class MqttClientConnector():
         '''
         Subscribes and Listen to the SensorData MQTT topic
         '''
+
         #Return false if not connected
         if self.sensorConnected == False:
             logging.error("MQTT:Not connected")
             return False
+
         #Subscribing to the sensorClient's topic
         self.sensorClient.subscribe(self.sensorTopic)
+        
         return True
   
     
@@ -214,11 +228,13 @@ class MqttClientConnector():
         '''
         Disconnects all MQTT topics and connections
         '''
+        
         #Only disconnect the the clients that are connected
         #Disconnecting the sensor Client
         if self.sensorConnected == True:
             self.sensorClient.disconnect()
             self.sensorClient.loop_stop()
+       
         #Disconnecting the actuator Client
         if self.actuatorConnected == True:    
             self.actuatorClient.disconnect()

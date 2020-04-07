@@ -7,10 +7,9 @@ import serial
 from time import sleep
 import logging
 import threading
-from sensorResource import sensorResource
+from SensorResource import SensorResource
 
 logging.getLogger("SerialLogger")
-
 class SerialCommunicator(threading.Thread):
     '''
     classdocs
@@ -25,15 +24,16 @@ class SerialCommunicator(threading.Thread):
         threading.Thread.__init__(self)
         self.baudRate = baud
         self.serialPort = serialPort
-        self.dataStore = sensorResource.getInstance()
+        self.dataStore = SensorResource.getInstance()
 
         #Initialize the serial port
         try:
             self.ser = serial.Serial(serialPort, baud)
             self.serialConencted = True
             self.ser.flushInput()
+            logging.info("SERIAL:Sensor Initializing")
         except Exception as e:
-            logging.error("SERIAL:Could not connect to serial" + str(e))
+            logging.error("SERIAL:Could not connect to serial, is the sensor powered on? " + str(e))
             self.serialConencted = False
     
     def serialRead(self) -> str:
@@ -54,6 +54,7 @@ class SerialCommunicator(threading.Thread):
                     
                     if stringRead == "Done" and self.dataStore.status == False:
                         self.dataStore.status = True
+                        logging.info("SERIAL:Sensor ready")
 
                 except Exception as e:
                     logging.error("SERIAL:Exception while reading" + str(e))         

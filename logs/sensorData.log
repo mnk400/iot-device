@@ -3166,3 +3166,262 @@ Creating JSON for sensorData{"currentValue": 42.19605255126953, "totalCount": 36
 Creating JSON for sensorData{"currentValue": 42.214385986328125, "totalCount": 37.0, "totalValue": 1565.617763519287, "maxValue": 42.1043701171875, "minValue": 42.526092529296875, "timestamp": "2020-03-22 23:33:05.173164", "name": "Temperature Sensor Data"}
 Creating JSON for sensorData{"currentValue": 42.15937805175781, "totalCount": 38.0, "totalValue": 1607.777141571045, "maxValue": 42.1043701171875, "minValue": 42.526092529296875, "timestamp": "2020-03-22 23:33:15.189834", "name": "Temperature Sensor Data"}
 Creating JSON for sensorData{"currentValue": 42.23271942138672, "totalCount": 39.0, "totalValue": 1650.0098609924316, "maxValue": 42.1043701171875, "minValue": 42.526092529296875, "timestamp": "2020-03-22 23:33:25.206488", "name": "Temperature Sensor Data"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:06:05.098497", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:06:07.135067", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:06:09.175812", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:06:11.216177", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:06:13.257154", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:06:15.297389", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:06:17.342938", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:06:19.377980", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:06:21.423035", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:06:23.462878", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:06:25.493358", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:06:27.530134", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:06:29.560162", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:06:31.596509", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:06:33.631618", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:06:35.672731", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:06:37.713375", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:06:39.748353", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:06:41.779306", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:06:43.820906", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:06:45.867088", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:06:47.907005", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:06:49.947084", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:06:51.982208", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:06:54.023361", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:06:56.059960", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:06:58.095026", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:07:00.125958", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:07:02.163749", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:07:04.204603", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:07:06.239527", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:07:08.275119", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:07:10.315840", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:07:12.349200", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:07:14.384283", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:07:16.419213", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:07:18.454249", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:07:20.489295", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:07:22.524794", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:07:24.565229", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:07:26.605711", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:07:28.639318", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:07:30.674592", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:09:39.526358", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:09:41.566524", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:10:42.435363", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:10:44.468940", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:10:46.478590", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:11:08.884169", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:11:10.910782", "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:11:10.928313", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:11:12.948100", "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:11:12.959947", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:11:14.999877", "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:11:15.017211", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:11:17.035579", "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:11:17.047670", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:11:19.075829", "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:11:19.076478", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:11:21.111812", "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:11:21.134730", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:11:23.143281", "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:11:23.177307", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:11:25.167975", "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:11:25.209812", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:11:27.198577", "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:11:27.229604", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:11:29.234639", "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:11:29.251298", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:11:31.281116", "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:11:31.292756", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:11:33.313546", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:11:33.319794", "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:11:35.340953", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:11:35.341996", "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:11:37.377403", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:11:37.383658", "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:11:39.414187", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:11:39.415134", "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:11:41.445503", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:11:41.451729", "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:11:43.466264", "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:11:43.472626", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:11:45.517861", "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:11:45.529558", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:11:47.559389", "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:11:47.565234", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:11:49.625180", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:11:49.637199", "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:11:51.677724", "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:11:51.689342", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:11:53.718435", "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:11:53.724300", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:11:55.788179", "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0, "minValue": 0, "timestamp": "2020-04-06 20:11:55.803541", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 0.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 0.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 73.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 93.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 75.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 93.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 74.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 99.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 73.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 99.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 73.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 99.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 71.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 95.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 75.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 91.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 75.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 91.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 75.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 91.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 73.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 98.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 73.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 98.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 78.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 99.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 77.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 98.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 77.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 98.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 70.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 95.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 70.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 92.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 0.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 0.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 0.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 0.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 0.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 0.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 0.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 2.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 2.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 3.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 3.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 4.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 4.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 5.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 5.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 97.0, "totalCount": 6.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 72.0, "totalCount": 6.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 91.0, "totalCount": 7.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 72.0, "totalCount": 7.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 91.0, "totalCount": 8.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 77.0, "totalCount": 8.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 93.0, "totalCount": 9.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 73.0, "totalCount": 9.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 76.0, "totalCount": 10.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 96.0, "totalCount": 10.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 76.0, "totalCount": 11.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 96.0, "totalCount": 11.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 88.0, "totalCount": 12.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 95.0, "totalCount": 12.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 73.0, "totalCount": 13.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 93.0, "totalCount": 13.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 72.0, "totalCount": 14.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 93.0, "totalCount": 14.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 70.0, "totalCount": 15.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 96.0, "totalCount": 15.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 76.0, "totalCount": 16.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 98.0, "totalCount": 16.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 76.0, "totalCount": 17.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 98.0, "totalCount": 17.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 71.0, "totalCount": 18.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 99.0, "totalCount": 18.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 73.0, "totalCount": 19.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 97.0, "totalCount": 19.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 20.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 20.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 21.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 21.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 22.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 22.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 23.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 23.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 24.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 24.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 71.0, "totalCount": 25.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 99.0, "totalCount": 25.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 71.0, "totalCount": 26.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 99.0, "totalCount": 26.0, "totalValue": 0.0, "maxValue": 99.99, "minValue": -99.99, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 0.0, "totalValue": 0.0, "maxValue": 999.0, "minValue": -999.0, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 0.0, "totalValue": 0.0, "maxValue": 999.0, "minValue": -999.0, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 0.0, "totalValue": 0.0, "maxValue": 999.0, "minValue": -999.0, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 0.0, "totalValue": 0.0, "maxValue": 999.0, "minValue": -999.0, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 0.0, "totalValue": 0.0, "maxValue": 999.0, "minValue": -999.0, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 0.0, "totalValue": 0.0, "maxValue": 999.0, "minValue": -999.0, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 0.0, "totalValue": 0.0, "maxValue": 999.0, "minValue": -999.0, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 75.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 999.0, "minValue": -999.0, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 99.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 999.0, "minValue": -999.0, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 75.0, "totalCount": 2.0, "totalValue": 0.0, "maxValue": 999.0, "minValue": -999.0, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 99.0, "totalCount": 2.0, "totalValue": 0.0, "maxValue": 999.0, "minValue": -999.0, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 71.0, "totalCount": 3.0, "totalValue": 0.0, "maxValue": 999.0, "minValue": -999.0, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 94.0, "totalCount": 3.0, "totalValue": 0.0, "maxValue": 999.0, "minValue": -999.0, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 76.0, "totalCount": 4.0, "totalValue": 0.0, "maxValue": 999.0, "minValue": -999.0, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 93.0, "totalCount": 4.0, "totalValue": 0.0, "maxValue": 999.0, "minValue": -999.0, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 75.0, "totalCount": 5.0, "totalValue": 0.0, "maxValue": 999.0, "minValue": -999.0, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 93.0, "totalCount": 5.0, "totalValue": 0.0, "maxValue": 999.0, "minValue": -999.0, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 73.0, "totalCount": 6.0, "totalValue": 0.0, "maxValue": 999.0, "minValue": -999.0, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 91.0, "totalCount": 6.0, "totalValue": 0.0, "maxValue": 999.0, "minValue": -999.0, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 83.0, "totalCount": 7.0, "totalValue": 0.0, "maxValue": 999.0, "minValue": -999.0, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 98.0, "totalCount": 7.0, "totalValue": 0.0, "maxValue": 999.0, "minValue": -999.0, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 83.0, "totalCount": 8.0, "totalValue": 0.0, "maxValue": 999.0, "minValue": -999.0, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 98.0, "totalCount": 8.0, "totalValue": 0.0, "maxValue": 999.0, "minValue": -999.0, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 0.0, "totalValue": 0.0, "maxValue": 999.0, "minValue": -999.0, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 0.0, "totalValue": 0.0, "maxValue": 999.0, "minValue": -999.0, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 0.0, "totalValue": 0.0, "maxValue": 999.0, "minValue": -999.0, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 0.0, "totalValue": 0.0, "maxValue": 999.0, "minValue": -999.0, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 0.0, "totalValue": 0.0, "maxValue": 999.0, "minValue": -999.0, "timestamp": null, "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 0.0, "totalValue": 0.0, "maxValue": 999.0, "minValue": -999.0, "timestamp": null, "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0.0, "minValue": 0.0, "timestamp": "2020-04-06 20:23:14.920641", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 1.0, "totalValue": 0.0, "maxValue": 0.0, "minValue": 0.0, "timestamp": "2020-04-06 20:23:14.922738", "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 2.0, "totalValue": 0.0, "maxValue": 0.0, "minValue": 0.0, "timestamp": "2020-04-06 20:23:16.928283", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 2.0, "totalValue": 0.0, "maxValue": 0.0, "minValue": 0.0, "timestamp": "2020-04-06 20:23:16.930383", "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 77.0, "totalCount": 3.0, "totalValue": 77.0, "maxValue": 0.0, "minValue": 77.0, "timestamp": "2020-04-06 20:23:18.937603", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 98.0, "totalCount": 3.0, "totalValue": 98.0, "maxValue": 0.0, "minValue": 98.0, "timestamp": "2020-04-06 20:23:18.939408", "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 71.0, "totalCount": 4.0, "totalValue": 148.0, "maxValue": 0.0, "minValue": 77.0, "timestamp": "2020-04-06 20:23:20.945440", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 93.0, "totalCount": 4.0, "totalValue": 191.0, "maxValue": 0.0, "minValue": 98.0, "timestamp": "2020-04-06 20:23:20.947261", "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 77.0, "totalCount": 5.0, "totalValue": 225.0, "maxValue": 0.0, "minValue": 77.0, "timestamp": "2020-04-06 20:23:22.953548", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 93.0, "totalCount": 5.0, "totalValue": 284.0, "maxValue": 0.0, "minValue": 98.0, "timestamp": "2020-04-06 20:23:22.955374", "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 73.0, "totalCount": 6.0, "totalValue": 298.0, "maxValue": 0.0, "minValue": 77.0, "timestamp": "2020-04-06 20:23:24.961199", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 91.0, "totalCount": 6.0, "totalValue": 375.0, "maxValue": 0.0, "minValue": 98.0, "timestamp": "2020-04-06 20:23:24.963023", "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 70.0, "totalCount": 7.0, "totalValue": 368.0, "maxValue": 0.0, "minValue": 77.0, "timestamp": "2020-04-06 20:23:26.969092", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 94.0, "totalCount": 7.0, "totalValue": 469.0, "maxValue": 0.0, "minValue": 98.0, "timestamp": "2020-04-06 20:23:26.980867", "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 70.0, "totalCount": 8.0, "totalValue": 438.0, "maxValue": 0.0, "minValue": 77.0, "timestamp": "2020-04-06 20:23:28.974071", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 94.0, "totalCount": 8.0, "totalValue": 563.0, "maxValue": 0.0, "minValue": 98.0, "timestamp": "2020-04-06 20:23:28.986667", "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 76.0, "totalCount": 9.0, "totalValue": 514.0, "maxValue": 0.0, "minValue": 77.0, "timestamp": "2020-04-06 20:23:30.978946", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 97.0, "totalCount": 9.0, "totalValue": 660.0, "maxValue": 0.0, "minValue": 98.0, "timestamp": "2020-04-06 20:23:30.992671", "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 10.0, "totalValue": 514.0, "maxValue": 0.0, "minValue": 77.0, "timestamp": "2020-04-06 20:23:32.984001", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 10.0, "totalValue": 660.0, "maxValue": 0.0, "minValue": 98.0, "timestamp": "2020-04-06 20:23:32.998160", "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 11.0, "totalValue": 514.0, "maxValue": 0.0, "minValue": 77.0, "timestamp": "2020-04-06 20:23:34.989850", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 11.0, "totalValue": 660.0, "maxValue": 0.0, "minValue": 98.0, "timestamp": "2020-04-06 20:23:35.003191", "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 70.0, "totalCount": 12.0, "totalValue": 584.0, "maxValue": 0.0, "minValue": 77.0, "timestamp": "2020-04-06 20:23:36.995586", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 95.0, "totalCount": 12.0, "totalValue": 755.0, "maxValue": 0.0, "minValue": 98.0, "timestamp": "2020-04-06 20:23:37.006566", "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 75.0, "totalCount": 13.0, "totalValue": 659.0, "maxValue": 0.0, "minValue": 77.0, "timestamp": "2020-04-06 20:23:39.001197", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 98.0, "totalCount": 13.0, "totalValue": 853.0, "maxValue": 0.0, "minValue": 98.0, "timestamp": "2020-04-06 20:23:39.011635", "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 75.0, "totalCount": 14.0, "totalValue": 734.0, "maxValue": 0.0, "minValue": 77.0, "timestamp": "2020-04-06 20:23:41.006756", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 98.0, "totalCount": 14.0, "totalValue": 951.0, "maxValue": 0.0, "minValue": 98.0, "timestamp": "2020-04-06 20:23:41.017613", "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 15.0, "totalValue": 734.0, "maxValue": 0.0, "minValue": 77.0, "timestamp": "2020-04-06 20:23:43.012449", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 15.0, "totalValue": 951.0, "maxValue": 0.0, "minValue": 98.0, "timestamp": "2020-04-06 20:23:43.023583", "name": "Blood Oxygen Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 16.0, "totalValue": 734.0, "maxValue": 0.0, "minValue": 77.0, "timestamp": "2020-04-06 20:23:45.016824", "name": "Heart Rate Monitor"}
+Creating JSON for sensorData{"currentValue": 0.0, "totalCount": 16.0, "totalValue": 951.0, "maxValue": 0.0, "minValue": 98.0, "timestamp": "2020-04-06 20:23:45.028108", "name": "Blood Oxygen Monitor"}

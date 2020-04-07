@@ -22,8 +22,8 @@ class SensorData(object):
         self.currentValue   = float(0.0)
         self.totalCount     = float(0.0)
         self.totalValue     = float(0.0)
-        self.maxValue       = float(-99.99)
-        self.minValue       = float(99.99)
+        self.maxValue       = float(-999)
+        self.minValue       = float(999)
         self.name           = "Not Set"
         self.timestamp      = None
         

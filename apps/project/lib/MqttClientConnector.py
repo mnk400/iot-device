@@ -67,7 +67,7 @@ class MqttClientConnector(object):
         '''
         On Connect @callback function for sensorData
         '''
-        logging.info("MQTT:Connected to sensorData topic")
+        logging.info("MQTT:Connected to " + self.sensorTopic + " topic")
         #Setting the sensorConnected Value to True
         self.sensorConnected = True
 

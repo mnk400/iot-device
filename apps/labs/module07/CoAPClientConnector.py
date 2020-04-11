@@ -80,7 +80,7 @@ class CoAPClientConnector(object):
             return True
         return True
     
-    async def dataGET(self) -> bool:
+    async def dataGET(self, jsonPayload) -> bool:
         '''
         Method to get data instances from the servor using GET
         '''
@@ -89,8 +89,9 @@ class CoAPClientConnector(object):
             context = await Context.create_client_context()
             #Sleep for the slightest of time
             await asyncio.sleep(0.1)
+            jsonPayload = jsonPayload.encode()
             #send a rquest
-            request = Message(code=GET, uri=self.Address)
+            request = Message(code=GET, payload=jsonPayload, uri=self.Address)
             #waiting for the response
             response = await context.request(request).response
 
@@ -145,11 +146,13 @@ class CoAPClientConnector(object):
         loop.run_until_complete(self.dataPOST(jsonPayload))
         return True
 
-    def getData(self, loop) -> bool:
+    def getData(self, loop, sensorData) -> bool:
         '''
         Method to get data from the server
         '''
-        loop.run_until_complete(self.dataGET())
+        #Coverting using dataUtil
+        jsonPayload = self.dataUtil.toJsonFromSensorData(sensorData)
+        loop.run_until_complete(self.dataGET(jsonPayload))
         return True
 
     def deleteData(self, loop) -> bool:
@@ -159,9 +162,12 @@ class CoAPClientConnector(object):
         loop.run_until_complete(self.dataDelete())
         return True
         
-# if __name__ == "__main__":
-#     coap = CoAPClientConnector()
-#     s = SensorData.SensorData()
-#     s.addValue(10)
-#     coap.getData(asyncio.get_event_loop())
+if __name__ == "__main__":
+    coap = CoAPClientConnector()
+    s = SensorData.SensorData()
+    s.addValue(10)
+    coap.sendSensorDataPOST(asyncio.get_event_loop(), s)
+    coap.sendSensorDataPUT(asyncio.get_event_loop(), s)
+    coap.deleteData(asyncio.get_event_loop())
+    coap.getData(asyncio.get_event_loop(), s)
     

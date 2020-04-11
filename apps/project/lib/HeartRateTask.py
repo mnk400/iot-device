@@ -13,20 +13,34 @@ import threading
 logging.getLogger("HeartRateTaskLogger")
 class HeartRateTask(threading.Thread):
     '''
-    classdocs
+    Threaded class to read the heart-rate data 
+    from the shared sensor resource.
     '''
 
     def __init__(self, mqttClient, intervalTime=2):
+        '''
+        Constructor
+        Sets the interval time and mqttClient
+        creates a sensorData instace
+        '''
+        #Initialzing the threaded class
         threading.Thread.__init__(self)
         self.interval = intervalTime
-        self.dataStore = SensorResource.getInstance()
         self.mqttClient = mqttClient
-
+        #Getting an instance of the shared resource
+        self.dataStore = SensorResource.getInstance()
+        #Initializing the sensorData instance
         self.hrSensorData = SensorData()
     
     def readData(self):
+        '''
+        Function to read data from the shared resource
+        '''
+        #Running to repeatidly read data
         while True:
             data = self.dataStore.heartRate
+            #Only adding the data to sensorData instance
+            #if it's not None
             if data != None:
                 self.hrSensorData.addValue(float(data))
                 self.hrSensorData.setName("Heart Rate Monitor")
@@ -34,6 +48,10 @@ class HeartRateTask(threading.Thread):
             sleep(self.interval)
     
     def run(self):
+        '''
+        Run function for the thread to
+        call readData function
+        '''
         self.readData()
 
 if __name__ == "__main__":

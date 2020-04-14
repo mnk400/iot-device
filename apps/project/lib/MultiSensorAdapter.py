@@ -17,12 +17,11 @@ class MultiSensorAdapter(object):
     classdocs
     '''
     #Specifying the coAP details
-    addressHR = "coap://bubblegum.lan:5683/SPO2"
-    addressSP = "coap://bubblegum.lan:5683/SPO2"
+    addressHR = "coap://bubblegum.lan:5683/heartrate"
+    addressSP = "coap://bubblegum.lan:5683/spo"
 
-    def __init__(self, intervalTime=2):
+    def __init__(self, intervalTime=5):
         #self.mqttHR = MqttClientConnector("topic/hrsensor")
-        #self.mqttHR.connectSensorData()
 
         self.coapHR = CoAPClientConnector(self.addressHR)
         self.coapSP = CoAPClientConnector(self.addressSP)

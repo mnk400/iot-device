@@ -9,7 +9,7 @@ from time import sleep
 from aiocoap import *
 import asyncio
 import logging
-
+ 
 #Get a logger
 logging.getLogger("CoAPLogger")
 logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.DEBUG)
@@ -19,11 +19,8 @@ class CoAPClientConnector(object):
     Class that connects to CoAP and registers a
     listener which executes something when a message is received.
     '''
-
-    #Specifying the coAP details
-    Address = "coap://bubblegum.lan:5683/temp"
     
-    def __init__(self, address):
+    def __init__(self, address="coap://bubblegum.lan:5683/temp"):
         '''
         Constructor
         '''
@@ -147,7 +144,10 @@ class CoAPClientConnector(object):
         #Coverting using dataUtil
         jsonPayload = self.dataUtil.toJsonFromSensorData(sensorData)
         #Sending payload
-        loop.run_until_complete(self.dataPOST(jsonPayload))
+        while True:
+            if(loop.is_running() == False):
+                loop.run_until_complete(self.dataPOST(jsonPayload))
+                break
         return True
 
     def getData(self, loop) -> bool:

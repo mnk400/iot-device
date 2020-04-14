@@ -47,7 +47,7 @@ class SpO2Task(threading.Thread):
             if data != None:    
                 self.hrSensorData.addValue(float(data))
                 self.hrSensorData.setName("Blood Oxygen Monitor")
-                self.coAPClient.sendSensorDataPUT(self.asyncLoop, self.hrSensorData)
+                self.coAPClient.sendSensorDataPOST(self.asyncLoop, self.hrSensorData)
             sleep(self.interval)
 
     def run(self):

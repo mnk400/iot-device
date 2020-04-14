@@ -47,7 +47,7 @@ class HeartRateTask(threading.Thread):
             if data != None:
                 self.hrSensorData.addValue(float(data))
                 self.hrSensorData.setName("Heart Rate Monitor")
-                self.coAPClient.sendSensorDataPUT(self.loop, self.hrSensorData)
+                self.coAPClient.sendSensorDataPOST(self.loop, self.hrSensorData)
             sleep(self.interval)
     
     def run(self):

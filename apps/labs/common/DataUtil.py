@@ -47,7 +47,7 @@ class DataUtil(object):
         #Adding values to the sensorData Instance
         sensorData.currentValue = jsonData['currentValue']
         sensorData.totalCount   = jsonData['totalCount']
-        sensorData.totalValue   = jsonData['totalValue']
+        sensorData.avgValue     = jsonData['avgValue']
         sensorData.maxValue     = jsonData['maxValue']
         sensorData.minValue     = jsonData['minValue']
         sensorData.timestamp    = jsonData['timestamp']
@@ -62,7 +62,7 @@ class DataUtil(object):
         jsonData = { 
                         "currentValue"  :sensorData.getCurrentValue(),
                         "totalCount"    :sensorData.getCount(),
-                        "totalValue"    :sensorData.totalValue,
+                        "avgValue"      :sensorData.avgValue,
                         "maxValue"      :sensorData.getMinValue(),
                         "minValue"      :sensorData.getMaxValue(),
                         "timestamp"     :sensorData.timestamp,

@@ -21,9 +21,9 @@ class SensorData(object):
         '''
         self.currentValue   = float(0.0)
         self.totalCount     = float(0.0)
-        self.totalValue     = float(0.0)
-        self.maxValue       = float(-999)
-        self.minValue       = float(999)
+        self.avgValue       = float(0.0)
+        self.maxValue       = float(999)
+        self.minValue       = float(-999)
         self.name           = "Not Set"
         self.timestamp      = None
         
@@ -36,8 +36,8 @@ class SensorData(object):
             #Logging the data in our class variables
             #Calculating and updating values like averages/min/max as new data is input
             self.currentValue   = float(var)
+            self.avgValue       = (self.avgValue*self.totalCount + var)/(self.totalCount + 1)
             self.totalCount     = self.totalCount + 1
-            self.totalValue     = self.totalValue + var
             self.timestamp      = str(datetime.now())
         
             if  var > self.maxValue: self.maxValue = var

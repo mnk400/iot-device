@@ -62,7 +62,7 @@ class DataUtil(object):
         jsonData = { 
                         "currentValue"  :sensorData.getCurrentValue(),
                         "totalCount"    :sensorData.getCount(),
-                        "avgValue"      :sensorData.avgValue,
+                        "avgValue"      :sensorData.getAverageValue(),
                         "maxValue"      :sensorData.getMinValue(),
                         "minValue"      :sensorData.getMaxValue(),
                         "timestamp"     :sensorData.timestamp,

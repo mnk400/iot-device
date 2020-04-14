@@ -124,3 +124,15 @@ Received ActuatorData JSON{"command":"Print","name":"Ubidots Recv Temperature Ac
 Received ActuatorData JSON{"command":"Print","name":"Ubidots Recv Temperature ActuatorData","value":" 35"}
 Received ActuatorData JSON{"command":"Print","name":"Ubidots Recv Temperature ActuatorData","value":" 44"}
 Received ActuatorData JSON{"command":"TestCommand","name":"TestActuator","value":0.0}
+Received ActuatorData JSON{"command": "Decrease", "name": "Temperature Sensor Data", "value": "DOWNARROW"}
+Created actuatorData JSON{"command": "Decrease", "name": "Temperature Sensor Data", "value": "DOWNARROW"}
+Created actuatorData JSON{"command": "TestCommand", "name": "TestActuator", "value": 0.0}
+Received ActuatorData JSON{"command": "TestCommand", "name": "TestActuator", "value": 0.0}
+Created actuatorData JSON{"command": "TestCommand", "name": "TestActuator", "value": 0.0}
+{"command": "TestCommand", "name": "TestActuator", "value": 0.0}
+Received ActuatorData JSON{"command": "Decrease", "name": "Temperature Sensor Data", "value": "DOWNARROW"}
+Created actuatorData JSON{"command": "Decrease", "name": "Temperature Sensor Data", "value": "DOWNARROW"}
+Created actuatorData JSON{"command": "TestCommand", "name": "TestActuator", "value": 0.0}
+Received ActuatorData JSON{"command": "TestCommand", "name": "TestActuator", "value": 0.0}
+Created actuatorData JSON{"command": "TestCommand", "name": "TestActuator", "value": 0.0}
+{"command": "TestCommand", "name": "TestActuator", "value": 0.0}

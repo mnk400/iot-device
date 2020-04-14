@@ -22,8 +22,8 @@ class SensorData(object):
         self.currentValue   = float(0.0)
         self.totalCount     = float(0.0)
         self.avgValue       = float(0.0)
-        self.maxValue       = float(999)
-        self.minValue       = float(-999)
+        self.maxValue       = float(-999)
+        self.minValue       = float(999)
         self.name           = "Not Set"
         self.timestamp      = None
         
@@ -36,7 +36,7 @@ class SensorData(object):
             #Logging the data in our class variables
             #Calculating and updating values like averages/min/max as new data is input
             self.currentValue   = float(var)
-            self.avgValue       = (self.avgValue*self.totalCount + var)/(self.totalCount + 1)
+            self.avgValue       = round((self.avgValue*self.totalCount + var)/(self.totalCount + 1),2)
             self.totalCount     = self.totalCount + 1
             self.timestamp      = str(datetime.now())
         
@@ -54,7 +54,7 @@ class SensorData(object):
         '''
         Method returns the average value of all the values fed to the class object
         '''
-        return self.totalValue/self.totalCount 
+        return self.avgValue
     
     def getCount(self)         -> int:
         '''

@@ -8,7 +8,7 @@ class DataUtilTest(unittest.TestCase):
 	"""
 	def setUp(self):
 		#JSON strings to test on
-		self.sensorJSON = "{\"currentValue\": 10.0, \"totalCount\": 1, \"totalValue\": 10.0, \"maxValue\": 10.0, \"minValue\": 10.0, \"timestamp\": \"2020-02-23 16:29:41.32\", \"name\": \"Temperature\"}"
+		self.sensorJSON = "{\"currentValue\": 10.0, \"totalCount\": 1, \"avgValue\": 10.0, \"maxValue\": 10.0, \"minValue\": 10.0, \"timestamp\": \"2020-02-23 16:29:41.32\", \"name\": \"Temperature\"}"
 		self.actuatorJSON = "{\"command\": \"Decrease\", \"name\": \"Temperature Sensor Data\", \"value\": \"DOWNARROW\"}"
 		#ActuatorData instance filled with data
 		self.actuatorData = ActuatorData.ActuatorData()

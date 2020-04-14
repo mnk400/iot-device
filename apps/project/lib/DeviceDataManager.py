@@ -14,6 +14,8 @@ class DeviceDataManager(object):
     '''
     classdocs
     '''
+    checksBypass = False
+
     def __init__(self, intervalTime=2):
         interval = intervalTime
 
@@ -31,7 +33,7 @@ class DeviceDataManager(object):
         self.serialReadThread.start()
 
         while True:    
-            if self.dataStore.status == True:
+            if self.dataStore.status == True or self.checksBypass == True:
                 logging.info("Starting Sensor Task Threads")
                 self.tasksAdapter.__execute__()
                 break

@@ -6,9 +6,11 @@ Created on April 6th, 2020
 from SerialCommunicator import SerialCommunicator
 from SensorResource import SensorResource
 from labs.common.SensorData import SensorData
+from CoAPClientConnector import CoAPClientConnector
 from time import sleep
 import logging
 import threading
+import asyncio
 
 logging.getLogger("SpO2TaskLogger")
 class SpO2Task(threading.Thread):
@@ -17,16 +19,17 @@ class SpO2Task(threading.Thread):
     from the shared sensor resource.
     '''
 
-    def __init__(self, mqttClient, intervalTime=2):
+    def __init__(self, coAPClient: CoAPClientConnector, intervalTime=2):
         '''
         Constructor
         Sets the interval time and mqttClient
         creates a sensorData instace
         '''
+        self.asyncLoop = asyncio.get_event_loop()
         #Initialzing the threaded class
-        threading.Thread.__init__(self)
+        threading.Thread.__init__(self, args=(self.asyncLoop,))
         self.interval = intervalTime
-        self.mqttClient = mqttClient
+        self.coAPClient = coAPClient
         #Getting an instance of the shared resource
         self.dataStore = SensorResource.getInstance()
         #Initializing the sensorData instance
@@ -44,7 +47,7 @@ class SpO2Task(threading.Thread):
             if data != None:    
                 self.hrSensorData.addValue(float(data))
                 self.hrSensorData.setName("Blood Oxygen Monitor")
-                self.mqttClient.publishSensorData(self.hrSensorData)
+                self.coAPClient.sendSensorDataPUT(self.asyncLoop, self.hrSensorData)
             sleep(self.interval)
 
     def run(self):
@@ -55,7 +58,8 @@ class SpO2Task(threading.Thread):
         self.readData()
 
 if __name__ == "__main__":
+    coAP = CoAPClientConnector()
     sensorRead = SerialCommunicator(115200)
     sensorRead.start()
-    task = SpO2Task()
+    task = SpO2Task(coAP)
     task.run()

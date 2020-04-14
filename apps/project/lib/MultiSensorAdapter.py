@@ -6,25 +6,29 @@ Created on April 6th, 2020
 from HeartRateTask import HeartRateTask
 from SpO2Task import SpO2Task
 from SerialCommunicator import SerialCommunicator
+from CoAPClientConnector import CoAPClientConnector
 from MqttClientConnector import MqttClientConnector
 import logging
+import asyncio
 
 logging.getLogger("SensorAdaptetLogger")
 class MultiSensorAdapter(object):
     '''
     classdocs
     '''
+    #Specifying the coAP details
+    addressHR = "coap://bubblegum.lan:5683/SPO2"
+    addressSP = "coap://bubblegum.lan:5683/SPO2"
 
     def __init__(self, intervalTime=2):
+        #self.mqttHR = MqttClientConnector("topic/hrsensor")
+        #self.mqttHR.connectSensorData()
 
-        self.mqttHR = MqttClientConnector("topic/hrsensor")
-        self.mqttHR.connectSensorData()
+        self.coapHR = CoAPClientConnector(self.addressHR)
+        self.coapSP = CoAPClientConnector(self.addressSP)
 
-        self.mqttSP = MqttClientConnector("topic/spo2sensor")
-        self.mqttSP.connectSensorData()
-
-        self.taskHR     = HeartRateTask(self.mqttHR, intervalTime)   
-        self.taskSpO2   = SpO2Task(self.mqttSP, intervalTime)     
+        self.taskHR     = HeartRateTask(self.coapHR, intervalTime)   
+        self.taskSpO2   = SpO2Task(self.coapSP, intervalTime)     
 
     def __execute__(self):
         self.taskHR.start()

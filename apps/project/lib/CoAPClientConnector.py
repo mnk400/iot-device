@@ -1,5 +1,5 @@
 '''
-Created on Mar 12, 2020
+Created on Apr 13, 2020
 
 @author: manik
 '''
@@ -23,10 +23,11 @@ class CoAPClientConnector(object):
     #Specifying the coAP details
     Address = "coap://bubblegum.lan:5683/temp"
     
-    def __init__(self):
+    def __init__(self, address):
         '''
         Constructor
         '''
+        self.Address = address
         #DataUtil for JSON conversions
         self.dataUtil = DataUtil.DataUtil()
           
@@ -130,7 +131,11 @@ class CoAPClientConnector(object):
         #Coverting using dataUtil
         jsonPayload = self.dataUtil.toJsonFromSensorData(sensorData)
         #Sending payload
-        loop.run_until_complete(self.dataPUT(jsonPayload))
+        print(loop.is_running())
+        while True:
+            if(loop.is_running() == False):
+                loop.run_until_complete(self.dataPUT(jsonPayload))
+                break            
         return True
 
     def sendSensorDataPOST(self, loop, sensorData: SensorData.SensorData) -> bool:
@@ -167,5 +172,5 @@ if __name__ == "__main__":
     coap.sendSensorDataPOST(asyncio.get_event_loop(), s)
     coap.sendSensorDataPUT(asyncio.get_event_loop(), s)
     coap.deleteData(asyncio.get_event_loop())
-    coap.getData(asyncio.get_event_loop())
+    coap.getData(asyncio.get_event_loop(), s)
     

@@ -161,6 +161,26 @@ class CoAPClientConnector(object):
                 break  
         return True
 
+    def sendAnyDataPUT(self, loop, dataStr) -> bool:
+        '''
+        Method to provide abstraction to convert sensorData to JSON and call dataSender
+        '''
+        print("hello")
+        logging.info("Sending User Response")
+        #Sending payload
+        i = 0
+        while True:
+            if(loop.is_running() == False):
+                i = i + 1
+                loop.run_until_complete(self.dataPUT(dataStr))
+                if i>0:
+                    break
+
+            if i>0:
+                break 
+
+        return True
+
     def getData(self, loop) -> bool:
         '''
         Method to get data from the server
@@ -177,11 +197,9 @@ class CoAPClientConnector(object):
         return True
         
 if __name__ == "__main__":
-    coap = CoAPClientConnector()
+    coap = CoAPClientConnector("coap://bubblegum.lan:5683/userresponse")
     s = SensorData.SensorData()
     s.addValue(10)
-    coap.sendSensorDataPOST(asyncio.get_event_loop(), s)
-    coap.sendSensorDataPUT(asyncio.get_event_loop(), s)
-    coap.deleteData(asyncio.get_event_loop())
-    coap.getData(asyncio.get_event_loop(), s)
+    coap.sendAnyDataPUT(asyncio.get_event_loop(), "Hello")
+
     

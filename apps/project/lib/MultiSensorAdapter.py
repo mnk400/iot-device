@@ -24,7 +24,7 @@ class MultiSensorAdapter(object):
     addressCpu = "coap://bubblegum.lan:5683/cpu"
     addressMem = "coap://bubblegum.lan:5683/mem"
 
-    def __init__(self, intervalTime=5):
+    def __init__(self, intervalTime=10):
         #self.mqttHR = MqttClientConnector("topic/hrsensor")
 
         self.coapHR  = CoAPClientConnector(self.addressHR)

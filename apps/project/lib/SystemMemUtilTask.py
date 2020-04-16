@@ -13,7 +13,7 @@ from CoAPClientConnector import CoAPClientConnector
 
 class Mem(threading.Thread):
 
-    def __init__(self, coAPClient: CoAPClientConnector, intervalTime=15):
+    def __init__(self, coAPClient: CoAPClientConnector, intervalTime=20):
         '''
         Constructor
         '''

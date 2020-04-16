@@ -8,6 +8,7 @@ import paho.mqtt.client as mqtt
 from labs.common import DataUtil, SensorData, ActuatorData
 import logging
 from time import sleep
+from SenseHatUpdater import SenseHatUpdater
 
 #Get a logger
 logging.getLogger("mqttLogger")
@@ -22,6 +23,7 @@ class MqttClientConnector(object):
     #Connection States
     sensorConnected   = False
     actuatorConnected = False
+    otherConnected = False
 
     def __init__(self, sensorTopic = "topic/sensor", actuatorTopic = "topic/actuator", broker="broker.hivemq.com", port=1883):
         '''
@@ -37,6 +39,9 @@ class MqttClientConnector(object):
 
         #DataUtil for JSON conversions
         self.dataUtil = DataUtil.DataUtil()
+
+        #Actuator updater
+        self.senseHat = SenseHatUpdater()
         
         try:
             #A client for the sensorData
@@ -88,6 +93,11 @@ class MqttClientConnector(object):
         msg = message.payload.decode()
         logging.info("MQTT:Recieved a new actuatorData MQTT message:" + str(msg))
 
+        #Converting into an ActuatorData Instance
+        tempActuator = self.dataUtil.toActuatorDataFromJson(msg)
+        result = self.senseHat.updateActuator(tempActuator)
+
+
     def on_actuator_connect(self, client, userdata, flags, rc):
         '''
         On Connect @callback function for actuatorData
@@ -126,6 +136,21 @@ class MqttClientConnector(object):
         #publishing the said JSON
         self.actuatorClient.publish(self.actuatorTopic,jsonStr) 
         return True
+    
+    def publishOther(self, strng) -> bool:
+        '''
+        Function to publish an ActuatorData instance on the MQTT topic
+        '''
+
+        if self.otherConnected == False:
+            #Return false if connection not established
+            logging.error("MQTT:Cannot publish, not connected")
+            return False
+        
+        logging.info("MQTT:Publishing User Status")
+        #publishing the said JSON
+        self.otherClient.publish(self.otherTopic,strng) 
+        return True
 
     def publishSensorData(self, sensorData: SensorData.SensorData) -> bool:
         '''
@@ -151,9 +176,9 @@ class MqttClientConnector(object):
     
     def connectActuatorData(self) -> bool:
         '''
-        Connects to the ActuatorData MQTT topic 
+        Connects to the ActuatorData MQTT topic
         '''
-        #Connecting to the actuatorClient 
+        #Connecting to the actuatorClient                         
         self.actuatorClient.connect(self.brokerAddress,self.brokerPort)
         self.actuatorClient.loop_start()
         return True
@@ -165,20 +190,26 @@ class MqttClientConnector(object):
         '''
         #Connecting to the sensorClient
         self.sensorClient.connect(self.brokerAddress,self.brokerPort)
-        self.sensorClient.loop_start()
+        #self.sensorClient.loop_start()
         return True
   
-
+   
     def listenActuatorData(self) -> bool:
         '''
         Subscribes and Listens to the ActuatorData MQTT topic 
         '''
+        logging.info("Subscribing to ActuatorData")
         #Return false if not connected
         if self.actuatorConnected == False:
             logging.error("MQTT:Not connected")
             return False
         #Subscribing to the actuatorClient's topic
-        self.actuatorClient.subscribe(self.sensorTopic)
+        #try:
+        self.actuatorClient.subscribe(self.actuatorTopic)
+        self.actuatorClient.loop_start()
+        #except Exception as e:
+        #    logging.info("ERROR: Could not subscribe " + str(e))  
+            
         return True
 
     def listenSensorData(self) -> bool:
@@ -207,17 +238,16 @@ class MqttClientConnector(object):
         if self.actuatorConnected == True:    
             self.actuatorClient.disconnect()
             self.actuatorClient.loop_stop()
+
         return True
 
 
 if __name__ == "__main__":
     mqtt = MqttClientConnector()
-    s = SensorData.SensorData()
-    s.addValue(10)
-    mqtt.connectSensorData()
-    sleep(0.0001)
-    mqtt.publishSensorData(s)
-    mqtt.listenSensorData()
-    sleep(10)
-    mqtt.disconnect()
+    s = ActuatorData.ActuatorData()
+    mqtt.connectActuatorData()
+    sleep(1)
+    mqtt.listenActuatorData()
+    sleep(100)
+    #mqtt.disconnect()
     #mqtt.subscribeToSensorData()

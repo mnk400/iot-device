@@ -6,6 +6,7 @@ Created on April 6th, 2020
 from MultiSensorAdapter import MultiSensorAdapter
 from SerialCommunicator import SerialCommunicator
 from SensorResource     import SensorResource
+from ActuatorAdapter    import ActuatorAdapter
 import logging
 
 logging.getLogger("DeviceDataManagerLogger")
@@ -24,13 +25,16 @@ class DeviceDataManager(object):
         
         self.serialReadThread = SerialCommunicator(115200)
         self.tasksAdapter     = MultiSensorAdapter(interval)
-        self.dataStore = SensorResource.getInstance()       
+        self.actuatorAdapter  = ActuatorAdapter()
+        self.dataStore = SensorResource.getInstance()      
+
 
     def startupSequence(self):
         '''
         docs
         '''
         self.serialReadThread.start()
+        self.actuatorAdapter.start()
 
         while True:    
             if self.dataStore.status == True or self.checksBypass == True:

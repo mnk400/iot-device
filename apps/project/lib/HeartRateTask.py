@@ -58,7 +58,7 @@ class HeartRateTask(threading.Thread):
         self.readData()
 
 if __name__ == "__main__":
-    coAP = CoAPClientConnector()
+    coAP = CoAPClientConnector("coap://bubblegum.lan:5683/heartrate")
     sensorRead = SerialCommunicator(115200)
     sensorRead.start()
     task = HeartRateTask(coAP)

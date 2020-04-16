@@ -80,7 +80,7 @@ class CoAPClientConnector(object):
     
     async def dataGET(self) -> bool:
         '''
-        Method to get data instances from the servor using GET
+        Method to get data instances from the server using GET
         '''
         try:
             #Creating a context variable for CoAP
@@ -128,11 +128,16 @@ class CoAPClientConnector(object):
         #Coverting using dataUtil
         jsonPayload = self.dataUtil.toJsonFromSensorData(sensorData)
         #Sending payload
-        print(loop.is_running())
+        i = 0
         while True:
             if(loop.is_running() == False):
+                i = i + 1
                 loop.run_until_complete(self.dataPUT(jsonPayload))
-                break            
+                if i>0:
+                    break
+
+            if i>0:
+                break         
         return True
 
     def sendSensorDataPOST(self, loop, sensorData: SensorData.SensorData) -> bool:
@@ -144,10 +149,16 @@ class CoAPClientConnector(object):
         #Coverting using dataUtil
         jsonPayload = self.dataUtil.toJsonFromSensorData(sensorData)
         #Sending payload
+        i = 0
         while True:
             if(loop.is_running() == False):
-                loop.run_until_complete(self.dataPOST(jsonPayload))
-                break
+                i = i + 1
+                loop.run_until_complete(self.dataPUT(jsonPayload))
+                if i>0:
+                    break
+
+            if i>0:
+                break  
         return True
 
     def getData(self, loop) -> bool:

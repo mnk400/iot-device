@@ -9,6 +9,7 @@ import logging
 import threading
 from SensorResource import SensorResource
 
+
 logging.getLogger("SerialLogger")
 class SerialCommunicator(threading.Thread):
     '''
@@ -46,7 +47,7 @@ class SerialCommunicator(threading.Thread):
                     b = self.ser.readline()
                     stringRead = b.decode()
                     stringRead = stringRead.rstrip()
-                    
+
                     if self.dataStore.status == True:
                         stringRead = stringRead.split(',')
                         self.dataStore.heartRate = stringRead[0]

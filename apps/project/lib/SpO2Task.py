@@ -58,7 +58,7 @@ class SpO2Task(threading.Thread):
         self.readData()
 
 if __name__ == "__main__":
-    coAP = CoAPClientConnector()
+    coAP = CoAPClientConnector("coap://bubblegum.lan:5683/spo")
     sensorRead = SerialCommunicator(115200)
     sensorRead.start()
     task = SpO2Task(coAP)

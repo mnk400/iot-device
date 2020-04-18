@@ -3,10 +3,10 @@ Created on April 5th, 2020
 
 @author: manik
 '''
-from SerialCommunicator import SerialCommunicator
-from SensorResource import SensorResource
+from project.lib.SerialCommunicator import SerialCommunicator
+from project.lib.SensorResource import SensorResource
 from labs.common.SensorData import SensorData
-from CoAPClientConnector import CoAPClientConnector
+from project.lib.CoAPClientConnector import CoAPClientConnector
 from time import sleep
 import logging
 import threading
@@ -19,13 +19,14 @@ class HeartRateTask(threading.Thread):
     from the shared sensor resource.
     '''
 
-    def __init__(self, coAPClient: CoAPClientConnector, intervalTime=2):
+    def __init__(self, coAPClient: CoAPClientConnector, intervalTime=2, looplimit=-1):
         '''
         Constructor
         Sets the interval time and mqttClient
         creates a sensorData instace
         '''
         self.loop = asyncio.get_event_loop()
+        self.looplimit = looplimit
         #Initialzing the threaded class
         threading.Thread.__init__(self, args=(self.loop,))
         self.interval = intervalTime
@@ -39,8 +40,10 @@ class HeartRateTask(threading.Thread):
         '''
         Function to read data from the shared resource
         '''
+        i = 0
         #Running to repeatidly read data
         while True:
+            i = i + 1
             data = self.dataStore.heartRate
             #Only adding the data to sensorData instance
             #if it's not None
@@ -49,6 +52,10 @@ class HeartRateTask(threading.Thread):
                 self.hrSensorData.setName("Heart Rate Monitor")
                 self.coAPClient.sendSensorDataPOST(self.loop, self.hrSensorData)
             sleep(self.interval)
+            
+            if self.looplimit != -1:
+                if i == self.looplimit:
+                    break
     
     def run(self):
         '''
@@ -56,10 +63,11 @@ class HeartRateTask(threading.Thread):
         call readData function
         '''
         self.readData()
+        return True
 
-if __name__ == "__main__":
-    coAP = CoAPClientConnector("coap://bubblegum.lan:5683/heartrate")
-    sensorRead = SerialCommunicator(115200)
-    sensorRead.start()
-    task = HeartRateTask(coAP)
-    task.run()
+# if __name__ == "__main__":
+#     coAP = CoAPClientConnector("coap://bubblegum.lan:5683/heartrate")
+#     sensorRead = SerialCommunicator(115200)
+#     sensorRead.start()
+#     task = HeartRateTask(coAP)
+#     task.run()

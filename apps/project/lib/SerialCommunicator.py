@@ -7,21 +7,24 @@ import serial
 from time import sleep
 import logging
 import threading
-from SensorResource import SensorResource
+from project.lib.SensorResource import SensorResource
 
 
 logging.getLogger("SerialLogger")
 class SerialCommunicator(threading.Thread):
     '''
-    classdocs
+    Class to communicate with the serial port on 
+    raspberry pi with arduino which acts like
+    the A/D converter for us.
     '''
 
-    def __init__(self, baud, serialPort="/dev/ttyACM0"):
+    def __init__(self, baud, serialPort="/dev/ttyACM0", looplimit=-1):
         '''
         Constructor
         For setting the baudrate and the serial port.
         This constructor opens up a serial connection.
         '''
+        self.looplimit = looplimit
         threading.Thread.__init__(self)
         self.baudRate = baud
         self.serialPort = serialPort
@@ -31,6 +34,7 @@ class SerialCommunicator(threading.Thread):
         try:
             self.ser = serial.Serial(serialPort, baud)
             self.serialConencted = True
+            #Flushing rogue inputs
             self.ser.flushInput()
             logging.info("SERIAL:Sensor Initializing")
         except Exception as e:
@@ -41,19 +45,29 @@ class SerialCommunicator(threading.Thread):
         '''
         Function to read from the serialPort
         '''
+        i=0
         while True:
+            i=i+1
+            #Checking if serial is connected
             if(self.serialConencted == True):
                 try:
+                    #Reading from serial
                     b = self.ser.readline()
+                    #decoding and striping of all '/n' and '/t'
                     stringRead = b.decode()
                     stringRead = stringRead.rstrip()
 
+                    #If sensor is up and running
                     if self.dataStore.status == True:
+                        #Then split the data read
                         stringRead = stringRead.split(',')
+                        #And store into our shared resource
                         self.dataStore.heartRate = stringRead[0]
                         self.dataStore.spO2 = stringRead[1]
                     
                     if stringRead == "Done" and self.dataStore.status == False:
+                        #First thing we look for is a 'Done' message from the serialRead
+                        #Signifying our sensor is ready
                         self.dataStore.status = True
                         logging.info("SERIAL:Sensor ready")
 
@@ -64,15 +78,16 @@ class SerialCommunicator(threading.Thread):
                 self.dataStore.heartRate = 0
                 self.dataStore.spO2 = 0
 
-        return stringRead
+            if self.looplimit != -1:
+                if i == self.looplimit:
+                    break
+
+        return True
     
     def serialWrite(self, wrtString) -> bool:
         '''
         Function to write to the serialPort
         '''
-        
-        if self.serialConencted == False:
-            return False
 
         try:
             self.ser.write(wrtString)
@@ -94,6 +109,6 @@ class SerialCommunicator(threading.Thread):
         self.serialRead()
         
     
-if __name__ == "__main__":
-    temp = SerialCommunicator(115200)
-    temp.start()
+# if __name__ == "__main__":
+#     temp = SerialCommunicator(115200)
+#     temp.start()

@@ -8,7 +8,7 @@ import paho.mqtt.client as mqtt
 from labs.common import DataUtil, SensorData, ActuatorData
 import logging
 from time import sleep
-from SenseHatUpdater import SenseHatUpdater
+from project.lib.SenseHatUpdater import SenseHatUpdater
 
 #Get a logger
 logging.getLogger("mqttLogger")
@@ -190,7 +190,7 @@ class MqttClientConnector(object):
         '''
         #Connecting to the sensorClient
         self.sensorClient.connect(self.brokerAddress,self.brokerPort)
-        #self.sensorClient.loop_start()
+        self.sensorClient.loop_start()
         return True
   
    
@@ -216,6 +216,7 @@ class MqttClientConnector(object):
         '''
         Subscribes and Listen to the SensorData MQTT topic
         '''
+        logging.info("Subscribing to SensorData")
         #Return false if not connected
         if self.sensorConnected == False:
             logging.error("MQTT:Not connected")
@@ -242,12 +243,12 @@ class MqttClientConnector(object):
         return True
 
 
-if __name__ == "__main__":
-    mqtt = MqttClientConnector()
-    s = ActuatorData.ActuatorData()
-    mqtt.connectActuatorData()
-    sleep(1)
-    mqtt.listenActuatorData()
-    sleep(100)
-    #mqtt.disconnect()
-    #mqtt.subscribeToSensorData()
+# if __name__ == "__main__":
+#     mqtt = MqttClientConnector()
+#     s = ActuatorData.ActuatorData()
+#     mqtt.connectActuatorData()
+#     sleep(1)
+#     mqtt.listenActuatorData()
+#     sleep(100)
+#     mqtt.disconnect()
+#     mqtt.subscribeToSensorData()

@@ -130,6 +130,7 @@ class CoAPClientConnector(object):
         #Sending payload
         i = 0
         while True:
+            #Waiting till the event loop is free
             if(loop.is_running() == False):
                 i = i + 1
                 loop.run_until_complete(self.dataPUT(jsonPayload))
@@ -151,6 +152,7 @@ class CoAPClientConnector(object):
         #Sending payload
         i = 0
         while True:
+            #Waiting till the event loop is free
             if(loop.is_running() == False):
                 i = i + 1
                 loop.run_until_complete(self.dataPUT(jsonPayload))
@@ -196,10 +198,10 @@ class CoAPClientConnector(object):
         loop.run_until_complete(self.dataDelete())
         return True
         
-if __name__ == "__main__":
-    coap = CoAPClientConnector("coap://bubblegum.lan:5683/userresponse")
-    s = SensorData.SensorData()
-    s.addValue(10)
-    coap.sendAnyDataPUT(asyncio.get_event_loop(), "Hello")
+# if __name__ == "__main__":
+#     coap = CoAPClientConnector("coap://bubblegum.lan:5683/userresponse")
+#     s = SensorData.SensorData()
+#     s.addValue(10)
+#     coap.sendAnyDataPUT(asyncio.get_event_loop(), "Hello")
 
     

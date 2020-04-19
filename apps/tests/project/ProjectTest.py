@@ -73,9 +73,6 @@ class ProjectTest(unittest.TestCase):
 	Testing updateActuator in SenseHatUpdater
 	'''
 	def testUpdateActuator(self):
-		#Should return when command is right
-		self.actuatorData.setCommand("userCheck")
-		self.assertEqual(True,self.senseHatUpdater.updateActuator(self.actuatorData))
 
 		#Should return false when command is wrong
 		self.actuatorData.setCommand("wrongcommand")

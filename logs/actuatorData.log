@@ -237,3 +237,17 @@ Received ActuatorData JSON{"command":"userCheck","name":"Ubidots Triggered Check
 Received ActuatorData JSON{"command":"userCheck","name":"Ubidots Triggered Check","value":"manualCheck"}
 Received ActuatorData JSON{"command":"userCheck","name":"Ubidots Triggered Check","value":"manualCheck"}
 Received ActuatorData JSON{"command":"userCheck","name":"Ubidots Triggered Check","value":"manualCheck"}
+Received ActuatorData JSON{"command":"userCheck","name":"Ubidots Triggered Check","value":"manualCheck"}
+Received ActuatorData JSON{"command":"userCheck","name":"Ubidots Triggered Check","value":"manualCheck"}
+Received ActuatorData JSON{"command":"userCheck","name":"Ubidots Triggered Check","value":"manualCheck"}
+Received ActuatorData JSON{"command": "Decrease", "name": "Temperature Sensor Data", "value": "DOWNARROW"}
+Created actuatorData JSON{"command": "Decrease", "name": "Temperature Sensor Data", "value": "DOWNARROW"}
+Created actuatorData JSON{"command": "TestCommand", "name": "TestActuator", "value": 0.0}
+Received ActuatorData JSON{"command": "TestCommand", "name": "TestActuator", "value": 0.0}
+Created actuatorData JSON{"command": "TestCommand", "name": "TestActuator", "value": 0.0}
+{"command": "TestCommand", "name": "TestActuator", "value": 0.0}
+Created actuatorData JSON{"command": "TestCommand", "name": "TestActuator", "value": "TestValue"}
+Received ActuatorData JSON{"command":"userCheck","name":"Ubidots Triggered Check","value":"manualCheck"}
+Received ActuatorData JSON{"command":"userCheck","name":"Ubidots Triggered Check","value":"manualCheck"}
+Received ActuatorData JSON{"command":"userCheck","name":"Ubidots Triggered Check","value":"manualCheck"}
+Received ActuatorData JSON{"command":"userCheck","name":"Ubidots Triggered Check","value":"manualCheck"}

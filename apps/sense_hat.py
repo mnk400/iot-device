@@ -12,7 +12,20 @@
 '''
 from random import uniform
 
+class ACTION_PRESSED:
+    pass
+
+class act:
+    action = ACTION_PRESSED
+
+class sn:
+    actclass = act()
+    def wait_for_event(self):
+        print('button press event')
+        return self.actclass
+
 class SenseHat():
+    stick = sn()
     rotateDeg = 270
     clearFlag = False
 
@@ -53,4 +66,4 @@ class SenseHat():
         print(msg)
 
     def set_pixels(self, matrix):
-        print(matrix)    
+        print(matrix) 
